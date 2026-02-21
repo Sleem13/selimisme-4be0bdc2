@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, MapPin } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin, Download } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
@@ -44,7 +44,7 @@ const HeroSection = () => {
         </motion.p>
 
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
+          className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
@@ -76,6 +76,21 @@ const HeroSection = () => {
             <MapPin className="w-4 h-4" />
             DK, Egypt
           </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <a
+            href="/Mohamed_Mahmoud_Seliem_CV.pdf"
+            download
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            Download CV
+          </a>
         </motion.div>
 
         {/* Scroll indicator */}
