@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Award, Globe, Sparkles } from "lucide-react";
+import { Award, Globe, Sparkles, Code2, Stethoscope } from "lucide-react";
 
-const skills = [
-  "Python", "SQL", "Power BI", "scikit-learn",
-  "Data Analytics", "Machine Learning", "Healthcare AI",
-  "Automation", "Teamwork", "Clinical Evaluation",
-  "Dry Needling", "Acupuncture",
+const technicalSkills = [
+  "Python", "SQL", "Power BI", "Tableau", "scikit-learn", "Machine Learning", "Data Analytics", "Automation",
+];
+
+const clinicalSkills = [
+  "Clinical Evaluation", "Musculoskeletal Rehab", "Neuromuscular Therapy", "Dry Needling", "Acupuncture",
 ];
 
 const certifications = [
@@ -13,11 +14,15 @@ const certifications = [
   '"Delivering Quality Work with Agility" — Agile & Lean Methodologies',
 ];
 
-const languages = ["English", "Arabic", "French"];
+const languages = [
+  { name: "English", level: "Fluent" },
+  { name: "Arabic", level: "Native" },
+  { name: "French", level: "Basic" },
+];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="section-padding bg-card/50">
+    <section id="skills" className="section-padding bg-secondary/50">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -26,28 +31,55 @@ const SkillsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3">Skills & More</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-14">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-14 text-navy">
             Capabilities & <span className="gradient-accent-text">Certifications</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Skills */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Technical Skills */}
           <motion.div
+            className="bg-card border border-border rounded-xl p-6"
+            style={{ boxShadow: 'var(--shadow-card)' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-2 mb-5">
-              <Sparkles className="w-5 h-5 text-primary" />
-              <h3 className="font-heading text-lg font-semibold">Skills</h3>
+              <Code2 className="w-5 h-5 text-primary" />
+              <h3 className="font-heading text-base font-semibold text-navy">Technical</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
+              {technicalSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1.5 text-xs rounded-full border border-border bg-secondary text-secondary-foreground hover:border-primary/50 transition-colors"
+                  className="px-3 py-1.5 text-xs rounded-md border border-primary/20 bg-primary/5 text-primary font-medium hover:bg-primary/10 transition-colors"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Clinical Skills */}
+          <motion.div
+            className="bg-card border border-border rounded-xl p-6"
+            style={{ boxShadow: 'var(--shadow-card)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+          >
+            <div className="flex items-center gap-2 mb-5">
+              <Stethoscope className="w-5 h-5 text-soft-green" />
+              <h3 className="font-heading text-base font-semibold text-navy">Clinical</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {clinicalSkills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-3 py-1.5 text-xs rounded-md border border-soft-green/20 bg-soft-green/5 text-soft-green font-medium hover:bg-soft-green/10 transition-colors"
                 >
                   {skill}
                 </span>
@@ -57,6 +89,8 @@ const SkillsSection = () => {
 
           {/* Certifications */}
           <motion.div
+            className="bg-card border border-border rounded-xl p-6"
+            style={{ boxShadow: 'var(--shadow-card)' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -64,7 +98,7 @@ const SkillsSection = () => {
           >
             <div className="flex items-center gap-2 mb-5">
               <Award className="w-5 h-5 text-accent" />
-              <h3 className="font-heading text-lg font-semibold">Certifications</h3>
+              <h3 className="font-heading text-base font-semibold text-navy">Certifications</h3>
             </div>
             <ul className="space-y-3">
               {certifications.map((cert, i) => (
@@ -78,20 +112,25 @@ const SkillsSection = () => {
 
           {/* Languages */}
           <motion.div
+            className="bg-card border border-border rounded-xl p-6"
+            style={{ boxShadow: 'var(--shadow-card)' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
             <div className="flex items-center gap-2 mb-5">
               <Globe className="w-5 h-5 text-primary" />
-              <h3 className="font-heading text-lg font-semibold">Languages</h3>
+              <h3 className="font-heading text-base font-semibold text-navy">Languages</h3>
             </div>
             <div className="space-y-3">
               {languages.map((lang) => (
-                <div key={lang} className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-sm text-foreground">{lang}</span>
+                <div key={lang.name} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                    <span className="text-sm text-foreground font-medium">{lang.name}</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">{lang.level}</span>
                 </div>
               ))}
             </div>
