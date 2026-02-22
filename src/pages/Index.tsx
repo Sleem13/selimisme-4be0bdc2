@@ -16,7 +16,7 @@ const Index = () => {
       <EducationSection />
       <SkillsSection />
       <ContactSection />
-      <footer className="py-8 text-center text-muted-foreground text-xs border-t border-border">
+      <footer className="py-8 text-center text-muted-foreground text-xs border-t border-border bg-card">
         © 2026 Mohamed Mahmoud Seliem. All rights reserved.
       </footer>
     </div>

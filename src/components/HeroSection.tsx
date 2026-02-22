@@ -1,29 +1,28 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, MapPin, Download } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 import profileImg from "@/assets/profile.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 bg-background/60" />
-      </div>
+      <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+      <div className="absolute inset-0 opacity-[0.04]" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 1px, transparent 0)`,
+        backgroundSize: '40px 40px',
+      }} />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="mb-6"
+          className="mb-8"
         >
           <img
             src={profileImg}
             alt="Mohamed Mahmoud Seliem"
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto border-4 border-primary/30 shadow-lg"
+            className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover mx-auto border-4 border-primary/40 shadow-xl"
           />
         </motion.div>
 
@@ -38,7 +37,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight"
+          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight text-white"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
@@ -48,13 +47,13 @@ const HeroSection = () => {
         </motion.h1>
 
         <motion.p
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body leading-relaxed"
+          className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          5+ years in clinical rehabilitation · Now building ML models & data pipelines
-          that turn healthcare complexity into measurable patient outcomes.
+          5+ years in clinical rehabilitation · Now building ML models & data
+          pipelines that turn healthcare complexity into measurable patient outcomes.
         </motion.p>
 
         <motion.div
@@ -65,14 +64,14 @@ const HeroSection = () => {
         >
           <a
             href="mailto:muhammadsleemo2@gmail.com"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-sm text-white/60 hover:text-primary transition-colors"
           >
             <Mail className="w-4 h-4" />
             muhammadsleemo2@gmail.com
           </a>
           <a
             href="tel:+201020754883"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-sm text-white/60 hover:text-primary transition-colors"
           >
             <Phone className="w-4 h-4" />
             +201020754883
@@ -81,12 +80,12 @@ const HeroSection = () => {
             href="https://www.linkedin.com/in/sleemisme"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-sm text-white/60 hover:text-primary transition-colors"
           >
             <Linkedin className="w-4 h-4" />
             LinkedIn
           </a>
-          <span className="flex items-center gap-2 text-sm text-muted-foreground">
+          <span className="flex items-center gap-2 text-sm text-white/60">
             <MapPin className="w-4 h-4" />
             DK, Egypt
           </span>
@@ -100,7 +99,7 @@ const HeroSection = () => {
           <a
             href="/Mohamed_Mahmoud_Seliem_CV.pdf"
             download
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-primary text-primary-foreground font-heading font-medium hover:bg-primary/90 transition-colors shadow-lg"
           >
             <Download className="w-4 h-4" />
             Download CV
@@ -113,7 +112,7 @@ const HeroSection = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <div className="w-5 h-9 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
+          <div className="w-5 h-9 rounded-full border-2 border-white/20 flex justify-center pt-2">
             <div className="w-1 h-2 rounded-full bg-primary" />
           </div>
         </motion.div>

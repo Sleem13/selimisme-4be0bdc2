@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : ""
+        scrolled ? "bg-card/90 backdrop-blur-lg border-b border-border shadow-sm" : ""
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
@@ -40,7 +40,9 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body"
+              className={`text-sm transition-colors font-body ${
+                scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"
+              }`}
             >
               {link.label}
             </a>
@@ -49,7 +51,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className={`md:hidden ${scrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -60,7 +62,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <motion.div
-          className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border px-6 pb-6"
+          className="md:hidden bg-card/95 backdrop-blur-lg border-b border-border px-6 pb-6"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >

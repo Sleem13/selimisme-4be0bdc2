@@ -3,7 +3,7 @@ import { Mail, Phone, Linkedin, PenLine } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding bg-background">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -12,11 +12,12 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3">Get In Touch</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-navy">
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-muted-foreground mb-10 max-w-lg mx-auto">
-            Interested in collaboration at the intersection of healthcare and technology? I'd love to hear from you.
+            Looking for someone who blends healthcare insight with data-driven thinking?
+            I'd love to explore how we can create impact together.
           </p>
         </motion.div>
 
@@ -29,7 +30,7 @@ const ContactSection = () => {
         >
           <a
             href="mailto:muhammadsleemo2@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-heading text-sm font-medium hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-heading text-sm font-medium hover:bg-primary/90 transition-colors shadow-md"
           >
             <Mail className="w-4 h-4" />
             Email Me
@@ -38,14 +39,14 @@ const ContactSection = () => {
             href="https://www.linkedin.com/in/sleemisme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-heading text-sm font-medium hover:border-primary/50 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-heading text-sm font-medium hover:border-primary/50 hover:bg-primary/5 transition-colors"
           >
             <Linkedin className="w-4 h-4" />
             LinkedIn
           </a>
           <a
             href="tel:+201020754883"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-heading text-sm font-medium hover:border-primary/50 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-heading text-sm font-medium hover:border-primary/50 hover:bg-primary/5 transition-colors"
           >
             <Phone className="w-4 h-4" />
             Call
