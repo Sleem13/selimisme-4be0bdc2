@@ -4,18 +4,18 @@ import { Brain, HeartPulse, BarChart3 } from "lucide-react";
 const highlights = [
   {
     icon: HeartPulse,
-    title: "Physical Therapy",
-    description: "Licensed therapist specializing in musculoskeletal & neuromuscular rehabilitation.",
+    title: "Clinical Rehabilitation",
+    description: "5+ years delivering evidence-based therapy with 95%+ patient satisfaction scores across musculoskeletal & neuromuscular cases.",
   },
   {
     icon: Brain,
-    title: "Artificial Intelligence",
-    description: "Applying AI to healthcare systems for predictive modeling & better outcomes.",
+    title: "Healthcare AI",
+    description: "Building predictive models with scikit-learn & Python to forecast patient outcomes — reducing misdiagnosis risk by data-driven triage.",
   },
   {
     icon: BarChart3,
     title: "Data Analytics",
-    description: "Transforming healthcare data into actionable insights for operational efficiency.",
+    description: "Translating raw healthcare data into Power BI dashboards that drive 15% operational efficiency gains and informed decision-making.",
   },
 ];
 
@@ -34,9 +34,9 @@ const AboutSection = () => {
             Where <span className="gradient-text">Health</span> Meets <span className="gradient-accent-text">Technology</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed mb-14">
-            Motivated licensed physical therapist with a strong foundation in rehabilitation sciences,
-            expanding into AI and Data Analytics. My journey reflects a passion for bridging healthcare
-            and technology for smarter patient care.
+            Licensed physical therapist with 5+ years of clinical experience, now leveraging Python,
+            SQL, and machine learning to transform healthcare delivery. I combine frontline patient
+            empathy with analytical rigor — because better data means better care.
           </p>
         </motion.div>
 

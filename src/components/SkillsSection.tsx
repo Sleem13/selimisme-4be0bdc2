@@ -2,14 +2,15 @@ import { motion } from "framer-motion";
 import { Award, Globe, Sparkles } from "lucide-react";
 
 const skills = [
-  "Teamwork", "Communication", "Diagnoses & Evaluation",
-  "Dry Needling", "Acupuncture", "Machine Learning",
-  "Data Analytics", "Healthcare AI", "Automation",
+  "Python", "SQL", "Power BI", "scikit-learn",
+  "Data Analytics", "Machine Learning", "Healthcare AI",
+  "Automation", "Teamwork", "Clinical Evaluation",
+  "Dry Needling", "Acupuncture",
 ];
 
 const certifications = [
-  'Google Data Analytics: "Foundations: Data, Data, Everywhere"',
-  '"Delivering Quality Work with Agility"',
+  'Google Data Analytics Professional Certificate — "Foundations: Data, Data, Everywhere"',
+  '"Delivering Quality Work with Agility" — Agile & Lean Methodologies',
 ];
 
 const languages = ["English", "Arabic", "French"];
