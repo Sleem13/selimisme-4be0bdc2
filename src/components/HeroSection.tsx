@@ -53,8 +53,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Bridging healthcare and technology — a licensed physical therapist
-          passionate about AI-driven rehabilitation and data analytics.
+          5+ years in clinical rehabilitation · Now building ML models & data pipelines
+          that turn healthcare complexity into measurable patient outcomes.
         </motion.p>
 
         <motion.div

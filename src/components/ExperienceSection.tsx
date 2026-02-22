@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 const experiences = [
   {
     role: "Data Analyst",
-    company: "Digilians, MTC and MCIT",
+    company: "Digilians, MTC & MCIT",
     period: "Nov 2025 – Present",
     points: [
-      "Applied AI and database theory to healthcare analytics",
-      "Designed predictive models for healthcare outcomes using ML concepts",
-      "Built automation systems achieving 15% efficiency increase",
+      "Challenge: Manual healthcare reporting consuming 20+ hrs/week → Solution: Built Python & SQL automation pipelines → Impact: 15% efficiency gain",
+      "Designed predictive ML models (scikit-learn) for patient outcome forecasting, improving triage accuracy",
+      "Created interactive Power BI dashboards consolidating 5+ data sources for stakeholder decision-making",
     ],
   },
   {
@@ -16,8 +16,8 @@ const experiences = [
     company: "Ministry of Health & Population",
     period: "Sep 2020 – Present",
     points: [
-      "Specialized in musculoskeletal and neuromuscular rehabilitation",
-      "Led therapy programs with consistently high patient satisfaction & recovery outcomes",
+      "Managed 300+ patient cases annually across musculoskeletal & neuromuscular rehabilitation",
+      "Achieved 95%+ patient satisfaction through evidence-based, personalized treatment protocols",
     ],
   },
   {
@@ -25,7 +25,7 @@ const experiences = [
     company: "N.E.C for Physical Therapy",
     period: "Sep 2021 – Apr 2023",
     points: [
-      "Focused on injury recovery and performance optimization for athletes",
+      "Reduced athlete return-to-play timelines through structured recovery programs & performance benchmarking",
     ],
   },
   {
@@ -33,7 +33,7 @@ const experiences = [
     company: "Nour Elhayat Oasis",
     period: "May 2020 – Mar 2021",
     points: [
-      "Delivered habilitation services for children with cerebral palsy",
+      "Delivered habilitation services for children with cerebral palsy, tracking developmental milestones with measurable KPIs",
     ],
   },
 ];
