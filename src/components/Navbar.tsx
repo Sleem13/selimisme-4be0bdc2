@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { label: "About", href: "#about" },
@@ -47,6 +48,7 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <ThemeToggle scrolled={scrolled} />
         </div>
 
         {/* Mobile toggle */}
@@ -76,6 +78,9 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <div className="pt-2">
+            <ThemeToggle scrolled={true} />
+          </div>
         </motion.div>
       )}
     </motion.nav>
