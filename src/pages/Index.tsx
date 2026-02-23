@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <ExperienceSection />
       <EducationSection />
       <SkillsSection />
+      <ProjectsSection />
       <ContactSection />
       <footer className="py-8 text-center text-muted-foreground text-xs border-t border-border bg-card">
         © 2026 Mohamed Mahmoud Seliem. All rights reserved.
