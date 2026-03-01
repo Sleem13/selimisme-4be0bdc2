@@ -1,22 +1,17 @@
 import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
-
-const education = [
-  {
-    degree: "Bachelor's Degree in Physical Therapy",
-    institution: "Kafr El-Sheikh University",
-    period: "Aug 2015 – Sep 2020",
-    details: "Comprehensive coursework in physical medicine & rehabilitation sciences. Thesis on AI applications in mechatronics and therapy — laying the foundation for a data-driven clinical career.",
-  },
-  {
-    degree: "Diploma in Applied AI & Data Analytics",
-    institution: "Egyptian Military Academy",
-    period: "Dec 2025 – Aug 2026",
-    details: "Advanced training in ML, Python, SQL, and healthcare AI integration. Focused on building scalable, reproducible analytical frameworks for clinical decision support.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const EducationSection = () => {
+  const { t, isRTL } = useLanguage();
+
+  const education = [0, 1].map((i) => ({
+    degree: t(`edu.${i}.degree`),
+    institution: t(`edu.${i}.institution`),
+    period: t(`edu.${i}.period`),
+    details: t(`edu.${i}.details`),
+  }));
+
   return (
     <section id="education" className="section-padding bg-background">
       <div className="max-w-5xl mx-auto">
@@ -26,10 +21,13 @@ const EducationSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3">Education</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-14 text-navy">
-            Academic <span className="gradient-text">Background</span>
+          <p className={`text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3 ${isRTL ? 'font-arabic' : ''}`}>{t("edu.label")}</p>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-3 text-navy ${isRTL ? 'font-arabic' : 'font-heading'}`}>
+            {t("edu.title1")} <span className="gradient-text">{t("edu.title2")}</span>
           </h2>
+          <div className="arabic-divider mb-14">
+            <span className="arabic-ornament">✦</span>
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -46,10 +44,10 @@ const EducationSection = () => {
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
                 <GraduationCap className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-heading text-lg font-semibold mb-1 text-navy">{edu.degree}</h3>
+              <h3 className={`text-lg font-semibold mb-1 text-navy ${isRTL ? 'font-arabic' : 'font-heading'}`}>{edu.degree}</h3>
               <p className="text-primary text-sm mb-1">{edu.institution}</p>
               <p className="text-muted-foreground text-xs mb-3 font-medium">{edu.period}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed">{edu.details}</p>
+              <p className={`text-muted-foreground text-sm leading-relaxed ${isRTL ? 'font-arabic' : ''}`}>{edu.details}</p>
             </motion.div>
           ))}
         </div>

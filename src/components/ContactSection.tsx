@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, PenLine } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
+  const { t, isRTL } = useLanguage();
+
   return (
     <section id="contact" className="section-padding bg-background">
       <div className="max-w-3xl mx-auto text-center">
@@ -11,13 +14,15 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3">Get In Touch</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-navy">
-            Let's <span className="gradient-text">Connect</span>
+          <p className={`text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3 ${isRTL ? 'font-arabic' : ''}`}>{t("contact.label")}</p>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-3 text-navy ${isRTL ? 'font-arabic' : 'font-heading'}`}>
+            {t("contact.title1")} <span className="gradient-text">{t("contact.title2")}</span>
           </h2>
-          <p className="text-muted-foreground mb-10 max-w-lg mx-auto">
-            Looking for someone who blends healthcare insight with data-driven thinking?
-            I'd love to explore how we can create impact together.
+          <div className="arabic-divider mb-4">
+            <span className="arabic-ornament">✦</span>
+          </div>
+          <p className={`text-muted-foreground mb-10 max-w-lg mx-auto ${isRTL ? 'font-arabic' : ''}`}>
+            {t("contact.description")}
           </p>
         </motion.div>
 
@@ -33,7 +38,7 @@ const ContactSection = () => {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-heading text-sm font-medium hover:bg-primary/90 transition-colors shadow-md"
           >
             <Mail className="w-4 h-4" />
-            Email Me
+            {t("contact.email")}
           </a>
           <a
             href="https://www.linkedin.com/in/sleemisme"
@@ -49,20 +54,19 @@ const ContactSection = () => {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-heading text-sm font-medium hover:border-primary/50 hover:bg-primary/5 transition-colors"
           >
             <Phone className="w-4 h-4" />
-            Call
+            {t("contact.call")}
           </a>
         </motion.div>
 
-        {/* Fun fact */}
         <motion.p
-          className="mt-16 text-muted-foreground text-sm flex items-center justify-center gap-2"
+          className={`mt-16 text-muted-foreground text-sm flex items-center justify-center gap-2 ${isRTL ? 'font-arabic' : ''}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <PenLine className="w-4 h-4" />
-          When I'm not in the clinic or coding, I write poetry.
+          {t("contact.fun")}
         </motion.p>
       </div>
     </section>

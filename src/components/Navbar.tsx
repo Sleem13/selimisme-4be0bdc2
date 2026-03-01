@@ -2,19 +2,22 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+const linkKeys = [
+  { key: "nav.about", href: "#about" },
+  { key: "nav.experience", href: "#experience" },
+  { key: "nav.education", href: "#education" },
+  { key: "nav.skills", href: "#skills" },
+  { key: "nav.projects", href: "#projects" },
+  { key: "nav.contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -37,8 +40,8 @@ const Navbar = () => {
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
+        <div className="hidden md:flex items-center gap-6">
+          {linkKeys.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -46,9 +49,10 @@ const Navbar = () => {
                 scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"
               }`}
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
+          <LanguageToggle scrolled={scrolled} />
           <ThemeToggle scrolled={scrolled} />
         </div>
 
@@ -69,17 +73,18 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {links.map((link) => (
+          {linkKeys.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className="block py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setOpen(false)}
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
-          <div className="pt-2">
+          <div className="pt-2 flex items-center gap-3">
+            <LanguageToggle scrolled={true} />
             <ThemeToggle scrolled={true} />
           </div>
         </motion.div>

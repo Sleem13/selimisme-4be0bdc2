@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         heading: ['Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        arabic: ['Amiri', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -26,6 +27,7 @@ export default {
         navy: "hsl(var(--navy))",
         coral: "hsl(var(--coral))",
         "soft-green": "hsl(var(--soft-green))",
+        gold: "hsl(var(--gold))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
