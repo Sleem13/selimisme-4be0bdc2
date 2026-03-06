@@ -122,7 +122,7 @@ const AboutSection = () => {
                 </div>
                 <h3 className={`text-lg font-semibold mb-1 text-white ${isRTL ? 'font-arabic' : 'font-heading'}`}>{item.title}</h3>
                 <div className="mb-3">
-                  <span className="text-2xl font-bold font-heading bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}>{item.kpi}</span>
+                  <AnimatedKpi value={item.kpi} className="text-2xl font-bold font-heading bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }} />
                   <span className={`text-gray-500 text-xs ${isRTL ? 'mr-1.5' : 'ml-1.5'}`}>{item.kpiLabel}</span>
                 </div>
                 <p className={`text-gray-400 text-sm leading-relaxed ${isRTL ? 'font-arabic' : ''}`}>{item.description}</p>
