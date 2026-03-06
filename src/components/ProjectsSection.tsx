@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Target, Lightbulb, TrendingUp, Wrench } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { AnimatedKpi } from "@/components/AnimatedKpi";
 import { useEffect, useRef } from "react";
 
 const projectTools = [
