@@ -247,9 +247,7 @@ const ProjectsSection = () => {
                       <div className="flex flex-wrap gap-x-6 gap-y-1">
                         {project.impact.map((item) => (
                           <div key={item.label} className="flex items-baseline gap-1.5">
-                            <span className="text-xl font-bold font-heading bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}>
-                              {item.kpi}
-                            </span>
+                            <AnimatedKpi value={item.kpi} className="text-xl font-bold font-heading bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }} />
                             <span className="text-gray-500 text-xs">{item.label}</span>
                           </div>
                         ))}
