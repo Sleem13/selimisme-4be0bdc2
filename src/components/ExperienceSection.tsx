@@ -23,7 +23,24 @@ const ExperienceSection = () => {
   }));
 
   return (
-    <section id="experience" className="section-padding bg-secondary/50">
+    <section id="experience" className="relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0a0f24 0%, #060a18 50%, #0a0f24 100%)" }}>
+      {/* Keyframes */}
+      <style>{`
+        @property --border-angle {
+          syntax: '<angle>';
+          initial-value: 0deg;
+          inherits: false;
+        }
+        @keyframes borderSpin {
+          to { --border-angle: 360deg; }
+        }
+      `}</style>
+
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)" }} />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%)" }} />
+
+      <div className="relative z-10 section-padding">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
