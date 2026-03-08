@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Sparkles, Download, Coffee, ExternalLink } from "lucide-react";
+import { X, Send, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Message {
   role: "user" | "assistant";
@@ -11,52 +12,92 @@ interface Message {
 const quickReplies = [
   { en: "What's your top project?", ar: "ما أفضل مشروع لديك؟" },
   { en: "Are you open for freelance?", ar: "هل تقبل عمل حر؟" },
-  { en: "Download Resume", ar: "تحميل السيرة الذاتية" },
+  { en: "Tell me about your skills", ar: "أخبرني عن مهاراتك" },
 ];
 
-// Smart mock responses
-function getMockResponse(input: string, lang: "en" | "ar"): string {
-  const lower = input.toLowerCase();
+async function streamChat({
+  messages,
+  onDelta,
+  onDone,
+  onError,
+}: {
+  messages: Message[];
+  onDelta: (text: string) => void;
+  onDone: () => void;
+  onError: (err: string) => void;
+}) {
+  try {
+    const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+    const resp = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      },
+      body: JSON.stringify({ messages }),
+    });
 
-  if (lower.includes("project") || lower.includes("مشروع")) {
-    return lang === "ar"
-      ? "🏆 أفضل مشروع لدي هو **محرك التنبؤ بنتائج المرضى** — نظام ML مبني بـ scikit-learn حقق تحسين ٢٢٪ في تحديد سرعة التعافي وخفض ١٨٪ من أخطاء التشخيص. جمع بين خبرتي السريرية ومهارات تحليل البيانات! 🚀"
-      : "🏆 My top project is the **Patient Outcome Prediction Engine** — an ML pipeline built with scikit-learn that achieved 22% faster recovery identification and 18% reduction in misdiagnosis. It's where my clinical expertise meets data science! 🚀";
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      onError(data.error || "Something went wrong. Please try again.");
+      return;
+    }
+
+    if (!resp.body) {
+      onError("No response stream.");
+      return;
+    }
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+
+      let newlineIdx: number;
+      while ((newlineIdx = buffer.indexOf("\n")) !== -1) {
+        let line = buffer.slice(0, newlineIdx);
+        buffer = buffer.slice(newlineIdx + 1);
+        if (line.endsWith("\r")) line = line.slice(0, -1);
+        if (line.startsWith(":") || line.trim() === "") continue;
+        if (!line.startsWith("data: ")) continue;
+        const jsonStr = line.slice(6).trim();
+        if (jsonStr === "[DONE]") break;
+        try {
+          const parsed = JSON.parse(jsonStr);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) onDelta(content);
+        } catch {
+          // partial JSON, wait for more
+          buffer = line + "\n" + buffer;
+          break;
+        }
+      }
+    }
+
+    // flush remaining
+    if (buffer.trim()) {
+      for (let raw of buffer.split("\n")) {
+        if (!raw) continue;
+        if (raw.endsWith("\r")) raw = raw.slice(0, -1);
+        if (!raw.startsWith("data: ")) continue;
+        const jsonStr = raw.slice(6).trim();
+        if (jsonStr === "[DONE]") continue;
+        try {
+          const parsed = JSON.parse(jsonStr);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) onDelta(content);
+        } catch { /* ignore */ }
+      }
+    }
+
+    onDone();
+  } catch (e) {
+    onError(e instanceof Error ? e.message : "Connection error.");
   }
-
-  if (lower.includes("freelance") || lower.includes("حر") || lower.includes("hire") || lower.includes("available")) {
-    return lang === "ar"
-      ? "✅ نعم! أنا متاح للعمل الحر ومشاريع الاستشارات في مجالات تحليل البيانات، لوحات Power BI، ونماذج ML الصحية. تواصل معي وخلينا نبني شيء رائع! 💼"
-      : "✅ Yes! I'm available for freelance and consulting projects in data analytics, Power BI dashboards, and healthcare ML models. Let's connect and build something great together! 💼";
-  }
-
-  if (lower.includes("resume") || lower.includes("cv") || lower.includes("سيرة")) {
-    return lang === "ar"
-      ? "📄 يمكنك تحميل سيرتي الذاتية مباشرة من [هنا](/Mohamed_Mahmoud_Seliem_CV.pdf). تحتوي على كل التفاصيل عن خبراتي ومهاراتي! 📋"
-      : "📄 You can download my CV directly from [here](/Mohamed_Mahmoud_Seliem_CV.pdf). It includes all the details about my experience and skills! 📋";
-  }
-
-  if (lower.includes("python") || lower.includes("بايثون")) {
-    return lang === "ar"
-      ? "🐍 Python هي أداتي الأساسية! عملت على **٥٠+ مجموعة بيانات** باستخدام Pandas وscikit-learn وPython automation. بنيت نماذج تنبؤية وخطوط أتمتة بيانات للقطاع الصحي."
-      : "🐍 Python is my primary tool! I've worked with **50+ datasets** using Pandas, scikit-learn, and Python automation. Built predictive models and data pipelines for healthcare analytics.";
-  }
-
-  if (lower.includes("experience") || lower.includes("خبر") || lower.includes("work")) {
-    return lang === "ar"
-      ? "💼 لدي **٥+ سنوات** خبرة: بدأت كأخصائي علاج طبيعي ثم انتقلت لتحليل البيانات. حالياً محلل بيانات في Digilians وMTC ووزارة الاتصالات، أبني نماذج ML ولوحات Power BI. مزيج فريد من الخبرة السريرية والتقنية! 🏥📊"
-      : "💼 I have **5+ years** of experience: started as a Physical Therapist then transitioned to Data Analytics. Currently a Data Analyst at Digilians, MTC & MCIT, building ML models and Power BI dashboards. A unique blend of clinical and technical expertise! 🏥📊";
-  }
-
-  if (lower.includes("skill") || lower.includes("مهار")) {
-    return lang === "ar"
-      ? "🛠 مهاراتي التقنية: Python، SQL، Power BI، Tableau، scikit-learn، Machine Learning، Data Analytics، والأتمتة. بالإضافة لخبرة سريرية في التأهيل العضلي والعصبي!"
-      : "🛠 My technical skills: Python, SQL, Power BI, Tableau, scikit-learn, Machine Learning, Data Analytics, and Automation. Plus clinical expertise in musculoskeletal & neuromuscular rehab!";
-  }
-
-  return lang === "ar"
-    ? "مرحباً! 👋 أنا مساعد محمد الذكي. يمكنني مساعدتك في معرفة المزيد عن مشاريعه، مهاراته، أو خبراته. جرب تسألني عن Python أو عن أفضل مشروع!"
-    : "Hey there! 👋 I'm Mohamed's AI assistant. I can help you learn more about his projects, skills, or experience. Try asking me about Python, his top project, or his experience!";
 }
 
 const AIChatbot = () => {
@@ -65,35 +106,55 @@ const AIChatbot = () => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { t, lang, isRTL } = useLanguage();
+  const { lang, isRTL } = useLanguage();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   const sendMessage = async (text: string) => {
-    if (!text.trim()) return;
+    if (!text.trim() || isTyping) return;
     setInput("");
 
     const userMsg: Message = { role: "user", content: text };
-    setMessages((prev) => [...prev, userMsg]);
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
     setIsTyping(true);
 
-    // Simulate response delay
-    await new Promise((r) => setTimeout(r, 800 + Math.random() * 1000));
+    let assistantSoFar = "";
 
-    const response = getMockResponse(text, lang);
-    setMessages((prev) => [...prev, { role: "assistant", content: response }]);
-    setIsTyping(false);
+    const upsertAssistant = (chunk: string) => {
+      assistantSoFar += chunk;
+      setMessages((prev) => {
+        const last = prev[prev.length - 1];
+        if (last?.role === "assistant") {
+          return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantSoFar } : m));
+        }
+        return [...prev, { role: "assistant", content: assistantSoFar }];
+      });
+    };
+
+    await streamChat({
+      messages: newMessages,
+      onDelta: upsertAssistant,
+      onDone: () => setIsTyping(false),
+      onError: (err) => {
+        setMessages((prev) => [...prev, { role: "assistant", content: `⚠️ ${err}` }]);
+        setIsTyping(false);
+      },
+    });
   };
 
   const handleQuickReply = (reply: typeof quickReplies[0]) => {
     const text = lang === "ar" ? reply.ar : reply.en;
-    if (text.includes("Resume") || text.includes("سيرة")) {
-      window.open("/Mohamed_Mahmoud_Seliem_CV.pdf", "_blank");
-      return;
-    }
     sendMessage(text);
+  };
+
+  // Render markdown-like bold text
+  const renderContent = (content: string) => {
+    return content.split("**").map((part, j) =>
+      j % 2 === 1 ? <strong key={j} className="text-cyan-300">{part}</strong> : part
+    );
   };
 
   return (
@@ -108,11 +169,13 @@ const AIChatbot = () => {
         }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        animate={!isOpen ? { boxShadow: [
-          "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
-          "0 0 30px rgba(6, 182, 212, 0.6), 0 0 60px rgba(139, 92, 246, 0.3)",
-          "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
-        ] } : {}}
+        animate={!isOpen ? {
+          boxShadow: [
+            "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
+            "0 0 30px rgba(6, 182, 212, 0.6), 0 0 60px rgba(139, 92, 246, 0.3)",
+            "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
+          ],
+        } : {}}
         transition={!isOpen ? { duration: 2, repeat: Infinity } : {}}
       >
         <AnimatePresence mode="wait">
@@ -160,7 +223,7 @@ const AIChatbot = () => {
             </div>
 
             {/* Messages */}
-            <div className="h-[320px] overflow-y-auto px-4 py-4 space-y-3 scrollbar-thin" style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(6,182,212,0.2) transparent" }}>
+            <div className="h-[320px] overflow-y-auto px-4 py-4 space-y-3" style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(6,182,212,0.2) transparent" }}>
               {messages.length === 0 && (
                 <div className="text-center py-6">
                   <Sparkles className="w-8 h-8 mx-auto mb-3 text-cyan-400/50" />
@@ -193,14 +256,12 @@ const AIChatbot = () => {
                         : "rgba(255, 255, 255, 0.04)",
                     }}
                   >
-                    {msg.content.split("**").map((part, j) =>
-                      j % 2 === 1 ? <strong key={j} className="text-cyan-300">{part}</strong> : part
-                    )}
+                    {renderContent(msg.content)}
                   </div>
                 </motion.div>
               ))}
 
-              {isTyping && (
+              {isTyping && messages[messages.length - 1]?.role !== "assistant" && (
                 <motion.div className="flex justify-start" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                   <div className="rounded-2xl px-4 py-3 border border-white/5" style={{ background: "rgba(255, 255, 255, 0.04)" }}>
                     <div className="flex gap-1">
@@ -233,10 +294,7 @@ const AIChatbot = () => {
 
             {/* Input */}
             <div className="px-4 pb-4 pt-2 border-t border-white/5">
-              <form
-                onSubmit={(e) => { e.preventDefault(); sendMessage(input); }}
-                className="flex items-center gap-2"
-              >
+              <form onSubmit={(e) => { e.preventDefault(); sendMessage(input); }} className="flex items-center gap-2">
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
