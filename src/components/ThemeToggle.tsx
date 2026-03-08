@@ -7,9 +7,9 @@ const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("theme");
       if (stored) return stored === "dark";
-      return true; // Dark mode as default
+      return false; // Light mode default for recruiter-friendly readability
     }
-    return true;
+    return false;
   });
 
   useEffect(() => {
@@ -26,11 +26,7 @@ const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
   return (
     <motion.button
       onClick={() => setDark(!dark)}
-      className={`p-2 rounded-lg transition-colors ${
-        scrolled
-          ? "text-muted-foreground hover:text-foreground hover:bg-muted"
-          : "text-white/60 hover:text-white hover:bg-white/10"
-      }`}
+      className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
       aria-label="Toggle theme"
       whileTap={{ scale: 0.9 }}
     >

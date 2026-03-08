@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { X, Send, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { supabase } from "@/integrations/supabase/client";
 
 interface Message {
   role: "user" | "assistant";
@@ -16,10 +15,7 @@ const quickReplies = [
 ];
 
 async function streamChat({
-  messages,
-  onDelta,
-  onDone,
-  onError,
+  messages, onDelta, onDone, onError,
 }: {
   messages: Message[];
   onDelta: (text: string) => void;
@@ -43,10 +39,7 @@ async function streamChat({
       return;
     }
 
-    if (!resp.body) {
-      onError("No response stream.");
-      return;
-    }
+    if (!resp.body) { onError("No response stream."); return; }
 
     const reader = resp.body.getReader();
     const decoder = new TextDecoder();
@@ -71,14 +64,12 @@ async function streamChat({
           const content = parsed.choices?.[0]?.delta?.content;
           if (content) onDelta(content);
         } catch {
-          // partial JSON, wait for more
           buffer = line + "\n" + buffer;
           break;
         }
       }
     }
 
-    // flush remaining
     if (buffer.trim()) {
       for (let raw of buffer.split("\n")) {
         if (!raw) continue;
@@ -115,14 +106,12 @@ const AIChatbot = () => {
   const sendMessage = async (text: string) => {
     if (!text.trim() || isTyping) return;
     setInput("");
-
     const userMsg: Message = { role: "user", content: text };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
     setIsTyping(true);
 
     let assistantSoFar = "";
-
     const upsertAssistant = (chunk: string) => {
       assistantSoFar += chunk;
       setMessages((prev) => {
@@ -146,37 +135,24 @@ const AIChatbot = () => {
   };
 
   const handleQuickReply = (reply: typeof quickReplies[0]) => {
-    const text = lang === "ar" ? reply.ar : reply.en;
-    sendMessage(text);
+    sendMessage(lang === "ar" ? reply.ar : reply.en);
   };
 
-  // Render markdown-like bold text
   const renderContent = (content: string) => {
     return content.split("**").map((part, j) =>
-      j % 2 === 1 ? <strong key={j} className="text-cyan-300">{part}</strong> : part
+      j % 2 === 1 ? <strong key={j} className="text-primary font-semibold">{part}</strong> : part
     );
   };
 
   return (
     <>
-      {/* FAB Button */}
+      {/* FAB */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg"
-        style={{
-          background: "linear-gradient(135deg, #06b6d4, #8b5cf6)",
-          boxShadow: "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
-        }}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-lg"
+        style={{ boxShadow: "var(--shadow-glow)" }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        animate={!isOpen ? {
-          boxShadow: [
-            "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
-            "0 0 30px rgba(6, 182, 212, 0.6), 0 0 60px rgba(139, 92, 246, 0.3)",
-            "0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)",
-          ],
-        } : {}}
-        transition={!isOpen ? { duration: 2, repeat: Infinity } : {}}
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -195,67 +171,50 @@ const AIChatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] rounded-2xl overflow-hidden"
-            style={{
-              background: "rgba(10, 15, 30, 0.85)",
-              backdropFilter: "blur(24px) saturate(1.3)",
-              boxShadow: "0 0 0 1px rgba(100, 200, 255, 0.1) inset, 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 40px -10px rgba(6, 182, 212, 0.15)",
-              border: "1px solid rgba(6, 182, 212, 0.15)",
-            }}
+            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] rounded-2xl bg-card border border-border overflow-hidden"
+            style={{ boxShadow: "0 25px 60px -15px hsl(var(--foreground) / 0.15)" }}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {/* Header */}
-            <div className="px-5 py-4 border-b border-white/5 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}>
-                <Sparkles className="w-4 h-4 text-white" />
+            <div className="px-5 py-4 border-b border-border flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-primary-foreground" />
               </div>
               <div>
-                <p className="text-white font-heading font-semibold text-sm">Seliem AI</p>
-                <p className="text-gray-500 text-xs">{lang === "ar" ? "مساعد التوظيف الذكي" : "Virtual Recruiter Assistant"}</p>
+                <p className="text-foreground font-heading font-semibold text-sm">Seliem AI</p>
+                <p className="text-muted-foreground text-xs">{lang === "ar" ? "مساعد التوظيف الذكي" : "Virtual Recruiter Assistant"}</p>
               </div>
               <div className="ml-auto flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-emerald-400 text-xs">{lang === "ar" ? "متصل" : "Online"}</span>
+                <span className="w-2 h-2 rounded-full bg-soft-green animate-pulse" />
+                <span className="text-soft-green text-xs">{lang === "ar" ? "متصل" : "Online"}</span>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="h-[320px] overflow-y-auto px-4 py-4 space-y-3" style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(6,182,212,0.2) transparent" }}>
+            <div className="h-[320px] overflow-y-auto px-4 py-4 space-y-3">
               {messages.length === 0 && (
                 <div className="text-center py-6">
-                  <Sparkles className="w-8 h-8 mx-auto mb-3 text-cyan-400/50" />
-                  <p className={`text-gray-400 text-sm mb-1 ${isRTL ? 'font-arabic' : 'font-heading'}`}>
+                  <Sparkles className="w-8 h-8 mx-auto mb-3 text-primary/40" />
+                  <p className={`text-foreground text-sm mb-1 ${isRTL ? 'font-arabic' : 'font-heading'}`}>
                     {lang === "ar" ? "مرحباً! 👋" : "Hey there! 👋"}
                   </p>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-muted-foreground text-xs">
                     {lang === "ar" ? "اسألني أي شيء عن محمد" : "Ask me anything about Mohamed"}
                   </p>
                 </div>
               )}
 
               {messages.map((msg, i) => (
-                <motion.div
-                  key={i}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "text-white rounded-br-md"
-                        : "text-gray-200 rounded-bl-md border border-white/5"
-                    }`}
-                    style={{
-                      background: msg.role === "user"
-                        ? "linear-gradient(135deg, #06b6d4, #8b5cf6)"
-                        : "rgba(255, 255, 255, 0.04)",
-                    }}
-                  >
+                <motion.div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
+                  <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                    msg.role === "user"
+                      ? "bg-primary text-primary-foreground rounded-br-md"
+                      : "bg-secondary text-foreground rounded-bl-md border border-border"
+                  }`}>
                     {renderContent(msg.content)}
                   </div>
                 </motion.div>
@@ -263,10 +222,10 @@ const AIChatbot = () => {
 
               {isTyping && messages[messages.length - 1]?.role !== "assistant" && (
                 <motion.div className="flex justify-start" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <div className="rounded-2xl px-4 py-3 border border-white/5" style={{ background: "rgba(255, 255, 255, 0.04)" }}>
+                  <div className="rounded-2xl px-4 py-3 bg-secondary border border-border">
                     <div className="flex gap-1">
                       {[0, 1, 2].map((i) => (
-                        <motion.div key={i} className="w-2 h-2 rounded-full bg-cyan-400"
+                        <motion.div key={i} className="w-2 h-2 rounded-full bg-primary"
                           animate={{ y: [0, -5, 0] }}
                           transition={{ duration: 0.5, delay: i * 0.15, repeat: Infinity }} />
                       ))}
@@ -281,11 +240,8 @@ const AIChatbot = () => {
             {messages.length === 0 && (
               <div className="px-4 pb-3 flex flex-wrap gap-2">
                 {quickReplies.map((reply, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handleQuickReply(reply)}
-                    className="px-3 py-1.5 text-xs rounded-full border border-cyan-400/20 text-cyan-300 font-medium hover:border-cyan-400/50 hover:bg-cyan-400/5 transition-all duration-200"
-                  >
+                  <button key={i} onClick={() => handleQuickReply(reply)}
+                    className="px-3 py-1.5 text-xs rounded-full border border-border text-primary font-medium hover:border-primary/40 hover:bg-primary/5 transition-all duration-200">
                     {lang === "ar" ? reply.ar : reply.en}
                   </button>
                 ))}
@@ -293,23 +249,18 @@ const AIChatbot = () => {
             )}
 
             {/* Input */}
-            <div className="px-4 pb-4 pt-2 border-t border-white/5">
+            <div className="px-4 pb-4 pt-2 border-t border-border">
               <form onSubmit={(e) => { e.preventDefault(); sendMessage(input); }} className="flex items-center gap-2">
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={lang === "ar" ? "اكتب سؤالك..." : "Ask me anything..."}
-                  className={`flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-cyan-400/40 transition-colors ${isRTL ? 'font-arabic text-right' : ''}`}
+                  className={`flex-1 bg-secondary border border-border rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-colors ${isRTL ? 'font-arabic text-right' : ''}`}
                   disabled={isTyping}
                 />
-                <motion.button
-                  type="submit"
-                  disabled={!input.trim() || isTyping}
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-all"
-                  style={{ background: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <motion.button type="submit" disabled={!input.trim() || isTyping}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary text-primary-foreground disabled:opacity-30 transition-all"
+                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Send className="w-4 h-4" />
                 </motion.button>
               </form>
