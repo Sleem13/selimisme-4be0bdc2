@@ -242,6 +242,8 @@ const translations: Record<string, Record<Language, string>> = {
   "contact.fun": { en: "When I'm not in the clinic or coding, I write poetry.", ar: "عندما لا أكون في العيادة أو أبرمج، أكتب الشعر." },
 
   // Footer
+  "footer.cta": { en: "Let's Build Something Great", ar: "لنبنِ شيئاً عظيماً" },
+  "footer.cta.sub": { en: "Ready to turn data into impact? Let's talk.", ar: "مستعد لتحويل البيانات إلى أثر؟ لنتحدث." },
   "footer.rights": { en: "© 2026 Mohamed Mahmoud Seliem. All rights reserved.", ar: "© ٢٠٢٦ محمد محمود سليم. جميع الحقوق محفوظة." },
 };
 
