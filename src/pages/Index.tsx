@@ -27,26 +27,22 @@ const Index = () => {
       <ProjectsSection />
       <ContactSection />
 
-      {/* Full-width CTA Footer */}
-      <footer className="relative overflow-hidden" style={{ background: "linear-gradient(180deg, #060a18 0%, #0d1117 100%)" }}>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(6, 182, 212, 0.08) 0%, transparent 70%)" }} />
-
+      {/* Footer */}
+      <footer className="bg-card border-t border-border">
         <div className="relative z-10 py-20 md:py-28 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
-              className={`text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white leading-tight ${isRTL ? 'font-arabic' : 'font-heading'}`}
+              className={`text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight ${isRTL ? 'font-arabic' : 'font-heading'}`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #06b6d4, #8b5cf6, #3b82f6)" }}>
-                {t("footer.cta")}
-              </span>
+              <span className="gradient-text">{t("footer.cta")}</span>
             </motion.h2>
 
             <motion.p
-              className={`text-gray-400 text-lg md:text-xl mb-10 ${isRTL ? 'font-arabic' : ''}`}
+              className={`text-muted-foreground text-lg md:text-xl mb-10 ${isRTL ? 'font-arabic' : ''}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -64,8 +60,8 @@ const Index = () => {
             >
               <motion.a
                 href="mailto:muhammadsleem03@gmail.com"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-heading text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(6,182,212,0.3)]"
-                style={{ background: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-heading text-base font-semibold bg-primary text-primary-foreground transition-all duration-300 hover:shadow-lg"
+                style={{ boxShadow: "var(--shadow-glow)" }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -77,8 +73,8 @@ const Index = () => {
                 href="https://wa.me/201020754883"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-heading text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(37,211,102,0.3)]"
-                style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-heading text-base font-semibold text-primary-foreground transition-all duration-300 hover:shadow-lg"
+                style={{ background: "hsl(var(--soft-green))" }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -89,14 +85,15 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="h-px mx-auto max-w-5xl" style={{ background: "linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2), transparent)" }} />
+        <div className="arabic-divider max-w-5xl mx-auto px-6">
+          <span className="arabic-ornament">◆</span>
+        </div>
 
-        <div className="py-6 text-center text-gray-600 text-xs">
+        <div className="py-6 text-center text-muted-foreground text-xs">
           {t("footer.rights")}
         </div>
       </footer>
 
-      {/* AI Chatbot FAB */}
       <AIChatbot />
     </div>
   );

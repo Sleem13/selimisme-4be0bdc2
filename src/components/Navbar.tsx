@@ -28,43 +28,30 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "py-0 border-b border-white/5"
-          : "py-0"
+        scrolled ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm" : ""
       }`}
-      style={scrolled ? {
-        background: "rgba(10, 15, 30, 0.8)",
-        backdropFilter: "blur(20px) saturate(1.2)",
-      } : {}}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-heading text-lg font-bold gradient-text">
-          MS
-        </a>
+        <a href="#" className="font-heading text-lg font-bold gradient-text">MS</a>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
           {linkKeys.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors font-body ${
-                scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"
-              }`}
-            >
+            <a key={link.href} href={link.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
               {t(link.key)}
             </a>
           ))}
-          <LanguageToggle scrolled={scrolled} />
-          <ThemeToggle scrolled={scrolled} />
+          <LanguageToggle scrolled={true} />
+          <ThemeToggle scrolled={true} />
         </div>
 
         {/* Mobile toggle */}
         <button
-          className={`md:hidden ${scrolled ? "text-foreground" : "text-white"}`}
+          className="md:hidden text-foreground"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -80,12 +67,9 @@ const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           {linkKeys.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <a key={link.href} href={link.href}
               className="block py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setOpen(false)}
-            >
+              onClick={() => setOpen(false)}>
               {t(link.key)}
             </a>
           ))}
