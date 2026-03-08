@@ -265,7 +265,7 @@ const ProjectsSection = () => {
                         {project.tools.map((tool) => (
                           <span
                             key={tool}
-                            className="px-2.5 py-1 rounded-md text-xs font-medium text-cyan-300 border border-cyan-400/20"
+                            className="px-2.5 py-1 rounded-full text-xs font-medium text-cyan-300 border border-cyan-400/25 hover:border-cyan-400/60 transition-all duration-300 hover:shadow-[0_0_12px_rgba(6,182,212,0.3)]"
                             style={{ background: "rgba(6, 182, 212, 0.08)" }}
                           >
                             {tool}
