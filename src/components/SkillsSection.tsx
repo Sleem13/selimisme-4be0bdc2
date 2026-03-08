@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { Award, Globe, Code2, Stethoscope } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const technicalSkills = ["Python", "SQL", "Power BI", "Tableau", "scikit-learn", "Machine Learning", "Data Analytics", "Automation"];
-const clinicalSkills = ["Clinical Evaluation", "Musculoskeletal Rehab", "Neuromuscular Therapy", "Dry Needling", "Acupuncture"];
+const technicalSkills = ["Python", "SQL", "Power BI", "Tableau", "scikit-learn", "Pandas", "Machine Learning", "ETL Pipelines", "Data Analytics", "DAX", "Automation", "Statistical Modeling"];
+const clinicalSkills = ["Clinical Assessment & Triage", "Musculoskeletal Rehabilitation", "Neuromuscular Therapy", "Sports Injury Recovery", "Dry Needling & Acupuncture", "Pediatric Habilitation"];
 
 const certifications = [
   'Google Data Analytics Professional Certificate — "Foundations: Data, Data, Everywhere"',
   '"Delivering Quality Work with Agility" — Agile & Lean Methodologies',
+  'Applied AI & Healthcare Data Integration — Egyptian Military Academy',
 ];
 
 const languages = [

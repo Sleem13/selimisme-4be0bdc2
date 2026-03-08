@@ -3,10 +3,10 @@ import { Briefcase, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const experienceTools = [
-  ["Python", "SQL", "Power BI", "scikit-learn"],
-  ["Clinical Assessment", "Rehabilitation Protocols", "Patient Outcomes Tracking"],
-  ["Sports Rehabilitation", "Performance Benchmarking"],
-  ["Pediatric Habilitation", "Developmental KPI Tracking"],
+  ["Python", "SQL", "Power BI", "scikit-learn", "Pandas", "ETL"],
+  ["Evidence-Based Protocols", "Milestone Tracking", "Team Mentorship", "KPI Reporting"],
+  ["Sports Rehab", "Performance Benchmarking", "Data-Driven Recovery"],
+  ["Pediatric Habilitation", "Developmental KPIs", "Family-Centered Care"],
 ];
 
 const ExperienceSection = () => {
