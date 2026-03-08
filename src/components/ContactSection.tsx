@@ -131,7 +131,7 @@ const ContactSection = () => {
                 {/* Action buttons grid */}
                 <div className="grid grid-cols-2 gap-2">
                   <PopButton
-                    href="mailto:muhammadsleemo2@gmail.com"
+                    href="mailto:muhammadsleem03@gmail.com"
                     className="relative flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-heading text-xs font-semibold text-white transition-all duration-300"
                     style={{ background: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}
                   >
