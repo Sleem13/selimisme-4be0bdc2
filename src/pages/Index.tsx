@@ -63,7 +63,7 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <motion.a
-                href="mailto:muhammadsleemo2@gmail.com"
+                href="mailto:muhammadsleem03@gmail.com"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-heading text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(6,182,212,0.3)]"
                 style={{ background: "linear-gradient(135deg, #06b6d4, #8b5cf6)" }}
                 whileHover={{ scale: 1.05 }}

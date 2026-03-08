@@ -19,7 +19,7 @@ About Mohamed:
 - Certifications: Google Data Analytics Professional Certificate, Agile & Lean Methodologies
 - Languages: Arabic (Native), English (Fluent), French (Basic)
 - Location: Dakahlia, Egypt
-- Contact: muhammadsleemo2@gmail.com, +201020754883, LinkedIn: linkedin.com/in/sleemisme
+- Contact: muhammadsleem03@gmail.com, +201020754883, LinkedIn: linkedin.com/in/sleemisme
 
 Key Projects:
 1. Patient Outcome Prediction Engine - ML pipeline with scikit-learn: 22% faster recovery identification, 18% reduction in misdiagnosis

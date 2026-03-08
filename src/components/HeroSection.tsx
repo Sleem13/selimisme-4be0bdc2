@@ -175,8 +175,8 @@ const HeroSection = () => {
         <motion.div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}>
-          <a href="mailto:muhammadsleemo2@gmail.com" className="flex items-center gap-2 text-sm text-gray-500 hover:text-cyan-400 transition-colors">
-            <Mail className="w-4 h-4" /> muhammadsleemo2@gmail.com
+          <a href="mailto:muhammadsleem03@gmail.com" className="flex items-center gap-2 text-sm text-gray-500 hover:text-cyan-400 transition-colors">
+            <Mail className="w-4 h-4" /> muhammadsleem03@gmail.com
           </a>
           <a href="tel:+201020754883" className="flex items-center gap-2 text-sm text-gray-500 hover:text-cyan-400 transition-colors">
             <Phone className="w-4 h-4" /> +201020754883
