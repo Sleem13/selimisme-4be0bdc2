@@ -27,12 +27,12 @@ const translations: Record<string, Record<Language, string>> = {
   "nav.contact": { en: "Contact", ar: "تواصل" },
 
   // Hero
-  "hero.tagline": { en: "Physical Therapist · AI · Data Analytics", ar: "أخصائي علاج طبيعي · ذكاء اصطناعي · تحليل بيانات" },
+  "hero.tagline": { en: "Physical Therapist · AI & ML · Healthcare Data Analytics", ar: "أخصائي علاج طبيعي · ذكاء اصطناعي · تحليل بيانات صحية" },
   "hero.name.first": { en: "Mohamed Mahmoud", ar: "محمد محمود" },
   "hero.name.last": { en: "Seliem", ar: "سليم" },
   "hero.description": {
-    en: "5+ years in clinical rehabilitation · Now building ML models & data pipelines that turn healthcare complexity into measurable patient outcomes.",
-    ar: "أكثر من ٥ سنوات في التأهيل السريري · أبني الآن نماذج تعلم آلي وخطوط بيانات تحوّل تعقيدات الرعاية الصحية إلى نتائج قابلة للقياس."
+    en: "5+ years leading clinical rehabilitation teams · Now architecting ML pipelines & BI dashboards that drive 15%+ efficiency gains and transform patient outcomes at scale.",
+    ar: "أكثر من ٥ سنوات في قيادة فرق التأهيل السريري · أصمم الآن خطوط تعلم آلي ولوحات ذكاء أعمال تحقق تحسين كفاءة +١٥٪ وتُحوّل نتائج المرضى على نطاق واسع."
   },
   "hero.headline": { en: "Turning Chaos into Clarity.", ar: "أحوّل الفوضى إلى وضوح." },
   "hero.download": { en: "Download CV", ar: "تحميل السيرة الذاتية" },
@@ -44,29 +44,29 @@ const translations: Record<string, Record<Language, string>> = {
   "about.meets": { en: "Meets", ar: "تلتقي" },
   "about.technology": { en: "Technology", ar: "بالتكنولوجيا" },
   "about.description": {
-    en: "Licensed physical therapist with 5+ years of clinical experience, now leveraging Python, SQL, and machine learning to transform healthcare delivery. I combine frontline patient empathy with analytical rigor — because better data means better care.",
-    ar: "أخصائي علاج طبيعي مرخّص بخبرة تزيد عن ٥ سنوات في المجال السريري، أستثمر الآن Python وSQL والتعلم الآلي لتحويل تقديم الرعاية الصحية. أجمع بين التعاطف المباشر مع المرضى والدقة التحليلية — لأن البيانات الأفضل تعني رعاية أفضل."
+    en: "Licensed physical therapist turned data analyst — I bring 5+ years of frontline clinical leadership to every dataset. I've managed 300+ patient cases annually, built ML models that cut misdiagnosis by 18%, and designed dashboards saving 20+ hours/week. I don't just analyze healthcare data — I've lived it.",
+    ar: "أخصائي علاج طبيعي مرخّص تحوّلت إلى محلل بيانات — أجلب أكثر من ٥ سنوات من القيادة السريرية الميدانية لكل مجموعة بيانات. أدرت أكثر من ٣٠٠ حالة مريض سنوياً، وبنيت نماذج تعلم آلي قللت التشخيص الخاطئ بنسبة ١٨٪، وصممت لوحات معلومات توفر أكثر من ٢٠ ساعة أسبوعياً. أنا لا أحلل بيانات الرعاية الصحية فحسب — بل عشتها."
   },
-  "about.clinical.title": { en: "Clinical Rehabilitation", ar: "التأهيل السريري" },
-  "about.clinical.kpi": { en: "95%+", ar: "+٩٥٪" },
-  "about.clinical.kpiLabel": { en: "Patient Satisfaction", ar: "رضا المرضى" },
+  "about.clinical.title": { en: "Clinical Leadership", ar: "القيادة السريرية" },
+  "about.clinical.kpi": { en: "300+", ar: "+٣٠٠" },
+  "about.clinical.kpiLabel": { en: "Cases/Year", ar: "حالة/سنة" },
   "about.clinical.desc": {
-    en: "5+ years delivering evidence-based therapy across musculoskeletal & neuromuscular cases with consistently high recovery outcomes.",
-    ar: "أكثر من ٥ سنوات في تقديم العلاج المبني على الأدلة عبر حالات العضلات والأعصاب مع نتائج تعافٍ عالية باستمرار."
+    en: "Led evidence-based rehabilitation across musculoskeletal & neuromuscular cases, achieving 95%+ patient satisfaction through structured milestone tracking and personalized care protocols.",
+    ar: "قدت التأهيل المبني على الأدلة عبر حالات العضلات والأعصاب، محققاً رضا مرضى +٩٥٪ من خلال تتبع مراحل منظمة وبروتوكولات رعاية شخصية."
   },
-  "about.ai.title": { en: "Healthcare AI", ar: "الذكاء الاصطناعي الصحي" },
-  "about.ai.kpi": { en: "ML-Driven", ar: "مدعوم بالتعلم الآلي" },
-  "about.ai.kpiLabel": { en: "Predictive Models", ar: "نماذج تنبؤية" },
+  "about.ai.title": { en: "Predictive Analytics", ar: "التحليلات التنبؤية" },
+  "about.ai.kpi": { en: "18%", ar: "١٨٪" },
+  "about.ai.kpiLabel": { en: "Misdiagnosis Reduction", ar: "تقليل التشخيص الخاطئ" },
   "about.ai.desc": {
-    en: "Building scikit-learn models to forecast patient outcomes and enable data-driven triage — reducing misdiagnosis risk through intelligent analytics.",
-    ar: "بناء نماذج scikit-learn للتنبؤ بنتائج المرضى وتمكين الفرز المبني على البيانات — تقليل مخاطر التشخيص الخاطئ عبر التحليلات الذكية."
+    en: "Engineered supervised ML pipelines with scikit-learn to forecast patient recovery trajectories — enabling data-driven triage that accelerated recovery identification by 22%.",
+    ar: "هندست خطوط أنابيب تعلم آلي مُشرَف باستخدام scikit-learn للتنبؤ بمسارات تعافي المرضى — مما أتاح فرزاً مبنياً على البيانات سرّع تحديد التعافي بنسبة ٢٢٪."
   },
-  "about.data.title": { en: "Data Analytics", ar: "تحليل البيانات" },
-  "about.data.kpi": { en: "15%", ar: "١٥٪" },
-  "about.data.kpiLabel": { en: "Efficiency Gain", ar: "تحسين الكفاءة" },
+  "about.data.title": { en: "Business Intelligence", ar: "ذكاء الأعمال" },
+  "about.data.kpi": { en: "20+hrs", ar: "+٢٠ ساعة" },
+  "about.data.kpiLabel": { en: "Saved Weekly", ar: "توفير أسبوعي" },
   "about.data.desc": {
-    en: "Translating raw healthcare data into Power BI dashboards that consolidate 5+ sources for informed, real-time decision-making.",
-    ar: "تحويل البيانات الصحية الخام إلى لوحات Power BI تجمع أكثر من ٥ مصادر لاتخاذ قرارات مستنيرة في الوقت الفعلي."
+    en: "Architected automated ETL pipelines and Power BI dashboards consolidating 5+ fragmented data sources into a unified decision hub — driving 15% operational efficiency gains.",
+    ar: "صممت خطوط أنابيب ETL آلية ولوحات Power BI تجمع أكثر من ٥ مصادر بيانات مجزأة في مركز قرارات موحد — محققةً تحسين كفاءة تشغيلية بنسبة ١٥٪."
   },
 
   // Experience
@@ -74,168 +74,168 @@ const translations: Record<string, Record<Language, string>> = {
   "exp.title1": { en: "Professional", ar: "المسيرة" },
   "exp.title2": { en: "Journey", ar: "المهنية" },
   "exp.challenge": { en: "Challenge:", ar: "التحدي:" },
-  "exp.solution": { en: "Solution:", ar: "الحل:" },
-  "exp.impact": { en: "Impact:", ar: "الأثر:" },
+  "exp.solution": { en: "Action:", ar: "الإجراء:" },
+  "exp.impact": { en: "Result:", ar: "النتيجة:" },
 
   "exp.0.role": { en: "Data Analyst", ar: "محلل بيانات" },
   "exp.0.company": { en: "Digilians, MTC & MCIT", ar: "ديجيليانز، MTC ووزارة الاتصالات" },
   "exp.0.period": { en: "Nov 2025 – Present", ar: "نوفمبر ٢٠٢٥ – حتى الآن" },
   "exp.0.challenge": {
-    en: "Manual healthcare reporting consuming 20+ hrs/week with fragmented data sources.",
-    ar: "التقارير الصحية اليدوية تستهلك أكثر من ٢٠ ساعة أسبوعياً مع مصادر بيانات مجزأة."
+    en: "Manual healthcare reporting consumed 20+ hrs/week; data scattered across 5+ siloed sources with zero unified visibility.",
+    ar: "التقارير الصحية اليدوية استهلكت أكثر من ٢٠ ساعة أسبوعياً؛ البيانات مبعثرة عبر أكثر من ٥ مصادر معزولة بدون رؤية موحدة."
   },
   "exp.0.solution": {
-    en: "Built Python & SQL automation pipelines; designed predictive ML models with scikit-learn.",
-    ar: "بناء خطوط أتمتة بـ Python وSQL؛ تصميم نماذج تعلم آلي تنبؤية باستخدام scikit-learn."
+    en: "Spearheaded Python & SQL automation pipelines; architected predictive ML models with scikit-learn; designed interactive Power BI dashboards for executive decision-making.",
+    ar: "قدت خطوط أتمتة بـ Python وSQL؛ صممت نماذج تعلم آلي تنبؤية باستخدام scikit-learn؛ أنشأت لوحات Power BI تفاعلية لصنع القرار التنفيذي."
   },
   "exp.0.impact": {
-    en: "15% efficiency gain, improved triage accuracy, 5+ data sources consolidated into Power BI dashboards.",
-    ar: "تحسين الكفاءة بنسبة ١٥٪، تحسين دقة الفرز، دمج أكثر من ٥ مصادر بيانات في لوحات Power BI."
+    en: "Delivered 15% efficiency gain, 22% faster recovery identification, and consolidated 5+ data sources into a single source of truth.",
+    ar: "حققت تحسين كفاءة بنسبة ١٥٪، وتحديد تعافٍ أسرع بنسبة ٢٢٪، ودمج أكثر من ٥ مصادر بيانات في مصدر حقيقة واحد."
   },
 
-  "exp.1.role": { en: "Physical Therapist", ar: "أخصائي علاج طبيعي" },
+  "exp.1.role": { en: "Senior Physical Therapist", ar: "أخصائي علاج طبيعي أول" },
   "exp.1.company": { en: "Ministry of Health & Population", ar: "وزارة الصحة والسكان" },
   "exp.1.period": { en: "Sep 2020 – Present", ar: "سبتمبر ٢٠٢٠ – حتى الآن" },
   "exp.1.challenge": {
-    en: "Managing high patient volumes while maintaining personalized care quality.",
-    ar: "إدارة أعداد كبيرة من المرضى مع الحفاظ على جودة الرعاية الشخصية."
+    en: "Managing 300+ patient cases/year while maintaining individualized, evidence-based care quality under high-volume pressure.",
+    ar: "إدارة أكثر من ٣٠٠ حالة مريض سنوياً مع الحفاظ على جودة رعاية فردية مبنية على الأدلة تحت ضغط أعداد كبيرة."
   },
   "exp.1.solution": {
-    en: "Implemented evidence-based, structured treatment protocols with measurable milestone tracking.",
-    ar: "تطبيق بروتوكولات علاجية منظمة مبنية على الأدلة مع تتبع مراحل قابلة للقياس."
+    en: "Championed structured treatment protocols with measurable milestone tracking; mentored junior therapists on evidence-based methodologies.",
+    ar: "قدت بروتوكولات علاجية منظمة مع تتبع مراحل قابلة للقياس؛ وجّهت المعالجين المبتدئين على المنهجيات المبنية على الأدلة."
   },
   "exp.1.impact": {
-    en: "300+ patient cases annually, 95%+ satisfaction rate through personalized rehabilitation.",
-    ar: "أكثر من ٣٠٠ حالة مريض سنوياً، معدل رضا +٩٥٪ من خلال التأهيل الشخصي."
+    en: "Achieved 95%+ patient satisfaction rate; reduced average recovery timelines through standardized, data-informed care pathways.",
+    ar: "حققت معدل رضا مرضى +٩٥٪؛ قللت متوسط فترات التعافي من خلال مسارات رعاية موحدة ومبنية على البيانات."
   },
 
-  "exp.2.role": { en: "Sports Injury Therapist", ar: "أخصائي إصابات رياضية" },
+  "exp.2.role": { en: "Sports Rehabilitation Specialist", ar: "أخصائي تأهيل رياضي" },
   "exp.2.company": { en: "N.E.C for Physical Therapy", ar: "مركز N.E.C للعلاج الطبيعي" },
   "exp.2.period": { en: "Sep 2021 – Apr 2023", ar: "سبتمبر ٢٠٢١ – أبريل ٢٠٢٣" },
   "exp.2.challenge": {
-    en: "Athletes needed faster recovery without compromising long-term health.",
-    ar: "احتاج الرياضيون إلى تعافٍ أسرع دون المساس بالصحة طويلة المدى."
+    en: "Athletes demanded accelerated return-to-play without compromising long-term musculoskeletal health.",
+    ar: "طالب الرياضيون بعودة سريعة للملاعب دون المساس بصحة الجهاز العضلي الهيكلي طويلة المدى."
   },
   "exp.2.solution": {
-    en: "Designed structured recovery programs with performance benchmarking at each stage.",
-    ar: "تصميم برامج تعافٍ منظمة مع قياس الأداء في كل مرحلة."
+    en: "Designed phased recovery programs with performance benchmarking at each milestone; introduced data-driven outcome tracking for treatment optimization.",
+    ar: "صممت برامج تعافٍ مرحلية مع قياس الأداء عند كل مرحلة؛ أدخلت تتبع النتائج المبني على البيانات لتحسين العلاج."
   },
   "exp.2.impact": {
-    en: "Reduced return-to-play timelines through data-informed rehabilitation milestones.",
-    ar: "تقليل فترات العودة للملاعب من خلال مراحل تأهيل مبنية على البيانات."
+    en: "Shortened return-to-play timelines significantly through evidence-based, milestone-driven rehabilitation protocols.",
+    ar: "قللت فترات العودة للملاعب بشكل ملحوظ من خلال بروتوكولات تأهيل مبنية على الأدلة ومدفوعة بالمراحل."
   },
 
-  "exp.3.role": { en: "Pediatric Therapist", ar: "أخصائي علاج أطفال" },
+  "exp.3.role": { en: "Pediatric Habilitation Therapist", ar: "أخصائي تأهيل أطفال" },
   "exp.3.company": { en: "Nour Elhayat Oasis", ar: "واحة نور الحياة" },
   "exp.3.period": { en: "May 2020 – Mar 2021", ar: "مايو ٢٠٢٠ – مارس ٢٠٢١" },
   "exp.3.challenge": {
-    en: "Children with cerebral palsy needed consistent developmental progress tracking.",
-    ar: "أطفال الشلل الدماغي بحاجة لتتبع متسق لتقدمهم التنموي."
+    en: "Children with cerebral palsy lacked consistent developmental progress tracking, limiting intervention precision.",
+    ar: "أطفال الشلل الدماغي يفتقرون لتتبع متسق لتقدمهم التنموي، مما حدّ من دقة التدخلات."
   },
   "exp.3.solution": {
-    en: "Delivered habilitation services with measurable developmental KPIs for each child.",
-    ar: "تقديم خدمات التأهيل مع مؤشرات أداء تنموية قابلة للقياس لكل طفل."
+    en: "Established measurable developmental KPIs for each child; implemented structured habilitation programs with family-centered care coordination.",
+    ar: "وضعت مؤشرات أداء تنموية قابلة للقياس لكل طفل؛ طبّقت برامج تأهيل منظمة مع تنسيق رعاية يركز على الأسرة."
   },
   "exp.3.impact": {
-    en: "Improved tracking of developmental milestones, enabling more targeted interventions.",
-    ar: "تحسين تتبع المراحل التنموية، مما أتاح تدخلات أكثر استهدافاً."
+    en: "Improved developmental milestone tracking accuracy, enabling earlier detection and more targeted therapeutic interventions.",
+    ar: "حسّنت دقة تتبع المراحل التنموية، مما أتاح اكتشافاً أبكر وتدخلات علاجية أكثر استهدافاً."
   },
 
   // Education
   "edu.label": { en: "Education", ar: "التعليم" },
   "edu.title1": { en: "Academic", ar: "الخلفية" },
-  "edu.title2": { en: "Background", ar: "الأكاديمية" },
+  "edu.title2": { en: "Foundation", ar: "الأكاديمية" },
 
-  "edu.0.degree": { en: "Bachelor's Degree in Physical Therapy", ar: "بكالوريوس العلاج الطبيعي" },
+  "edu.0.degree": { en: "B.Sc. Physical Therapy & Rehabilitation Sciences", ar: "بكالوريوس العلاج الطبيعي وعلوم التأهيل" },
   "edu.0.institution": { en: "Kafr El-Sheikh University", ar: "جامعة كفر الشيخ" },
   "edu.0.period": { en: "Aug 2015 – Sep 2020", ar: "أغسطس ٢٠١٥ – سبتمبر ٢٠٢٠" },
   "edu.0.details": {
-    en: "Comprehensive coursework in physical medicine & rehabilitation sciences. Thesis on AI applications in mechatronics and therapy — laying the foundation for a data-driven clinical career.",
-    ar: "دراسة شاملة في الطب الطبيعي وعلوم التأهيل. أطروحة حول تطبيقات الذكاء الاصطناعي في الميكاترونيكس والعلاج — وضع الأساس لمسيرة سريرية مبنية على البيانات."
+    en: "Rigorous coursework in physical medicine, biomechanics, and rehabilitation sciences. Thesis on AI applications in mechatronics and therapy — establishing the analytical foundation for a data-driven clinical career.",
+    ar: "دراسة مكثفة في الطب الطبيعي والميكانيكا الحيوية وعلوم التأهيل. أطروحة حول تطبيقات الذكاء الاصطناعي في الميكاترونيكس والعلاج — وضع الأساس التحليلي لمسيرة سريرية مبنية على البيانات."
   },
 
-  "edu.1.degree": { en: "Diploma in Applied AI & Data Analytics", ar: "دبلومة في الذكاء الاصطناعي التطبيقي وتحليل البيانات" },
+  "edu.1.degree": { en: "Professional Diploma — Applied AI & Data Analytics", ar: "دبلومة مهنية — الذكاء الاصطناعي التطبيقي وتحليل البيانات" },
   "edu.1.institution": { en: "Egyptian Military Academy", ar: "الأكاديمية العسكرية المصرية" },
   "edu.1.period": { en: "Dec 2025 – Aug 2026", ar: "ديسمبر ٢٠٢٥ – أغسطس ٢٠٢٦" },
   "edu.1.details": {
-    en: "Advanced training in ML, Python, SQL, and healthcare AI integration. Focused on building scalable, reproducible analytical frameworks for clinical decision support.",
-    ar: "تدريب متقدم في التعلم الآلي وPython وSQL وتكامل الذكاء الاصطناعي في الرعاية الصحية. التركيز على بناء أطر تحليلية قابلة للتوسع وإعادة الإنتاج لدعم القرار السريري."
+    en: "Intensive training in machine learning, Python, SQL, and healthcare AI integration. Focused on building scalable, production-ready analytical frameworks for clinical decision support systems.",
+    ar: "تدريب مكثف في التعلم الآلي وPython وSQL وتكامل الذكاء الاصطناعي في الرعاية الصحية. التركيز على بناء أطر تحليلية قابلة للتوسع وجاهزة للإنتاج لأنظمة دعم القرار السريري."
   },
 
   // Skills
-  "skills.label": { en: "Skills & More", ar: "المهارات والمزيد" },
+  "skills.label": { en: "Technical Arsenal", ar: "الترسانة التقنية" },
   "skills.title1": { en: "Capabilities &", ar: "القدرات و" },
-  "skills.title2": { en: "Certifications", ar: "الشهادات" },
-  "skills.technical": { en: "Technical", ar: "تقنية" },
-  "skills.clinical": { en: "Clinical", ar: "سريرية" },
+  "skills.title2": { en: "Credentials", ar: "الاعتمادات" },
+  "skills.technical": { en: "Data & AI Stack", ar: "أدوات البيانات والذكاء الاصطناعي" },
+  "skills.clinical": { en: "Clinical Expertise", ar: "الخبرة السريرية" },
   "skills.certifications": { en: "Certifications", ar: "الشهادات" },
   "skills.languages": { en: "Languages", ar: "اللغات" },
 
   // Projects
-  "proj.label": { en: "Projects", ar: "المشاريع" },
+  "proj.label": { en: "Impact Portfolio", ar: "حافظة الأثر" },
   "proj.title1": { en: "Case", ar: "دراسات" },
   "proj.title2": { en: "Studies", ar: "حالة" },
   "proj.description": {
-    en: "Real-world projects where clinical insight meets analytical execution — each following a structured approach to measurable impact.",
-    ar: "مشاريع واقعية حيث تلتقي الرؤية السريرية بالتنفيذ التحليلي — كل منها يتبع نهجاً منظماً لتحقيق أثر قابل للقياس."
+    en: "Production-grade projects where clinical domain expertise meets analytical execution — each measured by tangible KPIs and real-world impact.",
+    ar: "مشاريع بمستوى إنتاجي حيث تلتقي الخبرة السريرية بالتنفيذ التحليلي — كل منها يُقاس بمؤشرات أداء ملموسة وأثر واقعي."
   },
   "proj.challenge": { en: "Challenge", ar: "التحدي" },
   "proj.solution": { en: "Solution", ar: "الحل" },
   "proj.impact": { en: "Impact", ar: "الأثر" },
-  "proj.tools": { en: "Tools", ar: "الأدوات" },
+  "proj.tools": { en: "Stack", ar: "الأدوات" },
 
   "proj.0.title": { en: "Patient Outcome Prediction Engine", ar: "محرك التنبؤ بنتائج المرضى" },
-  "proj.0.tagline": { en: "ML-powered triage for smarter clinical decisions", ar: "فرز مدعوم بالتعلم الآلي لقرارات سريرية أذكى" },
+  "proj.0.tagline": { en: "ML-powered clinical decision support for smarter triage", ar: "دعم قرارات سريرية مدعوم بالتعلم الآلي لفرز أذكى" },
   "proj.0.challenge": {
-    en: "Clinicians relied on subjective assessments for patient triage, leading to inconsistent recovery timelines and resource misallocation across 300+ annual cases.",
-    ar: "اعتمد الأطباء على التقييمات الذاتية لفرز المرضى، مما أدى إلى جداول تعافٍ غير متسقة وسوء توزيع الموارد عبر أكثر من ٣٠٠ حالة سنوية."
+    en: "Clinicians relied on subjective assessments for triage across 300+ annual cases — resulting in inconsistent recovery timelines, resource misallocation, and preventable misdiagnoses.",
+    ar: "اعتمد الأطباء على التقييمات الذاتية لفرز أكثر من ٣٠٠ حالة سنوية — مما أدى إلى جداول تعافٍ غير متسقة وسوء توزيع الموارد وتشخيصات خاطئة يمكن تجنبها."
   },
   "proj.0.solution": {
-    en: "Built a supervised ML pipeline using scikit-learn to predict patient recovery trajectories from intake data — enabling data-driven triage prioritization.",
-    ar: "بناء خط أنابيب تعلم آلي مُشرَف باستخدام scikit-learn للتنبؤ بمسارات تعافي المرضى من بيانات القبول — مما أتاح تحديد أولويات الفرز المبني على البيانات."
+    en: "Engineered a supervised ML pipeline using scikit-learn and Pandas to predict patient recovery trajectories from intake data — automating triage prioritization with reproducible, interpretable models.",
+    ar: "هندست خط أنابيب تعلم آلي مُشرَف باستخدام scikit-learn وPandas للتنبؤ بمسارات تعافي المرضى من بيانات القبول — أتمتة أولويات الفرز بنماذج قابلة للتكرار والتفسير."
   },
   "proj.0.impact.0.kpi": { en: "22%", ar: "٢٢٪" },
-  "proj.0.impact.0.label": { en: "Faster Recovery Identification", ar: "تحديد أسرع للتعافي" },
+  "proj.0.impact.0.label": { en: "Faster Recovery ID", ar: "تحديد أسرع للتعافي" },
   "proj.0.impact.1.kpi": { en: "18%", ar: "١٨٪" },
-  "proj.0.impact.1.label": { en: "Reduction in Misdiagnosis", ar: "انخفاض في التشخيص الخاطئ" },
+  "proj.0.impact.1.label": { en: "Misdiagnosis Reduction", ar: "تقليل التشخيص الخاطئ" },
 
   "proj.1.title": { en: "Healthcare Operations Dashboard", ar: "لوحة عمليات الرعاية الصحية" },
-  "proj.1.tagline": { en: "Unified analytics across 5+ clinical data sources", ar: "تحليلات موحدة عبر أكثر من ٥ مصادر بيانات سريرية" },
+  "proj.1.tagline": { en: "Unified BI across 5+ fragmented clinical data sources", ar: "ذكاء أعمال موحد عبر أكثر من ٥ مصادر بيانات سريرية مجزأة" },
   "proj.1.challenge": {
-    en: "Hospital management lacked visibility into department-level performance — data was siloed across spreadsheets, EMRs, and manual logs with no single source of truth.",
-    ar: "افتقرت إدارة المستشفى إلى رؤية أداء الأقسام — كانت البيانات معزولة عبر جداول البيانات والسجلات الطبية الإلكترونية والسجلات اليدوية بدون مصدر موحد للحقيقة."
+    en: "Hospital leadership had zero real-time visibility into department performance — data siloed across spreadsheets, EMRs, and manual logs with no unified source of truth.",
+    ar: "افتقرت القيادة الطبية إلى أي رؤية فورية لأداء الأقسام — البيانات معزولة عبر جداول البيانات والسجلات الطبية الإلكترونية والسجلات اليدوية بدون مصدر موحد للحقيقة."
   },
   "proj.1.solution": {
-    en: "Designed an automated ETL pipeline and interactive Power BI dashboard consolidating patient flow, staff utilization, and KPI tracking into a real-time decision hub.",
-    ar: "تصميم خط أنابيب ETL آلي ولوحة Power BI تفاعلية تجمع تدفق المرضى واستغلال الكوادر وتتبع مؤشرات الأداء في مركز قرارات فوري."
+    en: "Architected an automated ETL pipeline and interactive Power BI dashboard — consolidating patient flow, staff utilization, and operational KPIs into a real-time executive decision hub.",
+    ar: "صممت خط أنابيب ETL آلي ولوحة Power BI تفاعلية — دمج تدفق المرضى واستغلال الكوادر ومؤشرات الأداء التشغيلية في مركز قرارات تنفيذي فوري."
   },
   "proj.1.impact.0.kpi": { en: "15%", ar: "١٥٪" },
-  "proj.1.impact.0.label": { en: "Operational Efficiency Gain", ar: "تحسين الكفاءة التشغيلية" },
+  "proj.1.impact.0.label": { en: "Efficiency Gain", ar: "تحسين الكفاءة" },
   "proj.1.impact.1.kpi": { en: "20+ hrs", ar: "+٢٠ ساعة" },
-  "proj.1.impact.1.label": { en: "Weekly Time Saved", ar: "توفير أسبوعي" },
+  "proj.1.impact.1.label": { en: "Saved Weekly", ar: "توفير أسبوعي" },
 
   "proj.2.title": { en: "Rehabilitation Progress Tracker", ar: "متتبع تقدم التأهيل" },
-  "proj.2.tagline": { en: "Data-driven therapy planning & outcome visualization", ar: "تخطيط علاجي مبني على البيانات وتصور النتائج" },
+  "proj.2.tagline": { en: "Standardized KPI tracking for evidence-based therapy optimization", ar: "تتبع مؤشرات أداء موحدة لتحسين العلاج المبني على الأدلة" },
   "proj.2.challenge": {
-    en: "Therapists tracked patient progress manually with inconsistent metrics, making it difficult to adjust treatment plans or demonstrate outcomes to stakeholders.",
-    ar: "تتبع المعالجون تقدم المرضى يدوياً بمقاييس غير متسقة، مما صعّب تعديل خطط العلاج أو إظهار النتائج لأصحاب المصلحة."
+    en: "Therapists tracked patient progress manually with inconsistent metrics — making it impossible to adjust treatment plans objectively or demonstrate outcomes to stakeholders.",
+    ar: "تتبع المعالجون تقدم المرضى يدوياً بمقاييس غير متسقة — مما جعل تعديل خطط العلاج بموضوعية أو إظهار النتائج لأصحاب المصلحة أمراً مستحيلاً."
   },
   "proj.2.solution": {
-    en: "Created an automated tracking system with standardized KPIs and visual progress reports — enabling evidence-based therapy adjustments and transparent reporting.",
-    ar: "إنشاء نظام تتبع آلي مع مؤشرات أداء موحدة وتقارير تقدم بصرية — مما أتاح تعديلات علاجية مبنية على الأدلة وتقارير شفافة."
+    en: "Built an automated tracking system with standardized clinical KPIs and visual progress dashboards — enabling real-time, evidence-based therapy adjustments and transparent stakeholder reporting.",
+    ar: "بنيت نظام تتبع آلي مع مؤشرات أداء سريرية موحدة ولوحات تقدم بصرية — مما أتاح تعديلات علاجية فورية مبنية على الأدلة وتقارير شفافة لأصحاب المصلحة."
   },
   "proj.2.impact.0.kpi": { en: "95%+", ar: "+٩٥٪" },
   "proj.2.impact.0.label": { en: "Patient Satisfaction", ar: "رضا المرضى" },
   "proj.2.impact.1.kpi": { en: "30%", ar: "٣٠٪" },
-  "proj.2.impact.1.label": { en: "Faster Plan Adjustments", ar: "تعديلات أسرع للخطط" },
+  "proj.2.impact.1.label": { en: "Faster Adjustments", ar: "تعديلات أسرع" },
 
   // Contact
   "contact.label": { en: "Get In Touch", ar: "تواصل معي" },
   "contact.title1": { en: "Let's", ar: "لنبقَ" },
   "contact.title2": { en: "Connect", ar: "على تواصل" },
   "contact.description": {
-    en: "Looking for someone who blends healthcare insight with data-driven thinking? I'd love to explore how we can create impact together.",
-    ar: "تبحث عن شخص يجمع بين الرؤية الصحية والتفكير المبني على البيانات؟ أود أن نستكشف كيف يمكننا صنع أثرٍ معاً."
+    en: "Seeking a data analyst who understands healthcare from the inside out? Let's explore how clinical insight and analytical execution can create measurable impact for your organization.",
+    ar: "تبحث عن محلل بيانات يفهم الرعاية الصحية من الداخل؟ لنستكشف كيف يمكن للرؤية السريرية والتنفيذ التحليلي أن يصنعا أثراً قابلاً للقياس لمؤسستك."
   },
   "contact.email": { en: "Email Me", ar: "راسلني" },
   "contact.call": { en: "Call", ar: "اتصل" },
@@ -243,7 +243,7 @@ const translations: Record<string, Record<Language, string>> = {
 
   // Footer
   "footer.cta": { en: "Let's Build Something Great", ar: "لنبنِ شيئاً عظيماً" },
-  "footer.cta.sub": { en: "Ready to turn data into impact? Let's talk.", ar: "مستعد لتحويل البيانات إلى أثر؟ لنتحدث." },
+  "footer.cta.sub": { en: "Ready to turn healthcare data into actionable intelligence? Let's talk.", ar: "مستعد لتحويل بيانات الرعاية الصحية إلى ذكاء قابل للتنفيذ؟ لنتحدث." },
   "footer.rights": { en: "© 2026 Mohamed Mahmoud Seliem. All rights reserved.", ar: "© ٢٠٢٦ محمد محمود سليم. جميع الحقوق محفوظة." },
 };
 
