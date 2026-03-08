@@ -34,6 +34,7 @@ const translations: Record<string, Record<Language, string>> = {
     en: "5+ years in clinical rehabilitation · Now building ML models & data pipelines that turn healthcare complexity into measurable patient outcomes.",
     ar: "أكثر من ٥ سنوات في التأهيل السريري · أبني الآن نماذج تعلم آلي وخطوط بيانات تحوّل تعقيدات الرعاية الصحية إلى نتائج قابلة للقياس."
   },
+  "hero.headline": { en: "Turning Chaos into Clarity.", ar: "أحوّل الفوضى إلى وضوح." },
   "hero.download": { en: "Download CV", ar: "تحميل السيرة الذاتية" },
 
   // About
