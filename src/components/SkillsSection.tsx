@@ -19,12 +19,14 @@ const languages = [
 const GlassCard = ({
   children,
   delay = 0,
+  className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }) => (
   <motion.div
-    className="group relative rounded-2xl p-[1px] overflow-hidden"
+    className={`group relative rounded-2xl p-[1px] overflow-hidden ${className}`}
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -106,9 +108,10 @@ const SkillsSection = () => {
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Technical Skills */}
-            <GlassCard delay={0}>
+          {/* Bento Grid - Asymmetric layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-auto">
+            {/* Technical Skills - Large card spanning 2 cols */}
+            <GlassCard delay={0} className="md:col-span-2 md:row-span-1">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
                   <Code2 className={`w-4 h-4 ${iconColors.technical}`} />
@@ -117,15 +120,54 @@ const SkillsSection = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {technicalSkills.map((skill) => (
-                  <span key={skill} className="px-3 py-1.5 text-xs rounded-md border border-cyan-400/20 text-cyan-300 font-medium hover:border-cyan-400/40 transition-colors" style={{ background: "rgba(6, 182, 212, 0.08)" }}>
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 text-xs rounded-full border border-cyan-400/20 text-cyan-300 font-medium hover:border-cyan-400/50 transition-all duration-300 hover:shadow-[0_0_12px_rgba(6,182,212,0.25)]"
+                    style={{ background: "rgba(6, 182, 212, 0.08)" }}
+                  >
                     {skill}
                   </span>
                 ))}
               </div>
             </GlassCard>
 
+            {/* Languages - Tall card on the right */}
+            <GlassCard delay={0.05} className="md:row-span-2">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                  <Globe className={`w-4 h-4 ${iconColors.languages}`} />
+                </div>
+                <h3 className={`text-base font-semibold text-white ${isRTL ? 'font-arabic' : 'font-heading'}`}>{t("skills.languages")}</h3>
+              </div>
+              <div className="space-y-4">
+                {languages.map((l) => (
+                  <div key={l.name} className="group/lang">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-2 h-2 rounded-full bg-violet-400" />
+                        <span className="text-sm text-white font-medium">{lang === "ar" ? l.nameAr : l.name}</span>
+                      </div>
+                      <span className="text-xs text-gray-500 px-2 py-0.5 rounded-full border border-violet-400/20" style={{ background: "rgba(139, 92, 246, 0.08)" }}>
+                        {lang === "ar" ? l.levelAr : l.level}
+                      </span>
+                    </div>
+                    <div className="w-full h-1 rounded-full bg-white/5 overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full"
+                        style={{ background: "linear-gradient(90deg, #8b5cf6, #06b6d4)" }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: l.level === "Native" || l.levelAr === "اللغة الأم" ? "100%" : l.level === "Fluent" ? "85%" : "35%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.3 }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
             {/* Clinical Skills */}
-            <GlassCard delay={0.05}>
+            <GlassCard delay={0.1} className="md:col-span-1">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
                   <Stethoscope className={`w-4 h-4 ${iconColors.clinical}`} />
@@ -134,15 +176,19 @@ const SkillsSection = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {clinicalSkills.map((skill) => (
-                  <span key={skill} className="px-3 py-1.5 text-xs rounded-md border border-emerald-400/20 text-emerald-300 font-medium hover:border-emerald-400/40 transition-colors" style={{ background: "rgba(16, 185, 129, 0.08)" }}>
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 text-xs rounded-full border border-emerald-400/20 text-emerald-300 font-medium hover:border-emerald-400/50 transition-all duration-300 hover:shadow-[0_0_12px_rgba(16,185,129,0.25)]"
+                    style={{ background: "rgba(16, 185, 129, 0.08)" }}
+                  >
                     {skill}
                   </span>
                 ))}
               </div>
             </GlassCard>
 
-            {/* Certifications */}
-            <GlassCard delay={0.1}>
+            {/* Certifications - Wide card at bottom */}
+            <GlassCard delay={0.15} className="md:col-span-1">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
                   <Award className={`w-4 h-4 ${iconColors.certifications}`} />
@@ -152,32 +198,11 @@ const SkillsSection = () => {
               <ul className="space-y-3">
                 {certifications.map((cert, i) => (
                   <li key={i} className="text-gray-400 text-sm flex items-start gap-2">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 shadow-[0_0_6px_rgba(251,191,36,0.4)]" />
                     {cert}
                   </li>
                 ))}
               </ul>
-            </GlassCard>
-
-            {/* Languages */}
-            <GlassCard delay={0.15}>
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                  <Globe className={`w-4 h-4 ${iconColors.languages}`} />
-                </div>
-                <h3 className={`text-base font-semibold text-white ${isRTL ? 'font-arabic' : 'font-heading'}`}>{t("skills.languages")}</h3>
-              </div>
-              <div className="space-y-3">
-                {languages.map((l) => (
-                  <div key={l.name} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-violet-400" />
-                      <span className="text-sm text-white font-medium">{lang === "ar" ? l.nameAr : l.name}</span>
-                    </div>
-                    <span className="text-xs text-gray-500">{lang === "ar" ? l.levelAr : l.level}</span>
-                  </div>
-                ))}
-              </div>
             </GlassCard>
           </div>
         </div>

@@ -21,7 +21,7 @@ const Index = () => {
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
-      <footer className="py-8 text-center text-muted-foreground text-xs border-t border-border bg-card">
+      <footer className="py-8 text-center text-gray-500 text-xs border-t border-white/5" style={{ background: "#060a18" }}>
         {t("footer.rights")}
       </footer>
     </div>

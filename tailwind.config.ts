@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Space Grotesk', 'sans-serif'],
+        heading: ['Syne', 'Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         arabic: ['Amiri', 'serif'],
       },

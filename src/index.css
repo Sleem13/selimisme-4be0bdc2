@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -50,7 +50,7 @@
     --soft-green: 88 42% 48%;
     --gold: 42 85% 52%;
 
-    --font-heading: 'Space Grotesk', sans-serif;
+    --font-heading: 'Syne', 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-arabic: 'Amiri', serif;
 

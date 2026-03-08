@@ -5,10 +5,11 @@ import { motion } from "framer-motion";
 const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
   const [dark, setDark] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const stored = localStorage.getItem("theme");
+      if (stored) return stored === "dark";
+      return true; // Dark mode as default
     }
-    return false;
+    return true;
   });
 
   useEffect(() => {
