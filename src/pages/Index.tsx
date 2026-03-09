@@ -21,6 +21,7 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <HeroSection />
+      <ImpactStripSection />
       <AboutSection />
       <ExperienceSection />
       <EducationSection />
