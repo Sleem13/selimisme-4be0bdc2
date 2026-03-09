@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, Globe, Code2, Stethoscope } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
+import SkillsRadarChart from "@/components/SkillsRadarChart";
 const technicalSkills = ["Python", "SQL", "Power BI", "Tableau", "scikit-learn", "Pandas", "Machine Learning", "ETL Pipelines", "Data Analytics", "DAX", "Automation", "Statistical Modeling"];
 const clinicalSkills = ["Clinical Assessment & Triage", "Musculoskeletal Rehabilitation", "Neuromuscular Therapy", "Sports Injury Recovery", "Dry Needling & Acupuncture", "Pediatric Habilitation"];
 
@@ -144,6 +144,11 @@ const SkillsSection = () => {
                 ))}
               </ul>
             </SoftCard>
+
+            {/* Radar Chart - full width */}
+            <div className="md:col-span-3">
+              <SkillsRadarChart />
+            </div>
           </div>
         </div>
       </div>
