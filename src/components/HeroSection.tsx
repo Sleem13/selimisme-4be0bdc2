@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Mail, Phone, Linkedin, MapPin, Download, ChevronDown } from "lucide-react";
+import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
