@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ImpactStripSection from "@/components/ImpactStripSection";
 import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
@@ -20,6 +21,7 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <HeroSection />
+      <ImpactStripSection />
       <AboutSection />
       <ExperienceSection />
       <EducationSection />

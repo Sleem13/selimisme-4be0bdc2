@@ -64,12 +64,22 @@ const translations: Record<string, Record<Language, string>> = {
   "about.data.title": { en: "Business Intelligence", ar: "ذكاء الأعمال" },
   "about.data.kpi": { en: "20+hrs", ar: "+٢٠ ساعة" },
   "about.data.kpiLabel": { en: "Saved Weekly", ar: "توفير أسبوعي" },
-  "about.data.desc": {
-    en: "Architected automated ETL pipelines and Power BI dashboards consolidating 5+ fragmented data sources into a unified decision hub — driving 15% operational efficiency gains.",
-    ar: "صممت خطوط أنابيب ETL آلية ولوحات Power BI تجمع أكثر من ٥ مصادر بيانات مجزأة في مركز قرارات موحد — محققةً تحسين كفاءة تشغيلية بنسبة ١٥٪."
-  },
+   "about.data.desc": {
+     en: "Architected automated ETL pipelines and Power BI dashboards consolidating 5+ fragmented data sources into a unified decision hub — driving 15% operational efficiency gains.",
+     ar: "صممت خطوط أنابيب ETL آلية ولوحات Power BI تجمع أكثر من ٥ مصادر بيانات مجزأة في مركز قرارات موحد — محققةً تحسين كفاءة تشغيلية بنسبة ١٥٪."
+   },
 
-  // Experience
+   // Impact Strip
+   "impact.patients": { en: "Patients Managed", ar: "مرضى مُدارة" },
+   "impact.patientsDesc": { en: "Cases annually", ar: "حالة سنوية" },
+   "impact.recovery": { en: "Faster Recovery", ar: "تعافي أسرع" },
+   "impact.recoveryDesc": { en: "Acceleration", ar: "التسريع" },
+   "impact.efficiency": { en: "Efficiency Gain", ar: "تحسن الكفاءة" },
+   "impact.efficiencyDesc": { en: "Operational boost", ar: "دفعة تشغيلية" },
+   "impact.hours": { en: "Hours Saved", ar: "ساعات موفرة" },
+   "impact.hoursDesc": { en: "Per week", ar: "كل أسبوع" },
+
+   // Experience
   "exp.label": { en: "Experience", ar: "الخبرات" },
   "exp.title1": { en: "Professional", ar: "المسيرة" },
   "exp.title2": { en: "Journey", ar: "المهنية" },
