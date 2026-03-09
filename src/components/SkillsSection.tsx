@@ -144,6 +144,11 @@ const SkillsSection = () => {
                 ))}
               </ul>
             </SoftCard>
+
+            {/* Radar Chart - full width */}
+            <div className="md:col-span-3">
+              <SkillsRadarChart />
+            </div>
           </div>
         </div>
       </div>
