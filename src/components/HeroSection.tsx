@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Mail, Phone, Linkedin, MapPin, Download, ChevronDown } from "lucide-react";
+import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -111,23 +111,16 @@ const HeroSection = () => {
           {t("hero.description")}
         </motion.p>
 
-        {/* Contact pills */}
-        <motion.div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-8"
+        {/* Skills pills */}
+        <motion.div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}>
-          {[
-            { href: "mailto:muhammadsleem03@gmail.com", icon: Mail, text: "muhammadsleem03@gmail.com" },
-            { href: "tel:+201020754883", icon: Phone, text: "+201020754883" },
-            { href: "https://www.linkedin.com/in/sleemisme", icon: Linkedin, text: "LinkedIn", external: true },
-          ].map((item) => (
-            <a key={item.text} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 hover:shadow-sm">
-              <item.icon className="w-3.5 h-3.5" /> {item.text}
-            </a>
+          {["Python", "SQL", "Power BI", "Machine Learning", "Tableau", "ETL Pipelines", "scikit-learn", "Data Analytics"].map((skill) => (
+            <span key={skill}
+              className="text-sm text-muted-foreground px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 hover:text-primary hover:shadow-sm transition-all duration-300">
+              {skill}
+            </span>
           ))}
-          <span className="flex items-center gap-2 text-sm text-muted-foreground px-3 py-1.5 rounded-full bg-card border border-border">
-            <MapPin className="w-3.5 h-3.5" /> DK, Egypt
-          </span>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
