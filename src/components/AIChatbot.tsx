@@ -127,6 +127,7 @@ const AIChatbot = () => {
 
     await streamChat({
       messages: newMessages,
+      sessionId: sessionIdRef.current,
       onDelta: upsertAssistant,
       onDone: () => setIsTyping(false),
       onError: (err) => {
