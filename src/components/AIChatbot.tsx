@@ -97,6 +97,7 @@ const AIChatbot = () => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const sessionIdRef = useRef(crypto.randomUUID());
   const { lang, isRTL } = useLanguage();
 
   useEffect(() => {
