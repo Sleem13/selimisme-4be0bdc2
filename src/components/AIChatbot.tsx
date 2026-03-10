@@ -15,9 +15,10 @@ const quickReplies = [
 ];
 
 async function streamChat({
-  messages, onDelta, onDone, onError,
+  messages, sessionId, onDelta, onDone, onError,
 }: {
   messages: Message[];
+  sessionId: string;
   onDelta: (text: string) => void;
   onDone: () => void;
   onError: (err: string) => void;
