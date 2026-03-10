@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -39,9 +40,12 @@ serve(async (req) => {
   }
 
   try {
-    const { messages } = await req.json();
+    const { messages, sessionId } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+
+    // Get the last user message for logging
+    const lastUserMessage = [...messages].reverse().find((m: { role: string }) => m.role === "user");
 
     const response = await fetch(
       "https://ai.gateway.lovable.dev/v1/chat/completions",
@@ -83,7 +87,45 @@ serve(async (req) => {
       );
     }
 
-    return new Response(response.body, {
+    // Tee the stream: one for the client, one for logging
+    const [clientStream, logStream] = response.body!.tee();
+
+    // Log the full response asynchronously (don't block the response)
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+    (async () => {
+      try {
+        const reader = logStream.getReader();
+        const decoder = new TextDecoder();
+        let fullResponse = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          for (const line of chunk.split("\n")) {
+            if (!line.startsWith("data: ") || line.includes("[DONE]")) continue;
+            try {
+              const parsed = JSON.parse(line.slice(6));
+              const content = parsed.choices?.[0]?.delta?.content;
+              if (content) fullResponse += content;
+            } catch { /* skip */ }
+          }
+        }
+
+        const supabase = createClient(supabaseUrl, supabaseServiceKey);
+        await supabase.from("chat_logs").insert({
+          session_id: sessionId || "unknown",
+          user_message: lastUserMessage?.content || "",
+          assistant_response: fullResponse,
+        });
+      } catch (e) {
+        console.error("Failed to log chat:", e);
+      }
+    })();
+
+    return new Response(clientStream, {
       headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
     });
   } catch (e) {

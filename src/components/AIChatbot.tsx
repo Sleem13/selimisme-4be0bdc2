@@ -15,9 +15,10 @@ const quickReplies = [
 ];
 
 async function streamChat({
-  messages, onDelta, onDone, onError,
+  messages, sessionId, onDelta, onDone, onError,
 }: {
   messages: Message[];
+  sessionId: string;
   onDelta: (text: string) => void;
   onDone: () => void;
   onError: (err: string) => void;
@@ -30,7 +31,7 @@ async function streamChat({
         "Content-Type": "application/json",
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ messages, sessionId }),
     });
 
     if (!resp.ok) {
@@ -97,6 +98,7 @@ const AIChatbot = () => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const sessionIdRef = useRef(crypto.randomUUID());
   const { lang, isRTL } = useLanguage();
 
   useEffect(() => {
@@ -125,6 +127,7 @@ const AIChatbot = () => {
 
     await streamChat({
       messages: newMessages,
+      sessionId: sessionIdRef.current,
       onDelta: upsertAssistant,
       onDone: () => setIsTyping(false),
       onError: (err) => {
