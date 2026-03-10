@@ -97,6 +97,7 @@ const Index = () => {
         </div>
       </footer>
 
+      <FloatingWhatsApp />
       <AIChatbot />
     </div>
   );
