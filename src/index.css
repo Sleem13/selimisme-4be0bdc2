@@ -103,6 +103,49 @@
     --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.15);
     --shadow-card-hover: 0 10px 25px -5px hsl(215 65% 52% / 0.2), 0 4px 10px -6px hsl(42 85% 55% / 0.15);
   }
+
+  /* Galaxy theme — extends dark with cosmic palette */
+  .galaxy {
+    --background: 250 30% 6%;
+    --foreground: 220 30% 92%;
+
+    --card: 250 25% 10%;
+    --card-foreground: 220 30% 92%;
+
+    --popover: 250 25% 10%;
+    --popover-foreground: 220 30% 92%;
+
+    --primary: 260 80% 65%;
+    --primary-foreground: 260 20% 98%;
+
+    --secondary: 250 20% 16%;
+    --secondary-foreground: 220 30% 92%;
+
+    --muted: 250 15% 18%;
+    --muted-foreground: 250 10% 55%;
+
+    --accent: 170 70% 45%;
+    --accent-foreground: 250 30% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 20% 18%;
+    --input: 260 20% 18%;
+    --ring: 260 80% 65%;
+
+    --navy: 260 50% 70%;
+    --coral: 330 80% 65%;
+    --soft-green: 170 70% 50%;
+    --gold: 45 90% 60%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(260 80% 70%), hsl(200 90% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(170 70% 50%), hsl(260 80% 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(250 35% 4%) 0%, hsl(260 30% 6%) 50%, hsl(250 35% 4%) 100%);
+    --shadow-glow: 0 4px 30px -4px hsl(260 80% 65% / 0.35);
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.3), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow-card-hover: 0 10px 30px -5px hsl(260 80% 65% / 0.25), 0 4px 12px -6px hsl(170 70% 50% / 0.15);
+  }
 }
 
 @layer base {
