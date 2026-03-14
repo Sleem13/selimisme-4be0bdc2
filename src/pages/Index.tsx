@@ -18,9 +18,19 @@ import { ArrowUpRight } from "lucide-react";
 
 const Index = () => {
   const { t, isRTL } = useLanguage();
+  const [isGalaxy, setIsGalaxy] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsGalaxy(document.documentElement.classList.contains("galaxy"));
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="bg-background text-foreground min-h-screen" style={{ scrollBehavior: "smooth" }}>
+      {isGalaxy && <GalaxyEffects />}
       <CustomCursor />
       <Navbar />
       <HeroSection />
