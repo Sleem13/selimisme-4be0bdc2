@@ -108,6 +108,23 @@ const GalaxyEffects = () => {
 
   return (
     <>
+      {/* Nebula clouds - scattered morphing blobs */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: -2,
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <div className="nebula-blob nebula-blob-1" />
+        <div className="nebula-blob nebula-blob-2" />
+        <div className="nebula-blob nebula-blob-3" />
+        <div className="nebula-blob nebula-blob-4" />
+        <div className="nebula-blob nebula-blob-5" />
+      </div>
+
       {/* Aurora Borealis - top of page, behind hero */}
       <div
         className="aurora-container"
