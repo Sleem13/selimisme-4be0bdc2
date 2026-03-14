@@ -39,13 +39,6 @@ const AdminChatLogs = () => {
       const params = new URLSearchParams({ page: String(page) });
       if (search) params.set("search", search);
 
-      const { data, error } = await supabase.functions.invoke("chat-logs", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        body: undefined,
-      });
-
-      // supabase.functions.invoke doesn't support query params easily, use fetch
       const res = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat-logs?${params.toString()}`,
         {
