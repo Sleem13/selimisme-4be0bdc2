@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ImpactStripSection from "@/components/ImpactStripSection";
@@ -10,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import CustomCursor from "@/components/CustomCursor";
 import AIChatbot from "@/components/AIChatbot";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import GalaxyEffects from "@/components/GalaxyEffects";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
