@@ -70,7 +70,7 @@ const HeroSection = () => {
           <img
             src={profileImg}
             alt="Mohamed Mahmoud Seliem"
-            className="profile-knockout relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background"
+            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background"
             style={{ boxShadow: "var(--shadow-glow)" }}
           />
         </motion.div>
