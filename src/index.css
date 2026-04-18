@@ -375,15 +375,3 @@
   opacity: 0.09;
 }
 
-/* Profile picture: knock out the white background using mix-blend-mode
-   so the animated background flows seamlessly behind the subject. */
-.profile-knockout {
-  mix-blend-mode: multiply;
-  background: transparent;
-}
-.dark .profile-knockout,
-.galaxy .profile-knockout {
-  mix-blend-mode: screen;
-  filter: contrast(1.05) brightness(1.02);
-}
-
