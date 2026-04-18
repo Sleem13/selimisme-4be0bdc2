@@ -12,6 +12,7 @@ import CustomCursor from "@/components/CustomCursor";
 import AIChatbot from "@/components/AIChatbot";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import GalaxyEffects from "@/components/GalaxyEffects";
+import DataAnalyticsBackground from "@/components/DataAnalyticsBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -29,7 +30,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-background text-foreground min-h-screen" style={{ scrollBehavior: "smooth" }}>
+    <div className="bg-background text-foreground min-h-screen relative" style={{ scrollBehavior: "smooth" }}>
+      <DataAnalyticsBackground />
       {isGalaxy && <GalaxyEffects />}
       <CustomCursor />
       <Navbar />

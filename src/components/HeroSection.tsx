@@ -67,9 +67,12 @@ const HeroSection = () => {
           <div className="absolute inset-0 -m-0.5 rounded-full" style={{
             background: "conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))",
           }} />
-          <img src={profileImg} alt="Mohamed Mahmoud Seliem"
-            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background"
-            style={{ boxShadow: "var(--shadow-glow)" }} />
+          <img
+            src={profileImg}
+            alt="Mohamed Mahmoud Seliem"
+            className="profile-knockout relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background"
+            style={{ boxShadow: "var(--shadow-glow)" }}
+          />
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
