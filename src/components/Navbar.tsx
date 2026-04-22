@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import LanguageToggle from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const linkKeys = [
@@ -45,7 +44,6 @@ const Navbar = () => {
               {t(link.key)}
             </a>
           ))}
-          <LanguageToggle scrolled={true} />
           <ThemeToggle scrolled={true} />
         </div>
 
@@ -74,7 +72,6 @@ const Navbar = () => {
             </a>
           ))}
           <div className="pt-2 flex items-center gap-3">
-            <LanguageToggle scrolled={true} />
             <ThemeToggle scrolled={true} />
           </div>
         </motion.div>
