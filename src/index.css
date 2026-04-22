@@ -241,11 +241,29 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  .marquee-track {
+    animation: marquee-scroll 40s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track-rtl {
+    animation: marquee-scroll-rtl 40s linear infinite;
+    will-change: transform;
+  }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-scroll-rtl {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 /* ===== Aurora Borealis ===== */

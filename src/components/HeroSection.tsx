@@ -34,9 +34,13 @@ const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 5
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
-  const typingWordsEn = ["Data Analyst", "Problem Solver", "Business Intelligence", "ML Engineer"];
-  const typingWordsAr = ["محلل بيانات", "حلّال مشكلات", "ذكاء أعمال", "مهندس تعلم آلي"];
+  const typingWordsEn = ["Healthcare Data Analyst", "ML Engineer", "BI Architect", "Clinical Insight Builder"];
+  const typingWordsAr = ["محلل بيانات صحية", "مهندس تعلم آلي", "معماري ذكاء أعمال", "صانع رؤى سريرية"];
   const typingText = useTypingAnimation(lang === "ar" ? typingWordsAr : typingWordsEn, 80, 50, 2000);
+
+  const triadEn = ["Analytics", "AI", "Healthcare"];
+  const triadAr = ["تحليلات", "ذكاء اصطناعي", "رعاية صحية"];
+  const triad = lang === "ar" ? triadAr : triadEn;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -75,9 +79,17 @@ const HeroSection = () => {
           />
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p className={`gradient-text font-heading text-sm md:text-base tracking-[0.25em] uppercase mb-4 ${isRTL ? 'font-arabic' : ''}`}>
-            {t("hero.tagline")}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
+          className="mb-5"
+        >
+          <p className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-heading text-sm md:text-base tracking-[0.25em] uppercase ${isRTL ? 'font-arabic' : ''}`}>
+            {triad.map((word, i) => (
+              <span key={word} className="inline-flex items-center gap-3">
+                <span className="text-foreground/80">{word}</span>
+                {i < triad.length - 1 && <span className="text-primary/60">·</span>}
+              </span>
+            ))}
           </p>
         </motion.div>
 
