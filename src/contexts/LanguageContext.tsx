@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, ReactNode } from "react";
 
 interface LanguageContextType {
-  lang: "en";
+  lang: string;
   t: (key: string) => string;
   isRTL: boolean;
 }
