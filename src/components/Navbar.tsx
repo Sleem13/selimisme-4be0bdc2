@@ -6,10 +6,10 @@ import LanguageToggle from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const linkKeys = [
-  { key: "nav.about", href: "#about" },
+  { key: "nav.story", href: "#story" },
+  { key: "nav.services", href: "#services" },
+  { key: "nav.how", href: "#how" },
   { key: "nav.experience", href: "#experience" },
-  { key: "nav.education", href: "#education" },
-  { key: "nav.skills", href: "#skills" },
   { key: "nav.projects", href: "#projects" },
   { key: "nav.contact", href: "#contact" },
 ];
