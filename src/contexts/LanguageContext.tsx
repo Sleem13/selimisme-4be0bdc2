@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, ReactNode } from "react";
 
 interface LanguageContextType {
+  lang: "en";
   t: (key: string) => string;
   isRTL: boolean;
 }
@@ -152,11 +153,136 @@ const translations: Record<string, string> = {
   "impact.hours": "Hours Saved",
   "impact.hoursDesc": "Per week",
 
+  // Experience
+  "exp.label": "Experience",
+  "exp.title1": "Professional",
+  "exp.title2": "Journey",
+  "exp.challenge": "Challenge:",
+  "exp.solution": "Action:",
+  "exp.impact": "Result:",
+
+  "exp.0.role": "Data Analyst",
+  "exp.0.company": "Digilians, MTC & MCIT",
+  "exp.0.period": "Nov 2025 – Present",
+  "exp.0.challenge":
+    "Manual healthcare reporting consumed 20+ hrs/week; data scattered across 5+ siloed sources with zero unified visibility.",
+  "exp.0.solution":
+    "Spearheaded Python & SQL automation pipelines; architected predictive ML models with scikit-learn; designed interactive Power BI dashboards for executive decision-making.",
+  "exp.0.impact":
+    "Delivered 15% efficiency gain, 22% faster recovery identification, and consolidated 5+ data sources into a single source of truth.",
+
+  "exp.1.role": "Senior Physical Therapist",
+  "exp.1.company": "Ministry of Health & Population",
+  "exp.1.period": "Sep 2020 – Present",
+  "exp.1.challenge":
+    "Managing 300+ patient cases/year while maintaining individualized, evidence-based care quality under high-volume pressure.",
+  "exp.1.solution":
+    "Championed structured treatment protocols with measurable milestone tracking; mentored junior therapists on evidence-based methodologies.",
+  "exp.1.impact":
+    "Achieved 95%+ patient satisfaction rate; reduced average recovery timelines through standardized, data-informed care pathways.",
+
+  "exp.2.role": "Sports Rehabilitation Specialist",
+  "exp.2.company": "N.E.C for Physical Therapy",
+  "exp.2.period": "Sep 2021 – Apr 2023",
+  "exp.2.challenge":
+    "Athletes demanded accelerated return-to-play without compromising long-term musculoskeletal health.",
+  "exp.2.solution":
+    "Designed phased recovery programs with performance benchmarking at each milestone; introduced data-driven outcome tracking for treatment optimization.",
+  "exp.2.impact":
+    "Shortened return-to-play timelines significantly through evidence-based, milestone-driven rehabilitation protocols.",
+
+  "exp.3.role": "Pediatric Habilitation Therapist",
+  "exp.3.company": "Nour Elhayat Oasis",
+  "exp.3.period": "2019 – 2021",
+  "exp.3.challenge":
+    "Pediatric developmental cases required highly individualized, family-centered care plans with measurable progress.",
+  "exp.3.solution":
+    "Built developmental KPI tracking systems; partnered with families to align therapy goals with home routines and school environments.",
+  "exp.3.impact":
+    "Improved developmental milestone achievement rates and strengthened family engagement across long-term care plans.",
+
+  // Education
+  "edu.label": "Education",
+  "edu.title1": "Academic",
+  "edu.title2": "Foundation",
+  "edu.0.degree": "B.Sc. in Physical Therapy",
+  "edu.0.institution": "Cairo University",
+  "edu.0.period": "2014 – 2019",
+  "edu.0.details":
+    "Comprehensive training in musculoskeletal, neurological, and pediatric rehabilitation. Graduated with clinical honors.",
+  "edu.1.degree": "Data Analytics & AI Specialization",
+  "edu.1.institution": "Google · Egyptian Military Academy",
+  "edu.1.period": "2023 – 2024",
+  "edu.1.details":
+    "Applied data analytics, statistical modeling, machine learning, and AI integration in healthcare contexts.",
+
+  // Skills
+  "skills.label": "Skills & Tools",
+  "skills.title1": "Built for",
+  "skills.title2": "Impact",
+  "skills.technical": "Technical Stack",
+  "skills.clinical": "Clinical Expertise",
+  "skills.languages": "Languages",
+  "skills.certifications": "Certifications",
+
+  // Projects
+  "proj.label": "Selected Projects",
+  "proj.title1": "Case",
+  "proj.title2": "Studies",
+  "proj.description":
+    "A few of the systems I've built — each one tied to a real bottleneck and a measurable outcome.",
+  "proj.challenge": "Challenge",
+  "proj.solution": "Solution",
+  "proj.impact": "Impact",
+  "proj.tools": "Tools",
+
+  "proj.0.title": "Recovery Trajectory Predictor",
+  "proj.0.tagline": "ML model for personalized rehab forecasting",
+  "proj.0.challenge":
+    "Therapists couldn't reliably predict which patients would recover quickly versus need extended care, leading to inefficient resource allocation.",
+  "proj.0.solution":
+    "Built a supervised ML pipeline using scikit-learn on 1,000+ anonymized cases — feature-engineered clinical, demographic, and adherence variables to forecast recovery curves.",
+  "proj.0.impact.0.kpi": "22%",
+  "proj.0.impact.0.label": "Faster recovery ID",
+  "proj.0.impact.1.kpi": "18%",
+  "proj.0.impact.1.label": "Misdiagnosis cut",
+
+  "proj.1.title": "Clinical Operations Decision Hub",
+  "proj.1.tagline": "Unified Power BI dashboard for healthcare leadership",
+  "proj.1.challenge":
+    "Leadership made decisions on 5+ siloed reports manually consolidated each week — costing 20+ hours and creating blind spots.",
+  "proj.1.solution":
+    "Architected an end-to-end ETL → SQL → Power BI pipeline with DAX measures, drill-through pages, and executive KPI scorecards.",
+  "proj.1.impact.0.kpi": "20+hrs",
+  "proj.1.impact.0.label": "Saved weekly",
+  "proj.1.impact.1.kpi": "15%",
+  "proj.1.impact.1.label": "Efficiency gain",
+
+  "proj.2.title": "Patient Outcomes Analytics Platform",
+  "proj.2.tagline": "Tableau & Python analytics for outcome tracking",
+  "proj.2.challenge":
+    "Outcomes data was collected but never analyzed at population level — clinicians lacked feedback loops to refine protocols.",
+  "proj.2.solution":
+    "Built Python data processing on outcome surveys and Tableau visualizations exposing protocol-level performance and cohort comparisons.",
+  "proj.2.impact.0.kpi": "1k+",
+  "proj.2.impact.0.label": "Cases analyzed",
+  "proj.2.impact.1.kpi": "5+",
+  "proj.2.impact.1.label": "Protocols refined",
+
+  // Contact
+  "contact.label": "Get in Touch",
+  "contact.title1": "Let's",
+  "contact.title2": "Connect",
+  "contact.description":
+    "Have a healthcare data challenge or a project idea? I'd love to hear about it.",
+  "contact.email": "Email Me",
+  "contact.call": "Call",
+  "contact.fun": "When I'm not in the clinic or coding, I write poetry.",
+
   // Footer
   "footer.cta": "Let's Build Something Great",
   "footer.cta.sub": "Ready to turn healthcare data into actionable intelligence? Let's talk.",
   "footer.rights": "© 2026 Mohamed Mahmoud Seliem. All rights reserved.",
-  "contact.email": "Email Me",
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
@@ -171,7 +297,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const t = (key: string): string => translations[key] ?? key;
 
   return (
-    <LanguageContext.Provider value={{ t, isRTL: false }}>
+    <LanguageContext.Provider value={{ lang: "en", t, isRTL: false }}>
       {children}
     </LanguageContext.Provider>
   );
