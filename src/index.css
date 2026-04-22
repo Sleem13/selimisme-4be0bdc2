@@ -224,7 +224,7 @@
 
   .arabic-ornament {
     color: hsl(var(--gold));
-    font-family: var(--font-arabic), serif;
+    font-family: serif;
     font-size: 1.25rem;
     opacity: 0.6;
     line-height: 1;
