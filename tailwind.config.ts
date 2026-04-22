@@ -16,7 +16,6 @@ export default {
       fontFamily: {
         heading: ['Syne', 'Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
-        arabic: ['Amiri', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
