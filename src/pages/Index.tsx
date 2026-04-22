@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import MarqueeStrip from "@/components/MarqueeStrip";
+import StorySection from "@/components/StorySection";
+import ChallengeSolutionSection from "@/components/ChallengeSolutionSection";
+import ServicesSection from "@/components/ServicesSection";
+import HowIWorkSection from "@/components/HowIWorkSection";
 import ImpactStripSection from "@/components/ImpactStripSection";
 import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
@@ -36,6 +41,11 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <HeroSection />
+      <MarqueeStrip />
+      <StorySection />
+      <ChallengeSolutionSection />
+      <ServicesSection />
+      <HowIWorkSection />
       <ImpactStripSection />
       <AboutSection />
       <ExperienceSection />

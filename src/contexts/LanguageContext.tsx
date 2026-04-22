@@ -27,15 +27,100 @@ const translations: Record<string, Record<Language, string>> = {
   "nav.contact": { en: "Contact", ar: "تواصل" },
 
   // Hero
-  "hero.tagline": { en: "Physical Therapist · AI & ML · Healthcare Data Analytics", ar: "أخصائي علاج طبيعي · ذكاء اصطناعي · تحليل بيانات صحية" },
+  "hero.tagline": { en: "Analytics . AI . Healthcare", ar: "تحليلات . ذكاء اصطناعي . رعاية صحية" },
   "hero.name.first": { en: "Mohamed Mahmoud", ar: "محمد محمود" },
   "hero.name.last": { en: "Seliem", ar: "سليم" },
   "hero.description": {
-    en: "5+ years leading clinical rehabilitation teams · Now architecting ML pipelines & BI dashboards that drive 15%+ efficiency gains and transform patient outcomes at scale.",
-    ar: "أكثر من ٥ سنوات في قيادة فرق التأهيل السريري · أصمم الآن خطوط تعلم آلي ولوحات ذكاء أعمال تحقق تحسين كفاءة +١٥٪ وتُحوّل نتائج المرضى على نطاق واسع."
+    en: "Based in Egypt. Helping healthcare teams and global clients turn clinical chaos into clarity — through ML pipelines, BI dashboards, and data systems that move decisions, not just dashboards.",
+    ar: "مقيم في مصر. أساعد فرق الرعاية الصحية والعملاء حول العالم على تحويل الفوضى السريرية إلى وضوح — عبر خطوط تعلم آلي ولوحات ذكاء أعمال وأنظمة بيانات تُحرّك القرارات لا تُزيّن التقارير."
   },
   "hero.headline": { en: "Turning Chaos into Clarity.", ar: "أحوّل الفوضى إلى وضوح." },
   "hero.download": { en: "Download CV", ar: "تحميل السيرة الذاتية" },
+  "hero.cta": { en: "Book a Free Discovery Call", ar: "احجز مكالمة استكشافية مجانية" },
+
+  // Marquee
+  "marquee.1": { en: "ANALYZE", ar: "حلّل" },
+  "marquee.2": { en: "PREDICT", ar: "تنبّأ" },
+  "marquee.3": { en: "AUTOMATE", ar: "أتمتة" },
+  "marquee.4": { en: "TRANSFORM", ar: "حوّل" },
+
+  // Story (Then → Now)
+  "story.label": { en: "My Story", ar: "قصتي" },
+  "story.title": { en: "From reading the body to reading the data.", ar: "من قراءة الجسد إلى قراءة البيانات." },
+  "story.p0": {
+    en: "I started as a physical therapist. Trained in clinical rehabilitation sciences, working inside hospitals and sports centers across Egypt — managing 300+ patient cases a year.",
+    ar: "بدأت كأخصائي علاج طبيعي. تدربت في علوم التأهيل السريري، وعملت داخل مستشفيات ومراكز رياضية في مصر — أدرت أكثر من ٣٠٠ حالة سنوياً."
+  },
+  "story.p1": {
+    en: "That put me in front of patients, doctors, and operations teams — learning where decisions get made, where time gets wasted, and where data could have changed the outcome.",
+    ar: "وضعني هذا أمام المرضى والأطباء وفرق التشغيل — متعلماً أين تُتخذ القرارات، وأين يُهدر الوقت، وأين كان يمكن للبيانات أن تغير النتيجة."
+  },
+  "story.p2": {
+    en: "Over the years I built the dashboards, ML pipelines, and KPI systems that showed leadership exactly where the practice was winning and bleeding. The reports told the story. Generative AI changed what I could build to fix it. Now I build the systems behind the insights.",
+    ar: "على مر السنين بنيت اللوحات وخطوط التعلم الآلي وأنظمة المؤشرات التي أظهرت للقيادة بالضبط أين تربح الممارسة وأين تنزف. التقارير روت القصة. والذكاء التوليدي غيّر ما يمكنني بناءه لحلّها. الآن أبني الأنظمة وراء الرؤى."
+  },
+  "story.quote.1": { en: "The clinician's eye.", ar: "عين الطبيب." },
+  "story.quote.2": { en: "The builder's hands.", ar: "ويدا الصانع." },
+  "story.then": { en: "Then", ar: "في البداية" },
+  "story.now": { en: "Now", ar: "الآن" },
+  "story.then.0": { en: "Clinical Rehab", ar: "تأهيل سريري" },
+  "story.then.1": { en: "Patient Care", ar: "رعاية المرضى" },
+  "story.then.2": { en: "BI Reports", ar: "تقارير BI" },
+  "story.then.3": { en: "SQL & Excel", ar: "SQL وExcel" },
+  "story.now.0": { en: "ML Pipelines", ar: "خطوط تعلم آلي" },
+  "story.now.1": { en: "Gen-AI Systems", ar: "أنظمة ذكاء توليدي" },
+  "story.now.2": { en: "Full-Stack Apps", ar: "تطبيقات متكاملة" },
+  "story.now.3": { en: "Decision Analytics", ar: "تحليلات قرار" },
+
+  // Challenge vs Solution
+  "cs.label": { en: "Challenge vs Solution", ar: "التحدي مقابل الحل" },
+  "cs.title.1": { en: "Every team hits the same walls.", ar: "كل فريق يصطدم بنفس الجدران." },
+  "cs.title.2": { en: "Here's how I break through them.", ar: "وهكذا أكسرها." },
+  "cs.subtitle": { en: "Patterns I've seen across clinics, hospitals, and operations teams — and the systems that fix them.", ar: "أنماط رأيتها عبر العيادات والمستشفيات وفرق التشغيل — والأنظمة التي تُصلحها." },
+  "cs.problem": { en: "Problem", ar: "المشكلة" },
+  "cs.solution": { en: "Solution", ar: "الحل" },
+  "cs.0.problem": { en: "Hours lost to manual reporting", ar: "ساعات تُهدر في التقارير اليدوية" },
+  "cs.0.solution": { en: "Automated ETL & BI Pipelines", ar: "خطوط ETL وذكاء أعمال آلية" },
+  "cs.1.problem": { en: "Subjective triage & inconsistent care", ar: "فرز ذاتي ورعاية غير متسقة" },
+  "cs.1.solution": { en: "ML-Powered Decision Support", ar: "دعم قرار مدعوم بالتعلم الآلي" },
+  "cs.2.problem": { en: "Data scattered across silos", ar: "بيانات مبعثرة عبر صوامع" },
+  "cs.2.solution": { en: "Unified Source-of-Truth Dashboards", ar: "لوحات مصدر حقيقة موحدة" },
+  "cs.3.problem": { en: "Insights that never reach action", ar: "رؤى لا تصل أبداً إلى التنفيذ" },
+  "cs.3.solution": { en: "Analytics That Move Decisions", ar: "تحليلات تُحرّك القرارات" },
+
+  // Services / What I Build
+  "svc.label": { en: "What I Build", ar: "ماذا أبني" },
+  "svc.title.1": { en: "Four focused practices,", ar: "أربعة تخصصات،" },
+  "svc.title.2": { en: "each one moves the needle.", ar: "كل منها يُحرّك المؤشر." },
+  "svc.subtitle": { en: "From the first dataset to the deployed decision system — designed to ship and scale.", ar: "من أول مجموعة بيانات إلى نظام القرار المُنشَر — مصممة للإطلاق والتوسع." },
+  "svc.0.title": { en: "Healthcare ML & Predictive Analytics", ar: "تعلم آلي وتحليلات تنبؤية للرعاية الصحية" },
+  "svc.0.s1": { en: "Clinical Data", ar: "بيانات سريرية" },
+  "svc.0.s2": { en: "ML Pipeline", ar: "خط تعلم آلي" },
+  "svc.0.s3": { en: "Predicted Outcomes", ar: "نتائج متوقعة" },
+  "svc.1.title": { en: "BI Dashboards & Decision Hubs", ar: "لوحات ذكاء أعمال ومراكز قرار" },
+  "svc.1.s1": { en: "Raw Data", ar: "بيانات خام" },
+  "svc.1.s2": { en: "Power BI Hub", ar: "مركز Power BI" },
+  "svc.1.s3": { en: "Smart Decisions", ar: "قرارات ذكية" },
+  "svc.2.title": { en: "Healthcare AI Training & Enablement", ar: "تدريب وتمكين الذكاء الاصطناعي الصحي" },
+  "svc.2.s1": { en: "AI Skeptics", ar: "متشككو AI" },
+  "svc.2.s2": { en: "Hands-On Training", ar: "تدريب عملي" },
+  "svc.2.s3": { en: "Daily AI Users", ar: "مستخدمون يوميون" },
+  "svc.3.title": { en: "Full-Stack Data Apps", ar: "تطبيقات بيانات متكاملة" },
+  "svc.3.s1": { en: "Idea & Spec", ar: "فكرة ومواصفات" },
+  "svc.3.s2": { en: "Build & Deploy", ar: "بناء ونشر" },
+  "svc.3.s3": { en: "Live Product", ar: "منتج حي" },
+
+  // How I Work
+  "how.label": { en: "How I Work", ar: "كيف أعمل" },
+  "how.title.1": { en: "A simple process.", ar: "عملية بسيطة." },
+  "how.title.2": { en: "Built to ship.", ar: "مصممة للإطلاق." },
+  "how.step": { en: "Step", ar: "خطوة" },
+  "how.1.title": { en: "Discovery & Architecture", ar: "اكتشاف وهندسة" },
+  "how.1.desc": { en: "Identify the real bottleneck — clinical, operational, or analytical — and design the data workflow around it.", ar: "تحديد العائق الحقيقي — السريري أو التشغيلي أو التحليلي — وتصميم سير العمل حوله." },
+  "how.2.title": { en: "Execution & Development", ar: "تنفيذ وتطوير" },
+  "how.2.desc": { en: "Build the ML model, BI dashboard, or full-stack tool — fast, tested, and tied to a measurable KPI.", ar: "بناء نموذج التعلم الآلي أو لوحة BI أو الأداة المتكاملة — سريعاً ومُختبراً ومرتبطاً بمؤشر قابل للقياس." },
+  "how.3.title": { en: "Deployment & Empowerment", ar: "نشر وتمكين" },
+  "how.3.desc": { en: "Ship it, integrate it into the team's workflow, and train people so the impact compounds long after I'm gone.", ar: "إطلاقه ودمجه في سير عمل الفريق وتدريب الناس لينمو الأثر طويلاً بعد رحيلي." },
 
   // About
   "about.label": { en: "About Me", ar: "نبذة عني" },
