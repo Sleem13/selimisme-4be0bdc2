@@ -20,6 +20,9 @@ export const useLanguage = () => {
 const translations: Record<string, Record<Language, string>> = {
   // Navbar
   "nav.about": { en: "About", ar: "نبذة" },
+  "nav.story": { en: "Story", ar: "القصة" },
+  "nav.services": { en: "Services", ar: "الخدمات" },
+  "nav.how": { en: "Process", ar: "المنهجية" },
   "nav.experience": { en: "Experience", ar: "الخبرات" },
   "nav.education": { en: "Education", ar: "التعليم" },
   "nav.skills": { en: "Skills", ar: "المهارات" },
