@@ -23,8 +23,12 @@ const GalaxyEffects = () => {
     type TwinkleStar = { x: number; y: number; radius: number; phase: number; speed: number; baseAlpha: number };
     let twinkleStars: TwinkleStar[] = [];
 
+    // Drifting constellation particles (linked when close, foreground)
+    type Drifter = { x: number; y: number; vx: number; vy: number; r: number };
+    let drifters: Drifter[] = [];
+
     const generateTwinkleStars = (w: number, h: number) => {
-      const count = Math.floor((w * h) / 8000); // density based on screen size
+      const count = Math.floor((w * h) / 8000);
       twinkleStars = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -35,12 +39,25 @@ const GalaxyEffects = () => {
       }));
     };
 
+    const generateDrifters = (w: number) => {
+      const vh = window.innerHeight;
+      const count = Math.min(55, Math.floor((w * vh) / 30000));
+      drifters = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * vh,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: 1 + Math.random() * 1.4,
+      }));
+    };
+
     const resize = () => {
       const w = window.innerWidth;
       const h = document.documentElement.scrollHeight;
       canvas.width = w;
       canvas.height = h;
       generateTwinkleStars(w, h);
+      generateDrifters(w);
     };
     resize();
     window.addEventListener("resize", resize);
@@ -77,6 +94,44 @@ const GalaxyEffects = () => {
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(220, 230, 255, ${alpha})`;
+        ctx.fill();
+      }
+
+      // Drifting constellation particles — viewport-only for perf
+      const scrollY = window.scrollY || 0;
+      const vh = window.innerHeight;
+      const linkDist = 130;
+      const linkDistSq = linkDist * linkDist;
+      for (const d of drifters) {
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.x < 0) d.x = window.innerWidth;
+        if (d.x > window.innerWidth) d.x = 0;
+        if (d.y < 0) d.y = vh;
+        if (d.y > vh) d.y = 0;
+      }
+      for (let i = 0; i < drifters.length; i++) {
+        const a = drifters[i];
+        for (let j = i + 1; j < drifters.length; j++) {
+          const b = drifters[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < linkDistSq) {
+            const alpha = (1 - distSq / linkDistSq) * 0.25;
+            ctx.strokeStyle = `rgba(170, 190, 255, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y + scrollY);
+            ctx.lineTo(b.x, b.y + scrollY);
+            ctx.stroke();
+          }
+        }
+      }
+      for (const d of drifters) {
+        ctx.beginPath();
+        ctx.arc(d.x, d.y + scrollY, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 215, 255, 0.6)`;
         ctx.fill();
       }
 

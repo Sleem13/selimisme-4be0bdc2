@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, BrainCircuit, LayoutDashboard, GraduationCap, BarChart3 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import EtlPipelineFlow from "@/components/EtlPipelineFlow";
 
 const ServicesSection = () => {
   const { t, isRTL } = useLanguage();
@@ -48,6 +49,17 @@ const ServicesSection = () => {
             <p className={`text-muted-foreground text-lg mt-4 max-w-2xl ${isRTL ? "font-arabic" : ""}`}>
               {t("svc.subtitle")}
             </p>
+          </motion.div>
+
+          {/* ETL Pipeline visualization */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-10"
+          >
+            <EtlPipelineFlow />
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-5">
