@@ -97,6 +97,44 @@ const GalaxyEffects = () => {
         ctx.fill();
       }
 
+      // Drifting constellation particles — viewport-only for perf
+      const scrollY = window.scrollY || 0;
+      const vh = window.innerHeight;
+      const linkDist = 130;
+      const linkDistSq = linkDist * linkDist;
+      for (const d of drifters) {
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.x < 0) d.x = window.innerWidth;
+        if (d.x > window.innerWidth) d.x = 0;
+        if (d.y < 0) d.y = vh;
+        if (d.y > vh) d.y = 0;
+      }
+      for (let i = 0; i < drifters.length; i++) {
+        const a = drifters[i];
+        for (let j = i + 1; j < drifters.length; j++) {
+          const b = drifters[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < linkDistSq) {
+            const alpha = (1 - distSq / linkDistSq) * 0.25;
+            ctx.strokeStyle = `rgba(170, 190, 255, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y + scrollY);
+            ctx.lineTo(b.x, b.y + scrollY);
+            ctx.stroke();
+          }
+        }
+      }
+      for (const d of drifters) {
+        ctx.beginPath();
+        ctx.arc(d.x, d.y + scrollY, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 215, 255, 0.6)`;
+        ctx.fill();
+      }
+
       // Spawn shooting star every 15-20 seconds
       if (time - lastStarTime > (15000 + Math.random() * 5000)) {
         spawnStar();
