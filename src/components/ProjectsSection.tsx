@@ -132,6 +132,8 @@ const ProjectsSection = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              </Tilt3DCard>
               </motion.div>
             ))}
           </div>
