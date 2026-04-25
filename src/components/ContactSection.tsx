@@ -63,18 +63,11 @@ const ContactSection = () => {
               </div>
 
               {/* Action buttons grid */}
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <motion.a href="mailto:muhammadsleem03@gmail.com"
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-heading text-xs font-semibold bg-primary text-primary-foreground transition-all duration-300 hover:shadow-md"
                   whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   <Mail className="w-3.5 h-3.5" /> {t("contact.email")}
-                </motion.a>
-
-                <motion.a href="https://wa.me/201020754883" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-heading text-xs font-semibold text-primary-foreground transition-all duration-300 hover:shadow-md"
-                  style={{ background: "hsl(var(--soft-green))" }}
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                  <Send className="w-3.5 h-3.5" /> WhatsApp
                 </motion.a>
 
                 <motion.a href="https://www.linkedin.com/in/sleemisme" target="_blank" rel="noopener noreferrer"
