@@ -14,6 +14,7 @@ import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import CustomCursor from "@/components/CustomCursor";
+import CareerTimeline from "@/components/CareerTimeline";
 import AIChatbot from "@/components/AIChatbot";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import GalaxyEffects from "@/components/GalaxyEffects";
@@ -49,6 +50,7 @@ const Index = () => {
       <ImpactStripSection />
       <AboutSection />
       <ExperienceSection />
+      <CareerTimeline />
       <EducationSection />
       <SkillsSection />
       <ProjectsSection />
