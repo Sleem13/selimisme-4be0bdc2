@@ -23,8 +23,12 @@ const GalaxyEffects = () => {
     type TwinkleStar = { x: number; y: number; radius: number; phase: number; speed: number; baseAlpha: number };
     let twinkleStars: TwinkleStar[] = [];
 
+    // Drifting constellation particles (linked when close, foreground)
+    type Drifter = { x: number; y: number; vx: number; vy: number; r: number };
+    let drifters: Drifter[] = [];
+
     const generateTwinkleStars = (w: number, h: number) => {
-      const count = Math.floor((w * h) / 8000); // density based on screen size
+      const count = Math.floor((w * h) / 8000);
       twinkleStars = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -35,12 +39,25 @@ const GalaxyEffects = () => {
       }));
     };
 
+    const generateDrifters = (w: number) => {
+      const vh = window.innerHeight;
+      const count = Math.min(55, Math.floor((w * vh) / 30000));
+      drifters = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * vh,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: 1 + Math.random() * 1.4,
+      }));
+    };
+
     const resize = () => {
       const w = window.innerWidth;
       const h = document.documentElement.scrollHeight;
       canvas.width = w;
       canvas.height = h;
       generateTwinkleStars(w, h);
+      generateDrifters(w);
     };
     resize();
     window.addEventListener("resize", resize);
