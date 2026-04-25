@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Target, Lightbulb, TrendingUp, Wrench } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AnimatedKpi } from "@/components/AnimatedKpi";
+import Tilt3DCard from "@/components/Tilt3DCard";
 
 const projectTools = [
   ["Python", "scikit-learn", "Pandas", "SQL"],
@@ -60,12 +61,14 @@ const ProjectsSection = () => {
             {projects.map((project, i) => (
               <motion.div
                 key={i}
-                className="group rounded-2xl bg-card border border-border p-7 md:p-9 transition-all duration-500 hover:border-primary/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -4 }}
+              >
+              <Tilt3DCard className="block" max={5}>
+              <div
+                className="group rounded-2xl bg-card border border-border p-7 md:p-9 transition-all duration-500 hover:border-primary/30"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <div className="mb-6">
