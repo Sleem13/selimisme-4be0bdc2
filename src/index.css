@@ -152,18 +152,33 @@
     @apply border-border;
   }
 
-  /* Smooth theme transitions between Light / Dark / Galaxy */
+  /* Smooth theme transitions between Light / Galaxy.
+     Covers every theme-sensitive paint property so nothing snaps. */
   html,
   body,
-  body * {
-    transition: background-color 400ms ease, border-color 400ms ease,
-      color 300ms ease, fill 300ms ease, stroke 300ms ease,
-      box-shadow 400ms ease;
+  body *,
+  body *::before,
+  body *::after {
+    transition-property: background-color, background-image, border-color,
+      color, fill, stroke, box-shadow, outline-color, text-decoration-color,
+      caret-color, --tw-ring-color, --tw-ring-offset-color,
+      --tw-gradient-from, --tw-gradient-via, --tw-gradient-to,
+      --tw-shadow-color, opacity, filter, backdrop-filter;
+    transition-duration: 400ms;
+    transition-timing-function: ease;
   }
 
-  /* Avoid transitioning interactive transforms / opacity to keep motion snappy */
+  /* Keep interactive motion snappy — don't slow hover/tap transforms */
+  body *:hover,
+  body *:focus-visible,
+  body *:active {
+    transition-duration: 200ms;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    html, body, body * { transition: none !important; }
+    html, body, body *, body *::before, body *::after {
+      transition: none !important;
+    }
   }
 
   body {
