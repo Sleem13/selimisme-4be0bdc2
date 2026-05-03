@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
+import LiquidEther from "@/components/LiquidEther.jsx";
 
 const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 50, pauseTime = 2000) => {
   const [displayText, setDisplayText] = useState("");
@@ -44,6 +45,22 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* LiquidEther background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+        <LiquidEther
+          colors={["#5227FF", "#FF9FFC", "#B497CF"]}
+          mouseForce={20}
+          cursorSize={100}
+          resolution={0.5}
+          autoDemo
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
+        />
+      </div>
+
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 0.5px, transparent 0)`,
