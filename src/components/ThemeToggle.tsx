@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { Moon, Sun, Sparkles } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type ThemeMode = "light" | "dark" | "galaxy";
+type ThemeMode = "light" | "galaxy";
 
 const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
   const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("theme") as ThemeMode | null;
-      if (stored && ["light", "dark", "galaxy"].includes(stored)) return stored;
+      const stored = localStorage.getItem("theme");
+      if (stored === "galaxy") return "galaxy";
       return "light";
     }
     return "light";
@@ -17,27 +17,18 @@ const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove("dark", "galaxy");
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else if (theme === "galaxy") {
+    if (theme === "galaxy") {
       root.classList.add("dark", "galaxy");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const cycle = () => {
-    setTheme((prev) => {
-      if (prev === "light") return "dark";
-      if (prev === "dark") return "galaxy";
-      return "light";
-    });
+    setTheme((prev) => (prev === "light" ? "galaxy" : "light"));
   };
 
-  const icon = theme === "light" ? <Moon className="w-4 h-4" /> 
-    : theme === "dark" ? <Sparkles className="w-4 h-4" /> 
-    : <Sun className="w-4 h-4" />;
-
-  const label = theme === "light" ? "Dark mode" : theme === "dark" ? "Galaxy mode" : "Light mode";
+  const icon = theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />;
+  const label = theme === "light" ? "Galaxy mode" : "Light mode";
 
   return (
     <motion.button
