@@ -152,6 +152,20 @@
     @apply border-border;
   }
 
+  /* Smooth theme transitions between Light / Dark / Galaxy */
+  html,
+  body,
+  body * {
+    transition: background-color 400ms ease, border-color 400ms ease,
+      color 300ms ease, fill 300ms ease, stroke 300ms ease,
+      box-shadow 400ms ease;
+  }
+
+  /* Avoid transitioning interactive transforms / opacity to keep motion snappy */
+  @media (prefers-reduced-motion: reduce) {
+    html, body, body * { transition: none !important; }
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
