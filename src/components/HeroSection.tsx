@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
+// @ts-expect-error - JSX module without types
+import LiquidEther from "@/components/LiquidEther.jsx";
 
 const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 50, pauseTime = 2000) => {
   const [displayText, setDisplayText] = useState("");
