@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { memo, useMemo, useState, useEffect } from "react";
 import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -34,6 +34,23 @@ const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 5
 
 const LIQUID_COLORS = ["#5227FF", "#FF9FFC", "#B497CF"];
 
+const HeroBackground = memo(() => (
+  <div className="absolute inset-0 z-0 pointer-events-none opacity-45">
+    <LiquidEther
+      colors={LIQUID_COLORS}
+      mouseForce={12}
+      cursorSize={80}
+      resolution={0.35}
+      autoDemo
+      autoSpeed={0.35}
+      autoIntensity={1.4}
+      takeoverDuration={0.2}
+      autoResumeDelay={4000}
+      autoRampDuration={0.8}
+    />
+  </div>
+));
+
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
@@ -43,25 +60,12 @@ const HeroSection = () => {
 
   const triadEn = ["Analytics", "AI", "Healthcare"];
   const triadAr = ["تحليلات", "ذكاء اصطناعي", "رعاية صحية"];
-  const triad = lang === "ar" ? triadAr : triadEn;
+  const triad = useMemo(() => (lang === "ar" ? triadAr : triadEn), [lang]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* LiquidEther background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
-        <LiquidEther
-          colors={LIQUID_COLORS}
-          mouseForce={20}
-          cursorSize={100}
-          resolution={0.5}
-          autoDemo
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
-        />
-      </div>
+      <HeroBackground />
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -69,11 +73,8 @@ const HeroSection = () => {
         backgroundSize: '32px 32px',
       }} />
 
-      {/* Soft gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none opacity-30"
-        style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%)" }} />
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none opacity-20"
-        style={{ background: "radial-gradient(circle, hsl(var(--accent) / 0.2), transparent 70%)" }} />
+      <div className="absolute inset-0 pointer-events-none z-[1]"
+        style={{ background: "linear-gradient(180deg, hsl(var(--background) / 0.18) 0%, hsl(var(--background) / 0.04) 36%, hsl(var(--background) / 0.28) 100%)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-24">
         {/* Left: Text content */}
@@ -160,8 +161,7 @@ const HeroSection = () => {
               className="absolute inset-0 -m-10 rounded-full pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 65%)",
-                filter: "blur(40px)",
+                  "radial-gradient(circle, hsl(var(--primary) / 0.18), transparent 65%)",
               }}
             />
             {/* Subtle accent ring */}
@@ -170,7 +170,6 @@ const HeroSection = () => {
               style={{
                 background:
                   "conic-gradient(from 0deg, hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.4), transparent, hsl(var(--primary) / 0.4))",
-                filter: "blur(20px)",
               }}
             />
             <img
