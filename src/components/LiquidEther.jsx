@@ -900,7 +900,8 @@ export default function LiquidEther({
       if (webglRef.current) webglRef.current.dispose();
       webglRef.current = null;
     };
-  }, [BFECC, cursorSize, dt, isBounce, isViscous, iterationsPoisson, iterationsViscous, mouseForce, resolution, viscous, colors, autoDemo, autoSpeed, autoIntensity, takeoverDuration, autoResumeDelay, autoRampDuration]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const webgl = webglRef.current;

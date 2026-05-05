@@ -32,6 +32,8 @@ const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 5
   return displayText;
 };
 
+const LIQUID_COLORS = ["#5227FF", "#FF9FFC", "#B497CF"];
+
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
@@ -48,7 +50,7 @@ const HeroSection = () => {
       {/* LiquidEther background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
         <LiquidEther
-          colors={["#5227FF", "#FF9FFC", "#B497CF"]}
+          colors={LIQUID_COLORS}
           mouseForce={20}
           cursorSize={100}
           resolution={0.5}
