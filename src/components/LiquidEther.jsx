@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import './LiquidEther.css';
 
-export default function LiquidEther({
+function LiquidEther({
   mouseForce = 20,
   cursorSize = 100,
   isViscous = false,
@@ -75,9 +75,14 @@ export default function LiquidEther({
       }
       init(container) {
         this.container = container;
-        this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        this.pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
         this.resize();
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer = new THREE.WebGLRenderer({
+          antialias: false,
+          alpha: true,
+          powerPreference: 'high-performance',
+          premultipliedAlpha: true
+        });
         this.renderer.autoClear = false;
         this.renderer.setClearColor(new THREE.Color(0x000000), 0);
         this.renderer.setPixelRatio(this.pixelRatio);
@@ -797,8 +802,6 @@ export default function LiquidEther({
         });
         this.init();
         this._loop = this.loop.bind(this);
-        this._resize = this.resize.bind(this);
-        window.addEventListener('resize', this._resize);
         this._onVisibility = () => {
           const hidden = document.hidden;
           if (hidden) this.pause();
@@ -830,7 +833,6 @@ export default function LiquidEther({
       }
       dispose() {
         try {
-          window.removeEventListener('resize', this._resize);
           document.removeEventListener('visibilitychange', this._onVisibility);
           Mouse.dispose();
           if (Common.renderer) {
@@ -929,3 +931,5 @@ export default function LiquidEther({
 
   return <div ref={mountRef} className={`liquid-ether-container ${className || ''}`} style={style} />;
 }
+
+export default memo(LiquidEther);
