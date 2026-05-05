@@ -153,30 +153,22 @@
   }
 
   /* Smooth theme transitions between Light / Galaxy.
-     Covers every theme-sensitive paint property so nothing snaps. */
+     Only theme-driven paint properties — never opacity/filter/transform,
+     which framer-motion and the WebGL canvas animate every frame. */
   html,
   body,
-  body *,
-  body *::before,
-  body *::after {
-    transition-property: background-color, background-image, border-color,
-      color, fill, stroke, box-shadow, outline-color, text-decoration-color,
-      caret-color, --tw-ring-color, --tw-ring-offset-color,
-      --tw-gradient-from, --tw-gradient-via, --tw-gradient-to,
-      --tw-shadow-color, opacity, filter, backdrop-filter;
-    transition-duration: 400ms;
+  body *:not(canvas):not(svg):not(svg *),
+  body *:not(canvas):not(svg):not(svg *)::before,
+  body *:not(canvas):not(svg):not(svg *)::after {
+    transition-property: background-color, border-color, color, fill, stroke,
+      box-shadow, outline-color, text-decoration-color, caret-color,
+      --tw-ring-color, --tw-ring-offset-color, --tw-shadow-color;
+    transition-duration: 300ms;
     transition-timing-function: ease;
   }
 
-  /* Keep interactive motion snappy — don't slow hover/tap transforms */
-  body *:hover,
-  body *:focus-visible,
-  body *:active {
-    transition-duration: 200ms;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    html, body, body *, body *::before, body *::after {
+    html, body, body * {
       transition: none !important;
     }
   }
