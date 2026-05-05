@@ -32,6 +32,8 @@ const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 5
   return displayText;
 };
 
+const LIQUID_COLORS = ["#5227FF", "#FF9FFC", "#B497CF"];
+
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
