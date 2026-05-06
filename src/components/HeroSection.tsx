@@ -172,15 +172,20 @@ const HeroSection = () => {
                   "conic-gradient(from 0deg, hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.4), transparent, hsl(var(--primary) / 0.4))",
               }}
             />
-            <img
-              src={profileImg}
-              alt="Mohamed Mahmoud Seliem"
-              className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] object-contain"
+            <div
+              className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full overflow-hidden ring-1 ring-primary/20"
               style={{
-                filter:
-                  "drop-shadow(0 20px 40px hsl(var(--primary) / 0.25)) drop-shadow(0 8px 20px hsl(0 0% 0% / 0.35))",
+                boxShadow:
+                  "0 20px 40px hsl(var(--primary) / 0.25), 0 8px 20px hsl(0 0% 0% / 0.35)",
               }}
-            />
+            >
+              <img
+                src={profileImg}
+                alt="Mohamed Mahmoud Seliem"
+                className="w-full h-full object-cover object-center"
+                loading="eager"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
