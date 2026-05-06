@@ -1,48 +1,94 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Stethoscope, BarChart3, BrainCircuit, Rocket } from "lucide-react";
+import { GraduationCap, Stethoscope, BarChart3, BrainCircuit, Rocket, Activity, Database, LineChart } from "lucide-react";
 
-const milestones = [
+type Milestone = {
+  year: string;
+  title: string;
+  company: string;
+  icon: typeof GraduationCap;
+  detail: string;
+  metric: string;
+  metricLabel: string;
+  color: string;
+};
+
+const milestones: Milestone[] = [
   {
-    year: "2018",
+    year: "2018 — 2023",
+    title: "B.Sc. Physical Therapy",
+    company: "Cairo University · Faculty of Physical Therapy",
     icon: GraduationCap,
-    title: "Bachelor of Physical Therapy",
-    detail: "Foundations in human systems, evidence-based practice, and patient outcomes.",
+    detail: "Five years grounded in anatomy, neuroscience, and evidence-based practice — the foundation for reading the human system as data.",
     metric: "5 yrs",
     metricLabel: "academic training",
     color: "hsl(var(--primary))",
   },
   {
-    year: "2020",
+    year: "Jul 2021 — Sep 2021",
+    title: "Clinical Intern · Outpatient Rehab",
+    company: "Kasr Al Ainy Teaching Hospital",
+    icon: Activity,
+    detail: "Rotated through musculoskeletal and neuro units. First exposure to messy clinical record-keeping that would later define my analytics work.",
+    metric: "120+",
+    metricLabel: "patient sessions",
+    color: "hsl(var(--coral))",
+  },
+  {
+    year: "2022 — 2023",
+    title: "Physical Therapist (Part-time)",
+    company: "Private Rehabilitation Center, Cairo",
     icon: Stethoscope,
-    title: "Clinical Practice",
-    detail: "Direct patient care across musculoskeletal, neuromuscular, and pediatric cases.",
+    detail: "Treated musculoskeletal, neuromuscular, and pediatric cases. Started tracking outcomes in spreadsheets — the seed of every dashboard since.",
     metric: "300+",
     metricLabel: "patients treated",
     color: "hsl(var(--coral))",
   },
   {
-    year: "2022",
+    year: "2023",
+    title: "Self-Taught Data Analyst",
+    company: "Independent · Python · SQL · Power BI",
     icon: BarChart3,
-    title: "Pivot to Data",
-    detail: "Self-taught Python, SQL, and dashboards — applied to clinical KPIs first.",
+    detail: "Built first KPI dashboards for a small clinic. Recovery-time tracking exposed bottlenecks invisible to the human eye.",
     metric: "22%",
     metricLabel: "recovery uplift",
     color: "hsl(var(--gold))",
   },
   {
     year: "2024",
-    icon: BrainCircuit,
-    title: "Healthcare Analytics & AI",
-    detail: "ETL pipelines, predictive models, and Power BI dashboards for clinical teams.",
+    title: "Data Analyst · Healthcare",
+    company: "Freelance & Clinical Consulting",
+    icon: Database,
+    detail: "Designed ETL pipelines and Power BI dashboards for outpatient clinics. Standardized intake → outcome reporting end-to-end.",
     metric: "20+",
     metricLabel: "hours saved / week",
     color: "hsl(var(--soft-green))",
   },
   {
+    year: "2024 — 2025",
+    title: "ML Engineer · Clinical Predictive Models",
+    company: "Independent Projects",
+    icon: BrainCircuit,
+    detail: "scikit-learn classifiers for readmission risk and recovery trajectories. Shipped models with clinician-readable explanations.",
+    metric: "0.87",
+    metricLabel: "ROC-AUC peak",
+    color: "hsl(var(--primary))",
+  },
+  {
+    year: "2025",
+    title: "BI Architect · Cross-Domain Analytics",
+    company: "Contract Engagements",
+    icon: LineChart,
+    detail: "Tableau + Power BI architectures for healthcare and ops clients. Translated KPIs into decisions, not just charts.",
+    metric: "8",
+    metricLabel: "production dashboards",
+    color: "hsl(var(--gold))",
+  },
+  {
     year: "Now",
+    title: "Healthcare Data Analyst & ML Engineer",
+    company: "Open to roles · Remote / Cairo",
     icon: Rocket,
-    title: "Analytics × AI × Healthcare",
-    detail: "Turning chaos into clarity — bridging clinicians and data with measurable impact.",
+    detail: "Bridging clinicians and data with measurable impact. Turning chaos into clarity, one pipeline at a time.",
     metric: "∞",
     metricLabel: "what's next",
     color: "hsl(var(--accent))",
