@@ -166,7 +166,7 @@ const CareerTimeline = () => {
                         className="rounded-2xl bg-card border border-border p-5 md:p-6 transition-all duration-500 hover:border-primary/30"
                         style={{ boxShadow: "var(--shadow-card)" }}
                       >
-                        <div className={`flex items-center gap-3 mb-3 ${isLeft ? "md:flex-row-reverse" : ""}`}>
+                        <div className={`flex items-center gap-3 mb-2 ${isLeft ? "md:flex-row-reverse" : ""}`}>
                           <div
                             className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                             style={{ background: `${m.color.replace("hsl(", "hsla(").replace(")", ", 0.12)")}` }}
@@ -175,6 +175,9 @@ const CareerTimeline = () => {
                           </div>
                           <h3 className="text-base md:text-lg font-heading font-bold text-foreground leading-tight">{m.title}</h3>
                         </div>
+                        <p className={`text-xs uppercase tracking-[0.18em] text-muted-foreground/80 mb-3 ${isLeft ? "md:text-right" : ""}`}>
+                          {m.company}
+                        </p>
                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">{m.detail}</p>
                         <div className={`flex items-baseline gap-2 ${isLeft ? "md:justify-end" : ""}`}>
                           <span className="text-2xl md:text-3xl font-heading font-bold" style={{ color: m.color }}>{m.metric}</span>
