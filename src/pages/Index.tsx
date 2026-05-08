@@ -138,12 +138,6 @@ const Index = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+201020754883" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors">
-                  <Phone className="w-4 h-4 text-primary" />
-                  +20 102 075 4883
-                </a>
-              </li>
-              <li>
                 <a href="https://www.linkedin.com/in/sleemisme" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors">
                   <Linkedin className="w-4 h-4 text-primary" />
                   /in/sleemisme
