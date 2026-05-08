@@ -53,7 +53,7 @@ const Index = () => {
       <EducationSection />
       <SkillsSection />
       <ProjectsSection />
-      <ContactSection />
+      
 
       {/* Footer */}
       <footer className="relative bg-card border-t border-border">
