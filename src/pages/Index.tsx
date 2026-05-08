@@ -58,7 +58,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="relative bg-card border-t border-border">
         {/* CTA band */}
-        <div className="relative z-10 py-20 md:py-24 px-6 border-b border-border">
+        <div id="contact" className="relative z-10 py-20 md:py-24 px-6 border-b border-border scroll-mt-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
               className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight font-heading"
