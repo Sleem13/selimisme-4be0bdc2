@@ -32,7 +32,7 @@ const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 5
   return displayText;
 };
 
-const LIQUID_COLORS = ["#5227FF", "#FF9FFC", "#B497CF"];
+const LIQUID_COLORS = ["#00D4FF", "#0077FF", "#1A4A6E"];
 
 const HeroBackground = memo(() => (
   <div className="absolute inset-0 z-0 pointer-events-none opacity-45">
