@@ -63,7 +63,7 @@ const ContactSection = () => {
               </div>
 
               {/* Action buttons grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <motion.a href="mailto:muhammadsleem03@gmail.com"
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-heading text-xs font-semibold bg-primary text-primary-foreground transition-all duration-300 hover:shadow-md"
                   whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
@@ -74,12 +74,6 @@ const ContactSection = () => {
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border text-muted-foreground font-heading text-xs font-medium hover:border-primary/40 hover:text-foreground transition-all duration-300"
                   whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   <Linkedin className="w-3.5 h-3.5" /> LinkedIn
-                </motion.a>
-
-                <motion.a href="tel:+201020754883"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border text-muted-foreground font-heading text-xs font-medium hover:border-primary/40 hover:text-foreground transition-all duration-300"
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                  <Phone className="w-3.5 h-3.5" /> {t("contact.call")}
                 </motion.a>
               </div>
             </div>
