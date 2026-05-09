@@ -138,12 +138,19 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
+          <motion.div
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
+          >
             <a href="/Mohamed_Mahmoud_Seliem_CV.pdf" download
               className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold transition-all duration-300 bg-primary text-primary-foreground hover:shadow-lg"
               style={{ boxShadow: "var(--shadow-glow)" }}>
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               {t("hero.download")}
+            </a>
+            <a href="#contact"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300">
+              {t("nav.contact")}
             </a>
           </motion.div>
         </div>
