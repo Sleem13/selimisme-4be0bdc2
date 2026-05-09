@@ -58,42 +58,71 @@ const Index = () => {
       {/* Footer */}
       <footer className="relative bg-card border-t border-border">
         {/* CTA band */}
-        <div id="contact" className="relative z-10 py-20 md:py-24 px-6 border-b border-border scroll-mt-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight font-heading"
-              initial={{ opacity: 0, y: 40 }}
+        <div id="contact" className="relative z-10 py-20 md:py-28 px-6 border-b border-border scroll-mt-20">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+            {/* Left: headline + subcopy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
+              className={isRTL ? "text-right" : "text-left"}
             >
-              <span className="gradient-text">{t("footer.cta")}</span>
-            </motion.h2>
+              <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-4 ${isRTL ? "font-arabic" : ""}`}>
+                {t("nav.contact")}
+              </p>
+              <h2 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-5 ${isRTL ? "font-arabic" : "font-heading"}`}>
+                <span className="gradient-text">{t("footer.cta")}</span>
+              </h2>
+              <p className={`text-muted-foreground text-base md:text-lg max-w-xl ${isRTL ? "font-arabic" : ""}`}>
+                {t("footer.cta.sub")}
+              </p>
+            </motion.div>
 
-            <motion.p
-              className="text-muted-foreground text-lg md:text-xl mb-10 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
+            {/* Right: action card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
+              className="rounded-2xl bg-card border border-border p-7 md:p-8"
+              style={{ boxShadow: "var(--shadow-card)" }}
             >
-              {t("footer.cta.sub")}
-            </motion.p>
+              <a
+                href="mailto:muhammadsleem03@gmail.com"
+                className="group flex items-center justify-between gap-4 px-5 py-4 rounded-xl bg-primary text-primary-foreground transition-all duration-300 hover:shadow-lg"
+                style={{ boxShadow: "var(--shadow-glow)" }}
+              >
+                <span className="flex items-center gap-3 font-heading font-semibold">
+                  <Mail className="w-5 h-5" />
+                  muhammadsleem03@gmail.com
+                </span>
+                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
 
-            <motion.a
-              href="mailto:muhammadsleem03@gmail.com"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-heading text-base font-semibold bg-primary text-primary-foreground transition-all duration-300 hover:shadow-lg"
-              style={{ boxShadow: "var(--shadow-glow)" }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              {t("contact.email")}
-              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </motion.a>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                <a
+                  href="https://www.linkedin.com/in/sleemisme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-secondary border border-border hover:border-primary/40 transition-all"
+                >
+                  <span className="flex items-center gap-2 text-sm text-foreground/90 font-medium">
+                    <Linkedin className="w-4 h-4 text-primary" />
+                    LinkedIn
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </a>
+                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-secondary border border-border text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 text-primary" />
+                  Cairo, Egypt
+                </div>
+              </div>
+
+              <p className="text-xs text-muted-foreground mt-5 leading-relaxed">
+                Typically replies within 24 hours · Open to remote & hybrid roles
+              </p>
+            </motion.div>
           </div>
         </div>
 
