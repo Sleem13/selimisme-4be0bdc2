@@ -33,18 +33,25 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-heading text-lg font-bold gradient-text">MS</a>
+      <div className="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
+        <a href="#" className="font-heading text-lg font-bold gradient-text tracking-tight">MS</a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-1 rounded-full border border-border bg-card/60 backdrop-blur px-1.5 py-1.5">
           {linkKeys.map((link) => (
             <a key={link.href} href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
+              className="text-sm text-muted-foreground hover:text-foreground hover:bg-secondary px-3.5 py-1.5 rounded-full transition-colors font-body">
               {t(link.key)}
             </a>
           ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-2">
           <ThemeToggle scrolled={true} />
+          <a href="#contact"
+            className="text-sm font-heading font-semibold px-4 py-2 rounded-full bg-primary text-primary-foreground hover:shadow-md transition-all">
+            {t("nav.contact")}
+          </a>
         </div>
 
         {/* Mobile toggle */}
