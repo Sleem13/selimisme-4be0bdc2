@@ -127,19 +127,37 @@ const Index = () => {
         </div>
 
         {/* Footer body */}
-        <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-5">
             <p className="text-2xl font-heading font-bold gradient-text mb-3">Muhammad Seliem</p>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mb-5">
               Analytics · AI · Healthcare — turning chaos into clarity through data.
             </p>
+            <div className="flex items-center gap-2">
+              <a
+                href="mailto:muhammadsleem03@gmail.com"
+                aria-label="Email"
+                className="w-9 h-9 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground/80 hover:text-primary hover:border-primary/40 transition-all"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sleemisme"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground/80 hover:text-primary hover:border-primary/40 transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Quick links */}
-          <div>
+          <div className="md:col-span-3">
             <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">Navigate</p>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2.5 text-sm">
               {[
                 { href: "#about", label: "About" },
                 { href: "#services", label: "Services" },
@@ -156,25 +174,23 @@ const Index = () => {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">Contact</p>
+          {/* Reach */}
+          <div className="md:col-span-4">
+            <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">Reach</p>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="mailto:muhammadsleem03@gmail.com" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors">
-                  <Mail className="w-4 h-4 text-primary" />
+                <a href="mailto:muhammadsleem03@gmail.com" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors break-all">
+                  <Mail className="w-4 h-4 text-primary shrink-0" />
                   muhammadsleem03@gmail.com
                 </a>
               </li>
-              <li>
-                <a href="https://www.linkedin.com/in/sleemisme" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors">
-                  <Linkedin className="w-4 h-4 text-primary" />
-                  /in/sleemisme
-                </a>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary shrink-0" />
+                Cairo, Egypt
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary" />
-                Cairo, Egypt
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Open to opportunities
               </li>
             </ul>
           </div>
