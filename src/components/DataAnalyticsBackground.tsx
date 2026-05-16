@@ -7,8 +7,8 @@ import { useEffect, useRef, useState } from "react";
  * - Connecting network lines (proximity-based)
  * - Subtle floating tool labels (Power BI, SQL, Python, Tableau, Excel)
  *
- * Adapts to light/dark/galaxy themes:
- * - Dark/Galaxy: Glowing neon-blue nodes and lines on deep navy/purple base
+ * Adapts to light/dark themes:
+ * - Dark: Glowing neon-blue nodes and lines on deep navy base
  * - Light: Charcoal/slate nodes and lines on soft off-white base (no glow)
  *
  * Optimized: single rAF loop, capped DPR, pauses when tab hidden.
@@ -26,9 +26,7 @@ const DataAnalyticsBackground = () => {
   // Watch for theme changes on <html>
   useEffect(() => {
     const update = () => {
-      const isDark =
-        document.documentElement.classList.contains("dark") ||
-        document.documentElement.classList.contains("galaxy");
+      const isDark = document.documentElement.classList.contains("dark");
       setTheme(isDark ? "dark" : "light");
     };
     update();

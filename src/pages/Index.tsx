@@ -12,11 +12,12 @@ import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import RepoHealthBadgeSection from "@/components/RepoHealthBadgeSection";
+import ComplianceEthicsSection from "@/components/ComplianceEthicsSection";
 
 import CustomCursor from "@/components/CustomCursor";
 import CareerTimeline from "@/components/CareerTimeline";
 import AIChatbot from "@/components/AIChatbot";
-import GalaxyEffects from "@/components/GalaxyEffects";
 import DataAnalyticsBackground from "@/components/DataAnalyticsBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
@@ -24,20 +25,10 @@ import { ArrowUpRight, Mail, Linkedin, Phone, MapPin } from "lucide-react";
 
 const Index = () => {
   const { t, isRTL } = useLanguage();
-  const [isGalaxy, setIsGalaxy] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsGalaxy(document.documentElement.classList.contains("galaxy"));
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="bg-background text-foreground min-h-screen relative" style={{ scrollBehavior: "smooth" }}>
       <DataAnalyticsBackground />
-      {isGalaxy && <GalaxyEffects />}
       <CustomCursor />
       <Navbar />
       <HeroSection />
@@ -53,6 +44,8 @@ const Index = () => {
       <EducationSection />
       <SkillsSection />
       <ProjectsSection />
+      <RepoHealthBadgeSection />
+      <ComplianceEthicsSection />
       
 
       {/* Footer */}

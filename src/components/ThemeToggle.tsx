@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type ThemeMode = "light" | "galaxy";
+type ThemeMode = "light" | "dark";
 
 const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
   const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("theme");
-      if (stored === "galaxy") return "galaxy";
+      if (stored === "dark") return "dark";
       return "light";
     }
     return "light";
@@ -16,19 +16,19 @@ const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove("dark", "galaxy");
-    if (theme === "galaxy") {
-      root.classList.add("dark", "galaxy");
+    root.classList.remove("dark");
+    if (theme === "dark") {
+      root.classList.add("dark");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const cycle = () => {
-    setTheme((prev) => (prev === "light" ? "galaxy" : "light"));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   const icon = theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />;
-  const label = theme === "light" ? "Galaxy mode" : "Light mode";
+  const label = theme === "light" ? "Enable dark mode" : "Enable light mode";
 
   return (
     <motion.button

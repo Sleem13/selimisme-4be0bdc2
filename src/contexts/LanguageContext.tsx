@@ -25,6 +25,8 @@ const translations: Record<string, string> = {
   "nav.skills": "Skills",
   "nav.projects": "Projects",
   "nav.contact": "Contact",
+  "nav.quality": "Quality",
+  "nav.compliance": "Compliance",
 
   // Hero
   "hero.tagline": "Analytics . AI . Healthcare",
