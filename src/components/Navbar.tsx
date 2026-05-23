@@ -88,14 +88,23 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile actions */}
+        <div className="md:hidden flex items-center gap-2">
+          <a
+            href="#contact"
+            className="text-xs font-heading font-semibold px-3 py-1.5 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
+            onClick={() => setOpen(false)}
+          >
+            {t("nav.contact")}
+          </a>
+          <button
+            className="text-foreground p-1"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
