@@ -191,9 +191,40 @@ const Index = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-border">
-          <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-            <p>© {new Date().getFullYear()} Muhammad Seliem. All rights reserved.</p>
-            <p>Built with care · Analytics × AI × Healthcare</p>
+          <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+            {/* Copyright */}
+            <p className="text-center md:text-left">
+              {t("footer.rights").replace("{year}", String(new Date().getFullYear()))}
+            </p>
+
+            {/* Location + contact links */}
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-primary" />
+                {t("footer.location")}
+              </span>
+              <a
+                href={`mailto:${t("footer.email")}`}
+                className="flex items-center gap-1.5 hover:text-primary transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-primary" />
+                {t("footer.email")}
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sleemisme"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-primary transition-colors"
+              >
+                <Linkedin className="w-3.5 h-3.5 text-primary" />
+                LinkedIn
+              </a>
+            </div>
+
+            {/* Tagline */}
+            <p className="text-center md:text-right font-medium">
+              {t("footer.tagline")}
+            </p>
           </div>
         </div>
       </footer>

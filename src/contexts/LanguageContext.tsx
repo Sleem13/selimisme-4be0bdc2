@@ -333,7 +333,10 @@ const translations: Record<string, string> = {
   // Footer
   "footer.cta": "Let's Build Something Great",
   "footer.cta.sub": "Ready to turn healthcare data into actionable intelligence? Let's talk.",
-  "footer.rights": "© 2026 Mohamed Mahmoud Seliem. All rights reserved.",
+  "footer.rights": "© {year} Mohamed Mahmoud Seliem. All rights reserved.",
+  "footer.tagline": "Built with care · Analytics × AI × Healthcare",
+  "footer.location": "Cairo, Egypt",
+  "footer.email": "muhammadsleem03@gmail.com",
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
