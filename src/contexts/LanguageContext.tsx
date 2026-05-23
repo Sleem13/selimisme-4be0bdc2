@@ -232,44 +232,93 @@ const translations: Record<string, string> = {
   "proj.title1": "Case",
   "proj.title2": "Studies",
   "proj.description":
-    "A few of the systems I've built — each one tied to a real bottleneck and a measurable outcome.",
+    "Deep dives into the systems I've built — each tied to a real bottleneck, a deliberate approach, and a measurable outcome.",
+  "proj.role": "Role",
+  "proj.timeline": "Timeline",
+  "proj.context": "Context",
   "proj.challenge": "Challenge",
+  "proj.approach": "Approach",
   "proj.solution": "Solution",
   "proj.impact": "Impact",
-  "proj.tools": "Tools",
+  "proj.outcomes": "Outcomes",
+  "proj.tools": "Stack",
+  "proj.learnings": "What I Learned",
 
+  // Project 0 — Recovery Trajectory Predictor
   "proj.0.title": "Recovery Trajectory Predictor",
   "proj.0.tagline": "ML model for personalized rehab forecasting",
+  "proj.0.role": "Data Scientist · Clinical Lead",
+  "proj.0.timeline": "4 months · 2024",
+  "proj.0.context":
+    "A mid-size physiotherapy network was triaging patients on gut feel. Recovery windows ranged from 2 to 14 weeks with no early signal, so therapist hours and equipment were chronically misallocated.",
   "proj.0.challenge":
-    "Therapists couldn't reliably predict which patients would recover quickly versus need extended care, leading to inefficient resource allocation.",
+    "Therapists couldn't reliably predict which patients would recover quickly versus need extended care, leading to inefficient resource allocation and inconsistent outcomes across clinicians.",
   "proj.0.solution":
-    "Built a supervised ML pipeline using scikit-learn on 1,000+ anonymized cases — feature-engineered clinical, demographic, and adherence variables to forecast recovery curves.",
+    "Built a supervised ML pipeline on 1,000+ anonymized cases — feature-engineered clinical, demographic, and adherence variables to forecast recovery curves at intake.",
+  "proj.0.approach.0": "Audited 3 years of intake forms and outcome notes to define a clean target variable.",
+  "proj.0.approach.1": "Engineered 28 features spanning injury type, comorbidities, adherence, and session cadence.",
+  "proj.0.approach.2": "Compared logistic regression, gradient boosting, and random forest with stratified k-fold CV.",
+  "proj.0.approach.3": "Shipped a SHAP-backed view so therapists could see why the model flagged each patient.",
   "proj.0.impact.0.kpi": "22%",
   "proj.0.impact.0.label": "Faster recovery ID",
   "proj.0.impact.1.kpi": "18%",
   "proj.0.impact.1.label": "Misdiagnosis cut",
+  "proj.0.outcomes.0": "Cut average triage time from 35 minutes to under 10.",
+  "proj.0.outcomes.1": "Aligned 6 therapists on a single intake protocol.",
+  "proj.0.outcomes.2": "Created an audit trail accepted by the clinic's compliance review.",
+  "proj.0.learnings":
+    "Clinical buy-in lives or dies on explainability — the SHAP layer mattered more than the extra 2% in F1 score.",
 
+  // Project 1 — Clinical Operations Decision Hub
   "proj.1.title": "Clinical Operations Decision Hub",
   "proj.1.tagline": "Unified Power BI dashboard for healthcare leadership",
+  "proj.1.role": "Analytics Engineer · BI Lead",
+  "proj.1.timeline": "3 months · 2023",
+  "proj.1.context":
+    "Five department heads were each maintaining their own weekly spreadsheet. Numbers conflicted, definitions drifted, and the executive team spent Monday mornings reconciling instead of deciding.",
   "proj.1.challenge":
-    "Leadership made decisions on 5+ siloed reports manually consolidated each week — costing 20+ hours and creating blind spots.",
+    "Leadership made decisions on 5+ siloed reports manually consolidated each week — costing 20+ hours and creating blind spots on capacity and revenue leakage.",
   "proj.1.solution":
-    "Architected an end-to-end ETL → SQL → Power BI pipeline with DAX measures, drill-through pages, and executive KPI scorecards.",
+    "Architected an end-to-end ETL → SQL → Power BI pipeline with DAX measures, drill-through pages, and executive KPI scorecards governed by a single metric dictionary.",
+  "proj.1.approach.0": "Mapped every existing report to a canonical metric and retired duplicates.",
+  "proj.1.approach.1": "Built incremental SQL models with tested grain and freshness checks.",
+  "proj.1.approach.2": "Designed role-based views: exec scorecard, ops drill-down, finance reconciliation.",
+  "proj.1.approach.3": "Ran a 2-week shadow period before retiring the legacy spreadsheets.",
   "proj.1.impact.0.kpi": "20+hrs",
   "proj.1.impact.0.label": "Saved weekly",
   "proj.1.impact.1.kpi": "15%",
   "proj.1.impact.1.label": "Efficiency gain",
+  "proj.1.outcomes.0": "Single source of truth adopted across 5 departments.",
+  "proj.1.outcomes.1": "Surfaced a recurring billing gap worth ~6% of monthly revenue.",
+  "proj.1.outcomes.2": "Monday leadership meeting cut from 90 to 30 minutes.",
+  "proj.1.learnings":
+    "Half the work was political: aligning on what 'active patient' meant unlocked more value than any DAX measure.",
 
+  // Project 2 — Patient Outcomes Analytics Platform
   "proj.2.title": "Patient Outcomes Analytics Platform",
   "proj.2.tagline": "Tableau & Python analytics for outcome tracking",
+  "proj.2.role": "Analyst · Protocol Researcher",
+  "proj.2.timeline": "5 months · 2023",
+  "proj.2.context":
+    "Post-discharge surveys were collected dutifully and then filed away. No one was closing the loop, so protocols kept being chosen by tradition rather than evidence.",
   "proj.2.challenge":
-    "Outcomes data was collected but never analyzed at population level — clinicians lacked feedback loops to refine protocols.",
+    "Outcomes data was collected but never analyzed at population level — clinicians lacked feedback loops to refine protocols or compare cohorts fairly.",
   "proj.2.solution":
-    "Built Python data processing on outcome surveys and Tableau visualizations exposing protocol-level performance and cohort comparisons.",
+    "Built Python data processing on outcome surveys and Tableau visualizations exposing protocol-level performance and cohort comparisons with confidence intervals.",
+  "proj.2.approach.0": "Cleaned and normalized 3 years of free-text and Likert survey responses.",
+  "proj.2.approach.1": "Standardized cohorts by age, diagnosis, and severity for fair comparisons.",
+  "proj.2.approach.2": "Built workbooks with protocol-vs-protocol drilldowns and CI bands.",
+  "proj.2.approach.3": "Facilitated monthly clinical review sessions to turn findings into protocol changes.",
   "proj.2.impact.0.kpi": "1k+",
   "proj.2.impact.0.label": "Cases analyzed",
   "proj.2.impact.1.kpi": "5+",
   "proj.2.impact.1.label": "Protocols refined",
+  "proj.2.outcomes.0": "Two underperforming protocols retired with evidence.",
+  "proj.2.outcomes.1": "Patient-reported satisfaction up 11 points on tracked cohorts.",
+  "proj.2.outcomes.2": "Established a quarterly outcomes review now embedded in clinic ops.",
+  "proj.2.learnings":
+    "Confidence intervals saved us from over-claiming — clinicians trusted the work more once uncertainty was visible.",
+
 
   // Contact
   "contact.label": "Get in Touch",
