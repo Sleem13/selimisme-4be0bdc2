@@ -166,56 +166,95 @@ const HeroSection = () => {
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
         >
           <div className="relative group">
-            {/* Soft ambient background accents */}
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-60 pointer-events-none" />
-            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/30 rounded-full blur-3xl opacity-50 pointer-events-none" />
+            {/* Tech frame decor */}
+            <div className="absolute -inset-6 border border-primary/10 rounded-2xl pointer-events-none" />
+            <div className="absolute -top-2 -right-2 w-20 h-20 border-t-2 border-r-2 border-primary/40 rounded-tr-2xl pointer-events-none" />
+            <div className="absolute -bottom-2 -left-2 w-20 h-20 border-b-2 border-l-2 border-primary/40 rounded-bl-2xl pointer-events-none" />
 
-            {/* Main composition */}
-            <div className="relative z-10">
-              {/* Back decorative card */}
-              <div className="absolute inset-0 bg-card/40 border border-border rounded-[70px] rotate-6 scale-105 transition-transform duration-700 group-hover:rotate-3" />
+            {/* Main Container */}
+            <div className="relative w-72 md:w-[420px] aspect-[4/5] bg-card rounded-xl overflow-hidden shadow-2xl shadow-primary/20 border border-border">
+              {/* Grid Overlay */}
+              <div
+                className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
+                  backgroundImage: 'radial-gradient(hsl(var(--primary)) 1px, transparent 1px)',
+                  backgroundSize: '20px 20px',
+                }}
+              />
 
-              {/* Image container */}
-              <div className="relative w-72 h-[420px] md:w-80 md:h-[460px] rounded-[64px] bg-card shadow-[0_40px_80px_-15px_hsl(var(--primary)/0.25)] overflow-hidden border-8 border-card">
-                <img
-                  src={profileImg}
-                  alt="Mohamed Mahmoud Seliem"
-                  loading="eager"
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
-              </div>
+              {/* Image */}
+              <img
+                src={profileImg}
+                alt="Mohamed Mahmoud Seliem"
+                loading="eager"
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
 
-              {/* Floating tag: Origin */}
-              <div className="absolute -right-6 md:-right-12 top-1/4 bg-card/95 backdrop-blur-sm p-4 rounded-2xl shadow-lg border border-border">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-semibold tracking-widest text-primary uppercase">Origin</span>
-                  <span className="text-sm text-foreground font-medium">Physical Therapist</span>
+              {/* HUD Overlays */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none">
+                <div className="flex justify-between items-start">
+                  <div className="bg-background/80 backdrop-blur-md border border-primary/30 p-3 rounded-sm">
+                    <p className="text-[9px] uppercase tracking-widest text-primary font-mono mb-1 font-bold">
+                      System Latency
+                    </p>
+                    <p className="text-xs font-mono text-foreground flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                      12ms Active
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end gap-1 font-mono">
+                    <div className="text-[10px] text-primary">DATA_STREAM_001</div>
+                    <div className="flex gap-0.5">
+                      <div className="w-1 h-3 bg-primary/20" />
+                      <div className="w-1 h-5 bg-primary" />
+                      <div className="w-1 h-2 bg-primary/20" />
+                      <div className="w-1 h-4 bg-primary" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {/* Origin */}
+                  <div className="bg-background/90 backdrop-blur-xl border-l-2 border-primary p-4 max-w-[180px] transform transition-transform group-hover:translate-x-2">
+                    <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-mono mb-1">
+                      Origin
+                    </span>
+                    <h4 className="text-xs font-bold text-foreground uppercase tracking-tight">
+                      Physical Therapist
+                    </h4>
+                  </div>
+
+                  {/* Current */}
+                  <div className="bg-primary p-4 max-w-[220px] shadow-lg shadow-primary/20 transform transition-transform group-hover:translate-x-4">
+                    <span className="block text-[9px] uppercase tracking-widest text-primary-foreground/80 font-black mb-1">
+                      Current Role
+                    </span>
+                    <h4 className="text-xs font-black text-primary-foreground uppercase tracking-tight">
+                      Healthcare Data Analyst
+                    </h4>
+                  </div>
                 </div>
               </div>
 
-              {/* Floating tag: Current */}
-              <div className="absolute -left-6 md:-left-16 bottom-1/4 bg-card/95 backdrop-blur-sm p-4 rounded-2xl shadow-lg border border-border">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-semibold tracking-widest text-primary uppercase">Current</span>
-                  <span className="text-sm text-foreground font-medium">Healthcare Data Analyst</span>
-                </div>
-              </div>
-
-              {/* Minimalist data motif */}
-              <div className="absolute -bottom-6 right-4 flex gap-1 items-end">
-                <div className="w-1.5 h-6 bg-primary/30 rounded-full" />
-                <div className="w-1.5 h-10 bg-primary rounded-full" />
-                <div className="w-1.5 h-4 bg-primary/20 rounded-full" />
-                <div className="w-1.5 h-8 bg-muted rounded-full" />
+              {/* Scanline */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="w-full h-[1px] bg-primary/50 absolute top-[20%] animate-pulse" />
               </div>
             </div>
 
-            {/* Decorative typography */}
-            <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 w-max hidden md:block">
-              <span className="text-3xl text-muted-foreground/30 italic select-none font-serif">Human-centric data</span>
+            {/* Vertical side accent */}
+            <div className="absolute -right-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 pointer-events-none">
+              <div className="h-24 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
+              <div
+                className="font-mono text-[9px] text-primary/60 whitespace-nowrap tracking-[0.6em] uppercase"
+                style={{ writingMode: 'vertical-rl' }}
+              >
+                Core.Intelligence.System
+              </div>
+              <div className="h-24 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
             </div>
           </div>
+
         </motion.div>
 
       </div>
