@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, FileText } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 
 const linkKeys = [
   { key: "nav.story", href: "#story" },
