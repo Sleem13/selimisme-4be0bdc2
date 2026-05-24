@@ -165,39 +165,67 @@ const HeroSection = () => {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
         >
-          <div className="relative">
-            {/* Soft glow blending into background */}
-            <div
-              className="absolute inset-0 -m-10 rounded-full pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle, hsl(var(--primary) / 0.18), transparent 65%)",
-              }}
-            />
-            {/* Subtle accent ring */}
-            <div
-              className="absolute inset-0 -m-4 rounded-full pointer-events-none opacity-40"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.4), transparent, hsl(var(--primary) / 0.4))",
-              }}
-            />
-            <div
-              className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full overflow-hidden ring-1 ring-primary/20"
-              style={{
-                boxShadow:
-                  "0 20px 40px hsl(var(--primary) / 0.25), 0 8px 20px hsl(0 0% 0% / 0.35)",
-              }}
-            >
-              <img
-                src={profileImg}
-                alt="Mohamed Mahmoud Seliem"
-                className="w-full h-full object-cover object-center"
-                loading="eager"
-              />
+          <div className="relative group">
+            {/* Dynamic Glow Aura */}
+            <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75 group-hover:scale-110 transition-transform duration-1000" />
+
+            {/* Outer Technical Rings */}
+            <div className="absolute -inset-12 border border-primary/10 rounded-full border-dashed animate-[spin_60s_linear_infinite]" />
+            <div className="absolute -inset-8 border-2 border-l-primary/40 border-r-primary/10 border-t-transparent border-b-transparent rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+
+            {/* Main Image Container */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem]">
+              {/* Corner Accents (Cyber Brackets) */}
+              <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary shadow-[0_0_15px_hsl(var(--primary)/0.5)] z-10" />
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary shadow-[0_0_15px_hsl(var(--primary)/0.5)] z-10" />
+
+              {/* Clipping Frame */}
+              <div
+                className="w-full h-full rounded-full p-1 bg-gradient-to-br from-primary via-slate-800 to-primary shadow-2xl overflow-hidden relative"
+                style={{ boxShadow: "0 20px 40px hsl(var(--primary) / 0.25), 0 8px 20px hsl(0 0% 0% / 0.35)" }}
+              >
+                <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 ring-4 ring-slate-900 relative">
+                  <img
+                    src={profileImg}
+                    alt="Mohamed Mahmoud Seliem"
+                    loading="eager"
+                    className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-110"
+                  />
+
+                  {/* HUD Overlay Effects */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    {/* Scanning Line */}
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-primary/30 shadow-[0_0_8px_hsl(var(--primary))] animate-[bounce_4s_ease-in-out_infinite]" />
+                    {/* Digital Vignette */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: "radial-gradient(circle at center, transparent 40%, hsl(var(--background)) 95%)" }}
+                    />
+                    {/* Scanlines */}
+                    <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,hsl(var(--primary)/0.05)_50%)] bg-[length:100%_4px]" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Orbiting Status Node */}
+              <div className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 flex items-center gap-3">
+                <div className="w-3 h-3 bg-primary rounded-full animate-pulse shadow-[0_0_10px_hsl(var(--primary))]" />
+                <div className="hidden md:flex flex-col">
+                  <span className="text-[10px] font-mono text-primary tracking-tighter uppercase">Status</span>
+                  <span className="text-[10px] font-mono text-muted-foreground uppercase">Online</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Label */}
+            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-4 whitespace-nowrap">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/40" />
+              <span className="font-mono text-[11px] text-primary/60 tracking-[0.3em] uppercase">Protocol v4.02</span>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/40" />
             </div>
           </div>
         </motion.div>
+
       </div>
 
       {/* Scroll indicator */}
