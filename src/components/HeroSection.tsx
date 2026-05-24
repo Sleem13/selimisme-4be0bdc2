@@ -180,7 +180,7 @@ const HeroSection = () => {
                 src={profileImg}
                 alt="Mohamed Mahmoud Seliem"
                 loading="eager"
-                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
               />
 
               {/* Floating badges */}
