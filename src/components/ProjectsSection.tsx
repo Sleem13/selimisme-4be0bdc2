@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, Lightbulb, ArrowRight, Quote } from "lucide-react";
+import { Target, Lightbulb, ArrowRight, Quote, Github } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AnimatedKpi } from "@/components/AnimatedKpi";
 
@@ -36,6 +36,7 @@ const ProjectsSection = () => {
     outcomes: [0, 1, 2].map((j) => t(`proj.${i}.outcomes.${j}`)),
     learnings: t(`proj.${i}.learnings`),
     tools: projectTools[i],
+    link: projectLinks[i],
   }));
 
   return (
