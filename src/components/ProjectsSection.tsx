@@ -1,18 +1,26 @@
 import { motion } from "framer-motion";
-import { Target, Lightbulb, ArrowRight, Quote } from "lucide-react";
+import { Target, Lightbulb, ArrowRight, Quote, Github } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AnimatedKpi } from "@/components/AnimatedKpi";
 
 const projectTools = [
+  ["PyTorch", "Reinforcement Learning", "DQN", "Streamlit", "Gym", "NumPy"],
   ["Python", "scikit-learn", "Pandas", "SHAP", "SQL"],
   ["Power BI", "SQL", "DAX", "Azure Data Factory", "Excel"],
   ["Python", "Tableau", "SQL", "Pandas", "Statsmodels"],
 ];
 
+const projectLinks: (string | null)[] = [
+  "https://github.com/Sleem13/rehab_rl",
+  null,
+  null,
+  null,
+];
+
 const ProjectsSection = () => {
   const { t, isRTL } = useLanguage();
 
-  const projects = [0, 1, 2].map((i) => ({
+  const projects = [0, 1, 2, 3].map((i) => ({
     title: t(`proj.${i}.title`),
     tagline: t(`proj.${i}.tagline`),
     role: t(`proj.${i}.role`),
@@ -28,6 +36,7 @@ const ProjectsSection = () => {
     outcomes: [0, 1, 2].map((j) => t(`proj.${i}.outcomes.${j}`)),
     learnings: t(`proj.${i}.learnings`),
     tools: projectTools[i],
+    link: projectLinks[i],
   }));
 
   return (
@@ -95,6 +104,17 @@ const ProjectsSection = () => {
                         >
                           {project.tagline}
                         </p>
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl border border-primary/30 bg-primary/5 text-sm font-semibold text-primary hover:bg-primary/10 hover:border-primary/50 transition-all"
+                          >
+                            <Github className="w-4 h-4" />
+                            View on GitHub
+                          </a>
+                        )}
                       </div>
 
                       <div className="flex flex-wrap gap-x-8 gap-y-4">

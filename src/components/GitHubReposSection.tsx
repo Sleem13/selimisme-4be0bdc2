@@ -51,13 +51,21 @@ const GitHubReposSection = () => {
       })
       .then((data: Repo[]) => {
         if (cancelled) return;
+        const isPortfolioRepo = (name: string) =>
+          /portfolio|webpage|web[-_ ]?page/i.test(name);
+        const isFlagship = (name: string) => /rehab[-_ ]?rl/i.test(name);
         const filtered = data
-          .filter((r) => !r.fork && !r.archived)
-          .sort(
-            (a, b) =>
+          .filter((r) => !r.fork && !r.archived && !isPortfolioRepo(r.name))
+          .sort((a, b) => {
+            // Pin flagship rehab_rl first
+            const af = isFlagship(a.name) ? 1 : 0;
+            const bf = isFlagship(b.name) ? 1 : 0;
+            if (af !== bf) return bf - af;
+            return (
               b.stargazers_count - a.stargazers_count ||
-              new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
-          );
+              new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+            );
+          });
         setRepos(filtered);
       })
       .catch((e) => !cancelled && setError(String(e)));
