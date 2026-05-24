@@ -12,6 +12,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import GitHubReposSection from "@/components/GitHubReposSection";
 import RepoHealthBadgeSection from "@/components/RepoHealthBadgeSection";
 import ComplianceEthicsSection from "@/components/ComplianceEthicsSection";
 
@@ -44,6 +45,7 @@ const Index = () => {
       <EducationSection />
       <SkillsSection />
       <ProjectsSection />
+      <GitHubReposSection />
       <RepoHealthBadgeSection />
       <ComplianceEthicsSection />
       

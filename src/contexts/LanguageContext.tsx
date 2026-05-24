@@ -245,6 +245,15 @@ const translations: Record<string, string> = {
   "proj.learnings": "What I Learned",
   "proj.upNext": "Up Next",
 
+  // GitHub repos
+  "github.label": "Open Source",
+  "github.title1": "Live on",
+  "github.title2": "GitHub",
+  "github.description":
+    "All my public repositories, fetched live from GitHub — ordered by stars and most recently updated.",
+  "github.noDescription": "No description provided.",
+  "github.error": "Couldn't load repositories right now. Visit",
+
   // Project 0 — Recovery Trajectory Predictor
   "proj.0.title": "Recovery Trajectory Predictor",
   "proj.0.tagline": "ML model for personalized rehab forecasting",
