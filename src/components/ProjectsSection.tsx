@@ -4,15 +4,23 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { AnimatedKpi } from "@/components/AnimatedKpi";
 
 const projectTools = [
+  ["PyTorch", "Reinforcement Learning", "DQN", "Streamlit", "Gym", "NumPy"],
   ["Python", "scikit-learn", "Pandas", "SHAP", "SQL"],
   ["Power BI", "SQL", "DAX", "Azure Data Factory", "Excel"],
   ["Python", "Tableau", "SQL", "Pandas", "Statsmodels"],
 ];
 
+const projectLinks: (string | null)[] = [
+  "https://github.com/Sleem13/rehab_rl",
+  null,
+  null,
+  null,
+];
+
 const ProjectsSection = () => {
   const { t, isRTL } = useLanguage();
 
-  const projects = [0, 1, 2].map((i) => ({
+  const projects = [0, 1, 2, 3].map((i) => ({
     title: t(`proj.${i}.title`),
     tagline: t(`proj.${i}.tagline`),
     role: t(`proj.${i}.role`),

@@ -254,79 +254,104 @@ const translations: Record<string, string> = {
   "github.noDescription": "No description provided.",
   "github.error": "Couldn't load repositories right now. Visit",
 
-  // Project 0 — Recovery Trajectory Predictor
-  "proj.0.title": "Recovery Trajectory Predictor",
-  "proj.0.tagline": "ML model for personalized rehab forecasting",
-  "proj.0.role": "Data Scientist · Clinical Lead",
-  "proj.0.timeline": "4 months · 2024",
+  // Project 0 — RehabRL (flagship, live on GitHub)
+  "proj.0.title": "RehabRL — Adaptive Rehab Agent",
+  "proj.0.tagline": "Deep reinforcement learning that prescribes personalized physiotherapy",
+  "proj.0.role": "ML Engineer · Clinical Designer",
+  "proj.0.timeline": "Flagship · 2025 · Live on GitHub",
   "proj.0.context":
-    "A mid-size physiotherapy network was triaging patients on gut feel. Recovery windows ranged from 2 to 14 weeks with no early signal, so therapist hours and equipment were chronically misallocated.",
+    "Rehab protocols are still mostly one-size-fits-all: the same exercise ladder for very different bodies, injuries, and recovery curves. RehabRL re-frames the problem as sequential decision-making — a reinforcement learning agent that watches a patient's state evolve and prescribes the next exercise prescription instead of following a static plan.",
   "proj.0.challenge":
-    "Therapists couldn't reliably predict which patients would recover quickly versus need extended care, leading to inefficient resource allocation and inconsistent outcomes across clinicians.",
+    "Patient recovery is non-stationary — pain, ROM, strength, fatigue, and adherence shift session to session. Supervised models freeze on a single snapshot; clinicians needed a policy that adapts dose and intensity across an entire recovery arc without ever recommending an unsafe action.",
   "proj.0.solution":
-    "Built a supervised ML pipeline on 1,000+ anonymized cases — feature-engineered clinical, demographic, and adherence variables to forecast recovery curves at intake.",
-  "proj.0.approach.0": "Audited 3 years of intake forms and outcome notes to define a clean target variable.",
-  "proj.0.approach.1": "Engineered 28 features spanning injury type, comorbidities, adherence, and session cadence.",
-  "proj.0.approach.2": "Compared logistic regression, gradient boosting, and random forest with stratified k-fold CV.",
-  "proj.0.approach.3": "Shipped a SHAP-backed view so therapists could see why the model flagged each patient.",
-  "proj.0.impact.0.kpi": "22%",
-  "proj.0.impact.0.label": "Faster recovery ID",
-  "proj.0.impact.1.kpi": "18%",
-  "proj.0.impact.1.label": "Misdiagnosis cut",
-  "proj.0.outcomes.0": "Cut average triage time from 35 minutes to under 10.",
-  "proj.0.outcomes.1": "Aligned 6 therapists on a single intake protocol.",
-  "proj.0.outcomes.2": "Created an audit trail accepted by the clinic's compliance review.",
+    "Built a Double Dueling DQN with Prioritized Experience Replay over a 28-dimensional patient state and 30 discrete exercise prescriptions, wrapped in a Gym-style rehab environment with a clinically weighted reward (pain, ROM, strength, adherence, safety) and shipped as a Streamlit clinician console.",
+  "proj.0.approach.0": "Designed a 28-dim PatientState (injury, stage, pain, ROM, strength, fatigue, adherence) and a 30-action exercise space mapped to 50+ real prescriptions.",
+  "proj.0.approach.1": "Implemented a Dueling Q-Network (~210k params) with residual state encoder, valid-action masking, and soft Polyak target updates.",
+  "proj.0.approach.2": "Added Prioritized Experience Replay on a SumTree buffer plus ε-greedy exploration to stabilize learning on rare, high-stakes states.",
+  "proj.0.approach.3": "Shipped a 5-page Streamlit app: training curves, patient assessment with Q-value heatmaps, full trajectory simulation, and model inspector.",
+  "proj.0.impact.0.kpi": "30",
+  "proj.0.impact.0.label": "Adaptive prescriptions",
+  "proj.0.impact.1.kpi": "5×",
+  "proj.0.impact.1.label": "DQN vs random baseline",
+  "proj.0.outcomes.0": "End-to-end RL stack — environment, agent, replay buffer, trainer — built from scratch in PyTorch.",
+  "proj.0.outcomes.1": "Clinician-facing Streamlit console turns Q-values into readable exercise rationale.",
+  "proj.0.outcomes.2": "Open-sourced on GitHub as a reference for RL in physical therapy.",
   "proj.0.learnings":
+    "The hardest part wasn't the DQN — it was encoding clinical safety into the reward so the agent never trades long-term recovery for a short-term pain drop.",
+
+  // Project 1 — Recovery Trajectory Predictor
+  "proj.1.title": "Recovery Trajectory Predictor",
+  "proj.1.tagline": "ML model for personalized rehab forecasting",
+  "proj.1.role": "Data Scientist · Clinical Lead",
+  "proj.1.timeline": "4 months · 2024",
+  "proj.1.context":
+    "A mid-size physiotherapy network was triaging patients on gut feel. Recovery windows ranged from 2 to 14 weeks with no early signal, so therapist hours and equipment were chronically misallocated.",
+  "proj.1.challenge":
+    "Therapists couldn't reliably predict which patients would recover quickly versus need extended care, leading to inefficient resource allocation and inconsistent outcomes across clinicians.",
+  "proj.1.solution":
+    "Built a supervised ML pipeline on 1,000+ anonymized cases — feature-engineered clinical, demographic, and adherence variables to forecast recovery curves at intake.",
+  "proj.1.approach.0": "Audited 3 years of intake forms and outcome notes to define a clean target variable.",
+  "proj.1.approach.1": "Engineered 28 features spanning injury type, comorbidities, adherence, and session cadence.",
+  "proj.1.approach.2": "Compared logistic regression, gradient boosting, and random forest with stratified k-fold CV.",
+  "proj.1.approach.3": "Shipped a SHAP-backed view so therapists could see why the model flagged each patient.",
+  "proj.1.impact.0.kpi": "22%",
+  "proj.1.impact.0.label": "Faster recovery ID",
+  "proj.1.impact.1.kpi": "18%",
+  "proj.1.impact.1.label": "Misdiagnosis cut",
+  "proj.1.outcomes.0": "Cut average triage time from 35 minutes to under 10.",
+  "proj.1.outcomes.1": "Aligned 6 therapists on a single intake protocol.",
+  "proj.1.outcomes.2": "Created an audit trail accepted by the clinic's compliance review.",
+  "proj.1.learnings":
     "Clinical buy-in lives or dies on explainability — the SHAP layer mattered more than the extra 2% in F1 score.",
 
-  // Project 1 — Clinical Operations Decision Hub
-  "proj.1.title": "Clinical Operations Decision Hub",
-  "proj.1.tagline": "Unified Power BI dashboard for healthcare leadership",
-  "proj.1.role": "Analytics Engineer · BI Lead",
-  "proj.1.timeline": "3 months · 2023",
-  "proj.1.context":
+  // Project 2 — Clinical Operations Decision Hub
+  "proj.2.title": "Clinical Operations Decision Hub",
+  "proj.2.tagline": "Unified Power BI dashboard for healthcare leadership",
+  "proj.2.role": "Analytics Engineer · BI Lead",
+  "proj.2.timeline": "3 months · 2023",
+  "proj.2.context":
     "Five department heads were each maintaining their own weekly spreadsheet. Numbers conflicted, definitions drifted, and the executive team spent Monday mornings reconciling instead of deciding.",
-  "proj.1.challenge":
+  "proj.2.challenge":
     "Leadership made decisions on 5+ siloed reports manually consolidated each week — costing 20+ hours and creating blind spots on capacity and revenue leakage.",
-  "proj.1.solution":
+  "proj.2.solution":
     "Architected an end-to-end ETL → SQL → Power BI pipeline with DAX measures, drill-through pages, and executive KPI scorecards governed by a single metric dictionary.",
-  "proj.1.approach.0": "Mapped every existing report to a canonical metric and retired duplicates.",
-  "proj.1.approach.1": "Built incremental SQL models with tested grain and freshness checks.",
-  "proj.1.approach.2": "Designed role-based views: exec scorecard, ops drill-down, finance reconciliation.",
-  "proj.1.approach.3": "Ran a 2-week shadow period before retiring the legacy spreadsheets.",
-  "proj.1.impact.0.kpi": "20+hrs",
-  "proj.1.impact.0.label": "Saved weekly",
-  "proj.1.impact.1.kpi": "15%",
-  "proj.1.impact.1.label": "Efficiency gain",
-  "proj.1.outcomes.0": "Single source of truth adopted across 5 departments.",
-  "proj.1.outcomes.1": "Surfaced a recurring billing gap worth ~6% of monthly revenue.",
-  "proj.1.outcomes.2": "Monday leadership meeting cut from 90 to 30 minutes.",
-  "proj.1.learnings":
+  "proj.2.approach.0": "Mapped every existing report to a canonical metric and retired duplicates.",
+  "proj.2.approach.1": "Built incremental SQL models with tested grain and freshness checks.",
+  "proj.2.approach.2": "Designed role-based views: exec scorecard, ops drill-down, finance reconciliation.",
+  "proj.2.approach.3": "Ran a 2-week shadow period before retiring the legacy spreadsheets.",
+  "proj.2.impact.0.kpi": "20+hrs",
+  "proj.2.impact.0.label": "Saved weekly",
+  "proj.2.impact.1.kpi": "15%",
+  "proj.2.impact.1.label": "Efficiency gain",
+  "proj.2.outcomes.0": "Single source of truth adopted across 5 departments.",
+  "proj.2.outcomes.1": "Surfaced a recurring billing gap worth ~6% of monthly revenue.",
+  "proj.2.outcomes.2": "Monday leadership meeting cut from 90 to 30 minutes.",
+  "proj.2.learnings":
     "Half the work was political: aligning on what 'active patient' meant unlocked more value than any DAX measure.",
 
-  // Project 2 — Patient Outcomes Analytics Platform
-  "proj.2.title": "Patient Outcomes Analytics Platform",
-  "proj.2.tagline": "Tableau & Python analytics for outcome tracking",
-  "proj.2.role": "Analyst · Protocol Researcher",
-  "proj.2.timeline": "5 months · 2023",
-  "proj.2.context":
+  // Project 3 — Patient Outcomes Analytics Platform
+  "proj.3.title": "Patient Outcomes Analytics Platform",
+  "proj.3.tagline": "Tableau & Python analytics for outcome tracking",
+  "proj.3.role": "Analyst · Protocol Researcher",
+  "proj.3.timeline": "5 months · 2023",
+  "proj.3.context":
     "Post-discharge surveys were collected dutifully and then filed away. No one was closing the loop, so protocols kept being chosen by tradition rather than evidence.",
-  "proj.2.challenge":
+  "proj.3.challenge":
     "Outcomes data was collected but never analyzed at population level — clinicians lacked feedback loops to refine protocols or compare cohorts fairly.",
-  "proj.2.solution":
+  "proj.3.solution":
     "Built Python data processing on outcome surveys and Tableau visualizations exposing protocol-level performance and cohort comparisons with confidence intervals.",
-  "proj.2.approach.0": "Cleaned and normalized 3 years of free-text and Likert survey responses.",
-  "proj.2.approach.1": "Standardized cohorts by age, diagnosis, and severity for fair comparisons.",
-  "proj.2.approach.2": "Built workbooks with protocol-vs-protocol drilldowns and CI bands.",
-  "proj.2.approach.3": "Facilitated monthly clinical review sessions to turn findings into protocol changes.",
-  "proj.2.impact.0.kpi": "1k+",
-  "proj.2.impact.0.label": "Cases analyzed",
-  "proj.2.impact.1.kpi": "5+",
-  "proj.2.impact.1.label": "Protocols refined",
-  "proj.2.outcomes.0": "Two underperforming protocols retired with evidence.",
-  "proj.2.outcomes.1": "Patient-reported satisfaction up 11 points on tracked cohorts.",
-  "proj.2.outcomes.2": "Established a quarterly outcomes review now embedded in clinic ops.",
-  "proj.2.learnings":
+  "proj.3.approach.0": "Cleaned and normalized 3 years of free-text and Likert survey responses.",
+  "proj.3.approach.1": "Standardized cohorts by age, diagnosis, and severity for fair comparisons.",
+  "proj.3.approach.2": "Built workbooks with protocol-vs-protocol drilldowns and CI bands.",
+  "proj.3.approach.3": "Facilitated monthly clinical review sessions to turn findings into protocol changes.",
+  "proj.3.impact.0.kpi": "1k+",
+  "proj.3.impact.0.label": "Cases analyzed",
+  "proj.3.impact.1.kpi": "5+",
+  "proj.3.impact.1.label": "Protocols refined",
+  "proj.3.outcomes.0": "Two underperforming protocols retired with evidence.",
+  "proj.3.outcomes.1": "Patient-reported satisfaction up 11 points on tracked cohorts.",
+  "proj.3.outcomes.2": "Established a quarterly outcomes review now embedded in clinic ops.",
+  "proj.3.learnings":
     "Confidence intervals saved us from over-claiming — clinicians trusted the work more once uncertainty was visible.",
 
 
