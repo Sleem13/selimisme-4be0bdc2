@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, FileText } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
