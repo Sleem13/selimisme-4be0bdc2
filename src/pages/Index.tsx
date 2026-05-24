@@ -14,7 +14,6 @@ import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import GitHubReposSection from "@/components/GitHubReposSection";
 import RepoHealthBadgeSection from "@/components/RepoHealthBadgeSection";
-import ComplianceEthicsSection from "@/components/ComplianceEthicsSection";
 
 import CustomCursor from "@/components/CustomCursor";
 import CareerTimeline from "@/components/CareerTimeline";
@@ -47,8 +46,6 @@ const Index = () => {
       <ProjectsSection />
       <GitHubReposSection />
       <RepoHealthBadgeSection />
-      <ComplianceEthicsSection />
-      
 
       {/* Footer */}
       <footer className="relative bg-card border-t border-border">

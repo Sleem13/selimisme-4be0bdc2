@@ -9,8 +9,6 @@ const linkKeys = [
   { key: "nav.how", href: "#how" },
   { key: "nav.experience", href: "#experience" },
   { key: "nav.projects", href: "#projects" },
-  { key: "nav.quality", href: "#quality" },
-  { key: "nav.compliance", href: "#compliance" },
   { key: "nav.contact", href: "#contact" },
 ];
 
