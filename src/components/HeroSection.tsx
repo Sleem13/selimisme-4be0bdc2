@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { memo, useMemo, useState, useEffect, useCallback } from "react";
+import { memo, useMemo, useState, useEffect } from "react";
 import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
