@@ -166,62 +166,54 @@ const HeroSection = () => {
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
         >
           <div className="relative group">
-            {/* Dynamic Glow Aura */}
-            <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75 group-hover:scale-110 transition-transform duration-1000" />
+            {/* Soft ambient background accents */}
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-60 pointer-events-none" />
+            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/30 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
-            {/* Outer Technical Rings */}
-            <div className="absolute -inset-12 border border-primary/10 rounded-full border-dashed animate-[spin_60s_linear_infinite]" />
-            <div className="absolute -inset-8 border-2 border-l-primary/40 border-r-primary/10 border-t-transparent border-b-transparent rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+            {/* Main composition */}
+            <div className="relative z-10">
+              {/* Back decorative card */}
+              <div className="absolute inset-0 bg-card/40 border border-border rounded-[70px] rotate-6 scale-105 transition-transform duration-700 group-hover:rotate-3" />
 
-            {/* Main Image Container */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem]">
-              {/* Corner Accents (Cyber Brackets) */}
-              <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary shadow-[0_0_15px_hsl(var(--primary)/0.5)] z-10" />
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary shadow-[0_0_15px_hsl(var(--primary)/0.5)] z-10" />
+              {/* Image container */}
+              <div className="relative w-72 h-[420px] md:w-80 md:h-[460px] rounded-[64px] bg-card shadow-[0_40px_80px_-15px_hsl(var(--primary)/0.25)] overflow-hidden border-8 border-card">
+                <img
+                  src={profileImg}
+                  alt="Mohamed Mahmoud Seliem"
+                  loading="eager"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
+              </div>
 
-              {/* Clipping Frame */}
-              <div
-                className="w-full h-full rounded-full p-1 bg-gradient-to-br from-primary via-slate-800 to-primary shadow-2xl overflow-hidden relative"
-                style={{ boxShadow: "0 20px 40px hsl(var(--primary) / 0.25), 0 8px 20px hsl(0 0% 0% / 0.35)" }}
-              >
-                <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 ring-4 ring-slate-900 relative">
-                  <img
-                    src={profileImg}
-                    alt="Mohamed Mahmoud Seliem"
-                    loading="eager"
-                    className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-110"
-                  />
-
-                  {/* HUD Overlay Effects */}
-                  <div className="absolute inset-0 pointer-events-none">
-                    {/* Scanning Line */}
-                    <div className="absolute top-0 left-0 w-full h-[1px] bg-primary/30 shadow-[0_0_8px_hsl(var(--primary))] animate-[bounce_4s_ease-in-out_infinite]" />
-                    {/* Digital Vignette */}
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: "radial-gradient(circle at center, transparent 40%, hsl(var(--background)) 95%)" }}
-                    />
-                    {/* Scanlines */}
-                    <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,hsl(var(--primary)/0.05)_50%)] bg-[length:100%_4px]" />
-                  </div>
+              {/* Floating tag: Origin */}
+              <div className="absolute -right-6 md:-right-12 top-1/4 bg-card/95 backdrop-blur-sm p-4 rounded-2xl shadow-lg border border-border">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-semibold tracking-widest text-primary uppercase">Origin</span>
+                  <span className="text-sm text-foreground font-medium">Physical Therapist</span>
                 </div>
               </div>
 
-              {/* Orbiting Status Node */}
-              <div className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 flex items-center gap-3">
-                <div className="w-3 h-3 bg-primary rounded-full animate-pulse shadow-[0_0_10px_hsl(var(--primary))]" />
-                <div className="hidden md:flex flex-col">
-                  <span className="text-[10px] font-mono text-primary tracking-tighter uppercase">Status</span>
-                  <span className="text-[10px] font-mono text-muted-foreground uppercase">Online</span>
+              {/* Floating tag: Current */}
+              <div className="absolute -left-6 md:-left-16 bottom-1/4 bg-card/95 backdrop-blur-sm p-4 rounded-2xl shadow-lg border border-border">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-semibold tracking-widest text-primary uppercase">Current</span>
+                  <span className="text-sm text-foreground font-medium">Healthcare Data Analyst</span>
                 </div>
+              </div>
+
+              {/* Minimalist data motif */}
+              <div className="absolute -bottom-6 right-4 flex gap-1 items-end">
+                <div className="w-1.5 h-6 bg-primary/30 rounded-full" />
+                <div className="w-1.5 h-10 bg-primary rounded-full" />
+                <div className="w-1.5 h-4 bg-primary/20 rounded-full" />
+                <div className="w-1.5 h-8 bg-muted rounded-full" />
               </div>
             </div>
 
-            {/* Bottom Label */}
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-4 whitespace-nowrap">
-              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/40" />
-              <span className="font-mono text-[11px] text-primary/60 tracking-[0.3em] uppercase">Protocol v4.02</span>
-              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/40" />
+            {/* Decorative typography */}
+            <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 w-max hidden md:block">
+              <span className="text-3xl text-muted-foreground/30 italic select-none font-serif">Human-centric data</span>
             </div>
           </div>
         </motion.div>
