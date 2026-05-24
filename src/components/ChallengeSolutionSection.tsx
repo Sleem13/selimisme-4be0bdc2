@@ -21,13 +21,20 @@ const ChallengeSolutionSection = () => {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}
+            >
               {t("cs.label")}
             </p>
-            <h2 className={`text-3xl md:text-5xl font-bold text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}>
-              {t("cs.title.1")} <span className="gradient-text">{t("cs.title.2")}</span>
+            <h2
+              className={`text-3xl md:text-5xl font-bold text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}
+            >
+              {t("cs.title.1")}{" "}
+              <span className="gradient-text">{t("cs.title.2")}</span>
             </h2>
-            <p className={`text-muted-foreground text-lg mt-4 max-w-2xl ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-muted-foreground text-lg mt-4 max-w-2xl ${isRTL ? "font-arabic" : ""}`}
+            >
               {t("cs.subtitle")}
             </p>
           </motion.div>
@@ -55,13 +62,19 @@ const ChallengeSolutionSection = () => {
                 style={{ boxShadow: "var(--shadow-card)" }}
                 whileHover={{ y: -2 }}
               >
-                <p className={`text-muted-foreground text-base md:text-lg ${isRTL ? "font-arabic" : ""}`}>
+                <p
+                  className={`text-muted-foreground text-base md:text-lg ${isRTL ? "font-arabic" : ""}`}
+                >
                   {row.problem}
                 </p>
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary mx-auto md:mx-0">
-                  <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""} group-hover:translate-x-0.5 transition-transform`} />
+                  <ArrowRight
+                    className={`w-4 h-4 ${isRTL ? "rotate-180" : ""} group-hover:translate-x-0.5 transition-transform`}
+                  />
                 </div>
-                <p className={`text-foreground text-base md:text-lg font-heading font-semibold ${isRTL ? "font-arabic" : ""}`}>
+                <p
+                  className={`text-foreground text-base md:text-lg font-heading font-semibold ${isRTL ? "font-arabic" : ""}`}
+                >
                   {row.solution}
                 </p>
               </motion.div>

@@ -11,7 +11,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search, ChevronLeft, ChevronRight, MessageSquare, ArrowLeft } from "lucide-react";
+import {
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  MessageSquare,
+  ArrowLeft,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface ChatLog {
@@ -45,7 +51,7 @@ const AdminChatLogs = () => {
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-        }
+        },
       );
 
       if (!res.ok) throw new Error("Failed to fetch logs");
@@ -136,13 +142,19 @@ const AdminChatLogs = () => {
                 <TableBody>
                   {loading ? (
                     <TableRow>
-                      <TableCell colSpan={4} className="text-center py-8 text-muted-foreground">
+                      <TableCell
+                        colSpan={4}
+                        className="text-center py-8 text-muted-foreground"
+                      >
                         Loading…
                       </TableCell>
                     </TableRow>
                   ) : logs.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={4} className="text-center py-8 text-muted-foreground">
+                      <TableCell
+                        colSpan={4}
+                        className="text-center py-8 text-muted-foreground"
+                      >
                         No logs found
                       </TableCell>
                     </TableRow>
@@ -151,7 +163,9 @@ const AdminChatLogs = () => {
                       <TableRow
                         key={log.id}
                         className="cursor-pointer"
-                        onClick={() => setExpandedId(expandedId === log.id ? null : log.id)}
+                        onClick={() =>
+                          setExpandedId(expandedId === log.id ? null : log.id)
+                        }
                       >
                         <TableCell className="text-xs text-muted-foreground whitespace-nowrap">
                           {formatDate(log.created_at)}
@@ -160,12 +174,20 @@ const AdminChatLogs = () => {
                           {log.session_id.slice(0, 8)}…
                         </TableCell>
                         <TableCell className="max-w-[300px]">
-                          <p className={expandedId === log.id ? "" : "line-clamp-2"}>
+                          <p
+                            className={
+                              expandedId === log.id ? "" : "line-clamp-2"
+                            }
+                          >
                             {log.user_message}
                           </p>
                         </TableCell>
                         <TableCell className="max-w-[300px]">
-                          <p className={expandedId === log.id ? "" : "line-clamp-2"}>
+                          <p
+                            className={
+                              expandedId === log.id ? "" : "line-clamp-2"
+                            }
+                          >
                             {log.assistant_response || "—"}
                           </p>
                         </TableCell>

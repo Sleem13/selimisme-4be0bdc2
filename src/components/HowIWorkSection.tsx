@@ -22,11 +22,16 @@ const HowIWorkSection = () => {
             transition={{ duration: 0.6 }}
             className="mb-14"
           >
-            <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}
+            >
               {t("how.label")}
             </p>
-            <h2 className={`text-3xl md:text-5xl font-bold text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}>
-              {t("how.title.1")} <span className="gradient-text">{t("how.title.2")}</span>
+            <h2
+              className={`text-3xl md:text-5xl font-bold text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}
+            >
+              {t("how.title.1")}{" "}
+              <span className="gradient-text">{t("how.title.2")}</span>
             </h2>
           </motion.div>
 
@@ -50,10 +55,14 @@ const HowIWorkSection = () => {
                     <s.icon className="w-5 h-5 text-primary" />
                   </div>
                 </div>
-                <h3 className={`text-xl md:text-2xl font-bold text-foreground mb-3 ${isRTL ? "font-arabic" : "font-heading"}`}>
+                <h3
+                  className={`text-xl md:text-2xl font-bold text-foreground mb-3 ${isRTL ? "font-arabic" : "font-heading"}`}
+                >
                   {t(s.titleKey)}
                 </h3>
-                <p className={`text-muted-foreground leading-relaxed ${isRTL ? "font-arabic" : ""}`}>
+                <p
+                  className={`text-muted-foreground leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+                >
                   {t(s.descKey)}
                 </p>
               </motion.div>

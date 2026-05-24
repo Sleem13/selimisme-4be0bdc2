@@ -1,8 +1,23 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Stethoscope, Database, BrainCircuit, LineChart, Sparkles, Wrench } from "lucide-react";
+import {
+  Stethoscope,
+  Database,
+  BrainCircuit,
+  LineChart,
+  Sparkles,
+  Wrench,
+} from "lucide-react";
 
-const ThenNowChip = ({ icon: Icon, label, tone }: { icon: any; label: string; tone: "muted" | "primary" }) => (
+const ThenNowChip = ({
+  icon: Icon,
+  label,
+  tone,
+}: {
+  icon: any;
+  label: string;
+  tone: "muted" | "primary";
+}) => (
   <div
     className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-heading font-medium border whitespace-nowrap ${
       tone === "primary"
@@ -41,10 +56,14 @@ const StorySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}
+            >
               {t("story.label")}
             </p>
-            <h2 className={`text-3xl md:text-5xl font-bold mb-6 text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}>
+            <h2
+              className={`text-3xl md:text-5xl font-bold mb-6 text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}
+            >
               {t("story.title")}
             </h2>
             <div className="arabic-divider mb-8">
@@ -77,8 +96,12 @@ const StorySection = () => {
             className="rounded-3xl border border-border bg-card/60 backdrop-blur-sm p-6 md:p-10"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
-            <p className={`text-center text-2xl md:text-3xl font-heading font-semibold mb-10 ${isRTL ? "font-arabic" : ""}`}>
-              <span className="text-muted-foreground">"{t("story.quote.1")} </span>
+            <p
+              className={`text-center text-2xl md:text-3xl font-heading font-semibold mb-10 ${isRTL ? "font-arabic" : ""}`}
+            >
+              <span className="text-muted-foreground">
+                "{t("story.quote.1")}{" "}
+              </span>
               <span className="gradient-text">{t("story.quote.2")}</span>
               <span className="text-muted-foreground">"</span>
             </p>
@@ -94,7 +117,12 @@ const StorySection = () => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {thenItems.map((item) => (
-                    <ThenNowChip key={item.key} icon={item.icon} label={t(item.key)} tone="muted" />
+                    <ThenNowChip
+                      key={item.key}
+                      icon={item.icon}
+                      label={t(item.key)}
+                      tone="muted"
+                    />
                   ))}
                 </div>
               </div>
@@ -109,7 +137,12 @@ const StorySection = () => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {nowItems.map((item) => (
-                    <ThenNowChip key={item.key} icon={item.icon} label={t(item.key)} tone="primary" />
+                    <ThenNowChip
+                      key={item.key}
+                      icon={item.icon}
+                      label={t(item.key)}
+                      tone="primary"
+                    />
                   ))}
                 </div>
               </div>

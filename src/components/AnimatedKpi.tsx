@@ -56,7 +56,9 @@ export function AnimatedKpi({
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = eased * num;
       setDisplay(
-        decimals > 0 ? current.toFixed(decimals) : Math.round(current).toString()
+        decimals > 0
+          ? current.toFixed(decimals)
+          : Math.round(current).toString(),
       );
       if (progress < 1) requestAnimationFrame(tick);
     };

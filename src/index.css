@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -51,16 +51,32 @@
     --soft-green: 170 80% 50%;
     --gold: 190 100% 65%;
 
-    --font-heading: 'Inter', 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --font-heading: "Inter", "Space Grotesk", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-    --gradient-primary: linear-gradient(135deg, hsl(190 100% 65%), hsl(200 100% 50%));
-    --gradient-accent: linear-gradient(135deg, hsl(190 100% 60%), hsl(220 90% 55%));
-    --gradient-hero: linear-gradient(180deg, hsl(210 60% 4%) 0%, hsl(210 55% 6%) 50%, hsl(210 60% 4%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(190 100% 65%),
+      hsl(200 100% 50%)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(190 100% 60%),
+      hsl(220 90% 55%)
+    );
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(210 60% 4%) 0%,
+      hsl(210 55% 6%) 50%,
+      hsl(210 60% 4%) 100%
+    );
     --shadow-glow: 0 4px 30px -4px hsl(190 100% 55% / 0.4);
-    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
-    --shadow-card-hover: 0 10px 30px -5px hsl(190 100% 55% / 0.25), 0 4px 12px -6px hsl(190 100% 55% / 0.15);
+    --shadow-card:
+      0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover:
+      0 10px 30px -5px hsl(190 100% 55% / 0.25),
+      0 4px 12px -6px hsl(190 100% 55% / 0.15);
   }
 
   .dark {
@@ -97,12 +113,28 @@
     --soft-green: 170 80% 50%;
     --gold: 190 100% 65%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(190 100% 65%), hsl(200 100% 50%));
-    --gradient-accent: linear-gradient(135deg, hsl(190 100% 60%), hsl(220 90% 55%));
-    --gradient-hero: linear-gradient(180deg, hsl(210 60% 4%) 0%, hsl(210 55% 6%) 50%, hsl(210 60% 4%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(190 100% 65%),
+      hsl(200 100% 50%)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(190 100% 60%),
+      hsl(220 90% 55%)
+    );
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(210 60% 4%) 0%,
+      hsl(210 55% 6%) 50%,
+      hsl(210 60% 4%) 100%
+    );
     --shadow-glow: 0 4px 30px -4px hsl(190 100% 55% / 0.4);
-    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
-    --shadow-card-hover: 0 10px 30px -5px hsl(190 100% 55% / 0.25), 0 4px 12px -6px hsl(190 100% 55% / 0.15);
+    --shadow-card:
+      0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover:
+      0 10px 30px -5px hsl(190 100% 55% / 0.25),
+      0 4px 12px -6px hsl(190 100% 55% / 0.15);
   }
 }
 
@@ -119,15 +151,18 @@
   body *:not(canvas):not(svg):not(svg *),
   body *:not(canvas):not(svg):not(svg *)::before,
   body *:not(canvas):not(svg):not(svg *)::after {
-    transition-property: background-color, border-color, color, fill, stroke,
-      box-shadow, outline-color, text-decoration-color, caret-color,
-      --tw-ring-color, --tw-ring-offset-color, --tw-shadow-color;
+    transition-property:
+      background-color, border-color, color, fill, stroke, box-shadow,
+      outline-color, text-decoration-color, caret-color, --tw-ring-color,
+      --tw-ring-offset-color, --tw-shadow-color;
     transition-duration: 300ms;
     transition-timing-function: ease;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html, body, body * {
+    html,
+    body,
+    body * {
       transition: none !important;
     }
   }
@@ -137,10 +172,14 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
-
 }
 
 @layer utilities {
@@ -196,10 +235,15 @@
 
   .arabic-divider::before,
   .arabic-divider::after {
-    content: '';
+    content: "";
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--gold) / 0.4),
+      transparent
+    );
   }
 
   .arabic-ornament {
@@ -225,16 +269,28 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @keyframes marquee-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 @keyframes marquee-scroll-rtl {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
-

@@ -59,7 +59,8 @@ const ProjectsSection = () => {
             <h2
               className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-foreground tracking-tighter leading-[0.95] ${isRTL ? "font-arabic" : "font-heading"}`}
             >
-              {t("proj.title1")} <span className="text-primary">{t("proj.title2")}</span>
+              {t("proj.title1")}{" "}
+              <span className="text-primary">{t("proj.title2")}</span>
             </h2>
             <p
               className={`mt-8 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed ${isRTL ? "font-arabic" : ""}`}
@@ -119,8 +120,14 @@ const ProjectsSection = () => {
 
                       <div className="flex flex-wrap gap-x-8 gap-y-4">
                         {[
-                          { label: t("proj.role") ?? "Role", value: project.role },
-                          { label: t("proj.timeline") ?? "Timeline", value: project.timeline },
+                          {
+                            label: t("proj.role") ?? "Role",
+                            value: project.role,
+                          },
+                          {
+                            label: t("proj.timeline") ?? "Timeline",
+                            value: project.timeline,
+                          },
                         ].map((meta) => (
                           <div key={meta.label} className="flex flex-col">
                             <span
@@ -128,7 +135,9 @@ const ProjectsSection = () => {
                             >
                               {meta.label}
                             </span>
-                            <span className={`text-foreground/90 font-semibold text-sm ${isRTL ? "font-arabic" : ""}`}>
+                            <span
+                              className={`text-foreground/90 font-semibold text-sm ${isRTL ? "font-arabic" : ""}`}
+                            >
                               {meta.value}
                             </span>
                           </div>
@@ -190,7 +199,11 @@ const ProjectsSection = () => {
                                   ? "bg-primary/5 border-primary/20"
                                   : "bg-card border-border"
                               }`}
-                              style={featured ? { boxShadow: "var(--shadow-glow)" } : { boxShadow: "var(--shadow-card)" }}
+                              style={
+                                featured
+                                  ? { boxShadow: "var(--shadow-glow)" }
+                                  : { boxShadow: "var(--shadow-card)" }
+                              }
                             >
                               <AnimatedKpi
                                 value={item.kpi}
@@ -262,7 +275,9 @@ const ProjectsSection = () => {
                               <span className="text-primary font-bold text-xs mt-0.5 shrink-0">
                                 ✦
                               </span>
-                              <span className={isRTL ? "font-arabic" : ""}>{outcome}</span>
+                              <span className={isRTL ? "font-arabic" : ""}>
+                                {outcome}
+                              </span>
                             </li>
                           ))}
                         </ul>
