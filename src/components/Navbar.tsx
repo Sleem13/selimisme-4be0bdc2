@@ -82,6 +82,7 @@ const Navbar = () => {
           <a
             href="#contact"
             className="text-sm font-heading font-semibold px-4 py-2 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
+            onClick={() => trackEvent({ action: "contact_click", category: "navbar", label: "navbar_desktop" })}
           >
             {t("nav.contact")}
           </a>
