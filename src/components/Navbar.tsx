@@ -127,16 +127,26 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {linkKeys.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="block py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {t(link.key)}
-            </a>
-          ))}
+          {linkKeys.map((link) => {
+            const isProjects = link.key === "nav.projects";
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`block py-3 text-sm transition-colors ${
+                  isProjects
+                    ? "text-[#00F2FF] font-semibold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                {t(link.key)}
+                {isProjects && (
+                  <span className="ml-2 inline-block w-4 h-0.5 rounded-full bg-[#00F2FF] align-middle" />
+                )}
+              </a>
+            );
+          })}
           <a
             href="/recruiter"
             className="block rounded-2xl border border-[#00F2FF]/15 bg-[#0b1821]/80 px-4 py-3 text-sm font-semibold text-[#00F2FF] transition-all hover:border-[#00F2FF]/35 hover:bg-[#0b1821]/95"
