@@ -1,38 +1,50 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Code2, GitBranch, CheckCircle2, AlertCircle } from "lucide-react";
+import {
+  ExternalLink,
+  Code2,
+  GitBranch,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const RepoHealthBadgeSection = () => {
   const { t, isRTL } = useLanguage();
-  const [selectedTab, setSelectedTab] = useState<"badges" | "dependencies">("badges");
+  const [selectedTab, setSelectedTab] = useState<"badges" | "dependencies">(
+    "badges",
+  );
 
   const badges = [
     {
       name: "GitHub Actions",
       description: "CI/CD Pipeline",
-      badgeUrl: "https://img.shields.io/github/actions/workflow/status/Sleem13/selimisme-4be0bdc2/ci.yml?style=for-the-badge&logo=github&logoColor=white",
+      badgeUrl:
+        "https://img.shields.io/github/actions/workflow/status/Sleem13/selimisme-4be0bdc2/ci.yml?style=for-the-badge&logo=github&logoColor=white",
       repoUrl: "https://github.com/Sleem13",
       status: "active",
     },
     {
       name: "Code Coverage",
       description: "Vitest Coverage",
-      badgeUrl: "https://img.shields.io/badge/coverage-78%25-brightgreen?style=for-the-badge&logo=vitest",
+      badgeUrl:
+        "https://img.shields.io/badge/coverage-78%25-brightgreen?style=for-the-badge&logo=vitest",
       repoUrl: "https://github.com/Sleem13",
       status: "good",
     },
     {
       name: "Linting Score",
       description: "ESLint Quality",
-      badgeUrl: "https://img.shields.io/badge/eslint-passing-brightgreen?style=for-the-badge&logo=eslint",
+      badgeUrl:
+        "https://img.shields.io/badge/eslint-passing-brightgreen?style=for-the-badge&logo=eslint",
       repoUrl: "https://github.com/Sleem13",
       status: "passing",
     },
     {
       name: "Build Status",
       description: "Vite Build",
-      badgeUrl: "https://img.shields.io/badge/build-success-brightgreen?style=for-the-badge&logo=webpack",
+      badgeUrl:
+        "https://img.shields.io/badge/build-success-brightgreen?style=for-the-badge&logo=webpack",
       repoUrl: "https://github.com/Sleem13",
       status: "success",
     },
@@ -95,7 +107,10 @@ const RepoHealthBadgeSection = () => {
   };
 
   return (
-    <section id="quality" className={`relative py-20 md:py-28 px-6 scroll-mt-20 ${isRTL ? "text-right" : "text-left"}`}>
+    <section
+      id="quality"
+      className={`relative py-20 md:py-28 px-6 scroll-mt-20 ${isRTL ? "text-right" : "text-left"}`}
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -107,15 +122,22 @@ const RepoHealthBadgeSection = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <Code2 className="w-6 h-6 text-primary" />
-            <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase ${isRTL ? "font-arabic" : ""}`}
+            >
               Repository Health
             </p>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-extrabold leading-[1.05] mb-6 ${isRTL ? "font-arabic" : "font-heading"}`}>
+          <h2
+            className={`text-4xl md:text-5xl font-extrabold leading-[1.05] mb-6 ${isRTL ? "font-arabic" : "font-heading"}`}
+          >
             <span className="gradient-text">Project Quality & Status</span>
           </h2>
-          <p className={`text-muted-foreground text-base md:text-lg max-w-2xl mb-12 ${isRTL ? "font-arabic" : ""}`}>
-            Real-time metrics showing build status, test coverage, code quality, and dependencies for this project.
+          <p
+            className={`text-muted-foreground text-base md:text-lg max-w-2xl mb-12 ${isRTL ? "font-arabic" : ""}`}
+          >
+            Real-time metrics showing build status, test coverage, code quality,
+            and dependencies for this project.
           </p>
         </motion.div>
 
@@ -177,26 +199,33 @@ const RepoHealthBadgeSection = () => {
               >
                 {/* Status indicator */}
                 <div className="absolute top-4 right-4 flex items-center gap-2">
-                  <div className={`${getStatusColor(badge.status)} flex items-center`}>
+                  <div
+                    className={`${getStatusColor(badge.status)} flex items-center`}
+                  >
                     {getStatusIcon(badge.status)}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="mb-4">
-                  <h3 className="font-heading font-semibold text-lg mb-1">{badge.name}</h3>
-                  <p className="text-sm text-muted-foreground">{badge.description}</p>
+                  <h3 className="font-heading font-semibold text-lg mb-1">
+                    {badge.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {badge.description}
+                  </p>
                 </div>
 
                 {/* Badge Image */}
                 <div className="mb-4 bg-muted rounded-lg p-3 overflow-hidden">
-                  <img 
-                    src={badge.badgeUrl} 
+                  <img
+                    src={badge.badgeUrl}
                     alt={badge.name}
                     className="w-full h-auto"
                     onError={(e) => {
                       // Fallback if shield.io is unavailable
-                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='28'%3E%3Crect fill='%2328a745' width='200' height='28' rx='4'/%3E%3Ctext x='100' y='18' font-family='Arial' font-size='12' fill='white' text-anchor='middle' font-weight='bold'%3EBadge%3C/text%3E%3C/svg%3E";
+                      e.currentTarget.src =
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='28'%3E%3Crect fill='%2328a745' width='200' height='28' rx='4'/%3E%3Ctext x='100' y='18' font-family='Arial' font-size='12' fill='white' text-anchor='middle' font-weight='bold'%3EBadge%3C/text%3E%3C/svg%3E";
                     }}
                   />
                 </div>
@@ -235,8 +264,12 @@ const RepoHealthBadgeSection = () => {
                 <div className="flex items-start gap-4">
                   <span className="text-3xl">{dep.icon}</span>
                   <div className="flex-1">
-                    <h4 className="font-heading font-semibold text-base mb-1">{dep.name}</h4>
-                    <p className="text-sm text-muted-foreground font-mono">{dep.version}</p>
+                    <h4 className="font-heading font-semibold text-base mb-1">
+                      {dep.name}
+                    </h4>
+                    <p className="text-sm text-muted-foreground font-mono">
+                      {dep.version}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -252,7 +285,9 @@ const RepoHealthBadgeSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 pt-12 border-t border-border"
         >
-          <h3 className={`text-2xl font-heading font-semibold mb-6 ${isRTL ? "font-arabic" : ""}`}>
+          <h3
+            className={`text-2xl font-heading font-semibold mb-6 ${isRTL ? "font-arabic" : ""}`}
+          >
             Key Configuration Files
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -263,13 +298,16 @@ const RepoHealthBadgeSection = () => {
                 <h4 className="font-heading font-semibold">package.json</h4>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
-                Project dependencies, scripts, and metadata configured for optimal performance.
+                Project dependencies, scripts, and metadata configured for
+                optimal performance.
               </p>
               <details className="text-xs font-mono text-muted-foreground space-y-1">
-                <summary className="cursor-pointer text-primary hover:underline mb-2">View contents</summary>
+                <summary className="cursor-pointer text-primary hover:underline mb-2">
+                  View contents
+                </summary>
                 <div className="bg-muted p-3 rounded mt-2 max-h-48 overflow-y-auto">
                   <pre className="text-[11px] leading-relaxed">
-{`{
+                    {`{
   "name": "vite_react_shadcn_ts",
   "type": "module",
   "scripts": {
@@ -291,13 +329,16 @@ const RepoHealthBadgeSection = () => {
                 <h4 className="font-heading font-semibold">vite.config.ts</h4>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
-                Fast build tool configuration optimized for React and TypeScript development.
+                Fast build tool configuration optimized for React and TypeScript
+                development.
               </p>
               <details className="text-xs font-mono text-muted-foreground space-y-1">
-                <summary className="cursor-pointer text-primary hover:underline mb-2">View contents</summary>
+                <summary className="cursor-pointer text-primary hover:underline mb-2">
+                  View contents
+                </summary>
                 <div className="bg-muted p-3 rounded mt-2 max-h-48 overflow-y-auto">
                   <pre className="text-[11px] leading-relaxed">
-{`import { defineConfig } from 'vite'
+                    {`import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
@@ -321,13 +362,16 @@ export default defineConfig({
                 <h4 className="font-heading font-semibold">tsconfig.json</h4>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
-                TypeScript compiler options for strict type checking and optimal output.
+                TypeScript compiler options for strict type checking and optimal
+                output.
               </p>
               <details className="text-xs font-mono text-muted-foreground space-y-1">
-                <summary className="cursor-pointer text-primary hover:underline mb-2">View contents</summary>
+                <summary className="cursor-pointer text-primary hover:underline mb-2">
+                  View contents
+                </summary>
                 <div className="bg-muted p-3 rounded mt-2 max-h-48 overflow-y-auto">
                   <pre className="text-[11px] leading-relaxed">
-{`{
+                    {`{
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -356,19 +400,27 @@ export default defineConfig({
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">78%</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                78%
+              </div>
               <p className="text-sm text-muted-foreground">Test Coverage</p>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">A+</div>
+              <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">
+                A+
+              </div>
               <p className="text-sm text-muted-foreground">Code Quality</p>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">0</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">
+                0
+              </div>
               <p className="text-sm text-muted-foreground">Critical Issues</p>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-purple-500 mb-2">22</div>
+              <div className="text-3xl md:text-4xl font-bold text-purple-500 mb-2">
+                22
+              </div>
               <p className="text-sm text-muted-foreground">Dependencies</p>
             </div>
           </div>

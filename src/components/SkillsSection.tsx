@@ -2,22 +2,68 @@ import { motion } from "framer-motion";
 import { Award, Globe, Code2, Stethoscope } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SkillsRadarChart from "@/components/SkillsRadarChart";
-const technicalSkills = ["Python", "SQL", "Power BI", "Tableau", "scikit-learn", "Pandas", "Machine Learning", "ETL Pipelines", "Data Analytics", "DAX", "Automation", "Statistical Modeling"];
-const clinicalSkills = ["Clinical Assessment & Triage", "Musculoskeletal Rehabilitation", "Neuromuscular Therapy", "Sports Injury Recovery", "Dry Needling & Acupuncture", "Pediatric Habilitation"];
+const technicalSkills = [
+  "Python",
+  "SQL",
+  "Power BI",
+  "Tableau",
+  "scikit-learn",
+  "Pandas",
+  "Machine Learning",
+  "ETL Pipelines",
+  "Data Analytics",
+  "DAX",
+  "Automation",
+  "Statistical Modeling",
+];
+const clinicalSkills = [
+  "Clinical Assessment & Triage",
+  "Musculoskeletal Rehabilitation",
+  "Neuromuscular Therapy",
+  "Sports Injury Recovery",
+  "Dry Needling & Acupuncture",
+  "Pediatric Habilitation",
+];
 
 const certifications = [
   'Google Data Analytics Professional Certificate — "Foundations: Data, Data, Everywhere"',
   '"Delivering Quality Work with Agility" — Agile & Lean Methodologies',
-  'Applied AI & Healthcare Data Integration — Egyptian Military Academy',
+  "Applied AI & Healthcare Data Integration — Egyptian Military Academy",
 ];
 
 const languages = [
-  { name: "English", nameAr: "الإنجليزية", level: "Fluent", levelAr: "طلاقة", pct: "85%" },
-  { name: "Arabic", nameAr: "العربية", level: "Native", levelAr: "اللغة الأم", pct: "100%" },
-  { name: "French", nameAr: "الفرنسية", level: "Basic", levelAr: "أساسي", pct: "35%" },
+  {
+    name: "English",
+    nameAr: "الإنجليزية",
+    level: "Fluent",
+    levelAr: "طلاقة",
+    pct: "85%",
+  },
+  {
+    name: "Arabic",
+    nameAr: "العربية",
+    level: "Native",
+    levelAr: "اللغة الأم",
+    pct: "100%",
+  },
+  {
+    name: "French",
+    nameAr: "الفرنسية",
+    level: "Basic",
+    levelAr: "أساسي",
+    pct: "35%",
+  },
 ];
 
-const SoftCard = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => (
+const SoftCard = ({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => (
   <motion.div
     className={`group rounded-2xl bg-card border border-border p-6 transition-all duration-500 hover:border-primary/30 ${className}`}
     initial={{ opacity: 0, y: 30 }}
@@ -50,8 +96,14 @@ const SkillsSection = () => {
             transition={{ duration: 0.6 }}
             className="mb-14"
           >
-            <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? 'font-arabic' : ''}`}>{t("skills.label")}</p>
-            <h2 className={`text-3xl md:text-4xl font-bold mb-3 text-foreground ${isRTL ? 'font-arabic' : 'font-heading'}`}>
+            <p
+              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}
+            >
+              {t("skills.label")}
+            </p>
+            <h2
+              className={`text-3xl md:text-4xl font-bold mb-3 text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+            >
               {t("skills.title1")}{" "}
               <span className="gradient-text">{t("skills.title2")}</span>
             </h2>
@@ -68,11 +120,18 @@ const SkillsSection = () => {
                 <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Code2 className="w-4 h-4 text-primary" />
                 </div>
-                <h3 className={`text-base font-semibold text-foreground ${isRTL ? 'font-arabic' : 'font-heading'}`}>{t("skills.technical")}</h3>
+                <h3
+                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+                >
+                  {t("skills.technical")}
+                </h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {technicalSkills.map((skill) => (
-                  <span key={skill} className={`px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300 hover:shadow-sm ${skillTagStyle("tech")}`}>
+                  <span
+                    key={skill}
+                    className={`px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300 hover:shadow-sm ${skillTagStyle("tech")}`}
+                  >
                     {skill}
                   </span>
                 ))}
@@ -85,13 +144,19 @@ const SkillsSection = () => {
                 <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center">
                   <Globe className="w-4 h-4 text-gold" />
                 </div>
-                <h3 className={`text-base font-semibold text-foreground ${isRTL ? 'font-arabic' : 'font-heading'}`}>{t("skills.languages")}</h3>
+                <h3
+                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+                >
+                  {t("skills.languages")}
+                </h3>
               </div>
               <div className="space-y-5">
                 {languages.map((l) => (
                   <div key={l.name}>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-foreground font-medium">{lang === "ar" ? l.nameAr : l.name}</span>
+                      <span className="text-sm text-foreground font-medium">
+                        {lang === "ar" ? l.nameAr : l.name}
+                      </span>
                       <span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full bg-secondary border border-border">
                         {lang === "ar" ? l.levelAr : l.level}
                       </span>
@@ -116,11 +181,18 @@ const SkillsSection = () => {
                 <div className="w-9 h-9 rounded-xl bg-coral/10 flex items-center justify-center">
                   <Stethoscope className="w-4 h-4 text-coral" />
                 </div>
-                <h3 className={`text-base font-semibold text-foreground ${isRTL ? 'font-arabic' : 'font-heading'}`}>{t("skills.clinical")}</h3>
+                <h3
+                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+                >
+                  {t("skills.clinical")}
+                </h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {clinicalSkills.map((skill) => (
-                  <span key={skill} className={`px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300 hover:shadow-sm ${skillTagStyle("clinical")}`}>
+                  <span
+                    key={skill}
+                    className={`px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300 hover:shadow-sm ${skillTagStyle("clinical")}`}
+                  >
                     {skill}
                   </span>
                 ))}
@@ -133,11 +205,18 @@ const SkillsSection = () => {
                 <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center">
                   <Award className="w-4 h-4 text-gold" />
                 </div>
-                <h3 className={`text-base font-semibold text-foreground ${isRTL ? 'font-arabic' : 'font-heading'}`}>{t("skills.certifications")}</h3>
+                <h3
+                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+                >
+                  {t("skills.certifications")}
+                </h3>
               </div>
               <ul className="space-y-3">
                 {certifications.map((cert, i) => (
-                  <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
+                  <li
+                    key={i}
+                    className="text-muted-foreground text-sm flex items-start gap-2"
+                  >
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
                     {cert}
                   </li>

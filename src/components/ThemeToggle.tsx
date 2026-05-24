@@ -27,7 +27,12 @@ const ThemeToggle = ({ scrolled }: { scrolled: boolean }) => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  const icon = theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />;
+  const icon =
+    theme === "light" ? (
+      <Moon className="w-4 h-4" />
+    ) : (
+      <Sun className="w-4 h-4" />
+    );
   const label = theme === "light" ? "Enable dark mode" : "Enable light mode";
 
   return (

@@ -9,7 +9,12 @@ export interface TrackEventParams {
   value?: number;
 }
 
-export function trackEvent({ action, category = "engagement", label, value }: TrackEventParams): void {
+export function trackEvent({
+  action,
+  category = "engagement",
+  label,
+  value,
+}: TrackEventParams): void {
   const eventName = action;
   const params: Record<string, string | number | undefined> = {
     event_category: category,

@@ -33,7 +33,10 @@ const LANG_COLORS: Record<string, string> = {
 };
 
 const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString(undefined, { month: "short", year: "numeric" });
+  new Date(iso).toLocaleDateString(undefined, {
+    month: "short",
+    year: "numeric",
+  });
 
 const GitHubReposSection = () => {
   const { t, isRTL } = useLanguage();
@@ -63,7 +66,8 @@ const GitHubReposSection = () => {
             if (af !== bf) return bf - af;
             return (
               b.stargazers_count - a.stargazers_count ||
-              new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+              new Date(b.updated_at).getTime() -
+                new Date(a.updated_at).getTime()
             );
           });
         setRepos(filtered);
@@ -95,7 +99,8 @@ const GitHubReposSection = () => {
               <h2
                 className={`text-4xl md:text-6xl font-extrabold text-foreground tracking-tighter leading-[0.95] ${isRTL ? "font-arabic" : "font-heading"}`}
               >
-                {t("github.title1")} <span className="text-primary">{t("github.title2")}</span>
+                {t("github.title1")}{" "}
+                <span className="text-primary">{t("github.title2")}</span>
               </h2>
               <p
                 className={`mt-5 text-base text-muted-foreground max-w-2xl leading-relaxed ${isRTL ? "font-arabic" : ""}`}
@@ -110,8 +115,7 @@ const GitHubReposSection = () => {
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-sm font-semibold text-foreground hover:border-primary/40 hover:text-primary transition-all shrink-0"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <Github className="w-4 h-4" />
-              @{GITHUB_USERNAME}
+              <Github className="w-4 h-4" />@{GITHUB_USERNAME}
               <ExternalLink className="w-3.5 h-3.5 opacity-60" />
             </a>
           </motion.div>
@@ -146,7 +150,7 @@ const GitHubReposSection = () => {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {repos.map((repo, idx) => {
                 const langColor = repo.language
-                  ? LANG_COLORS[repo.language] ?? "#888"
+                  ? (LANG_COLORS[repo.language] ?? "#888")
                   : null;
                 return (
                   <motion.a
@@ -157,7 +161,10 @@ const GitHubReposSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.3) }}
+                    transition={{
+                      duration: 0.4,
+                      delay: Math.min(idx * 0.04, 0.3),
+                    }}
                     className="group relative flex flex-col gap-4 p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300"
                     style={{ boxShadow: "var(--shadow-card)" }}
                   >
@@ -200,7 +207,9 @@ const GitHubReposSection = () => {
                           <span className="flex items-center gap-1.5">
                             <span
                               className="w-2.5 h-2.5 rounded-full shrink-0"
-                              style={{ backgroundColor: langColor ?? undefined }}
+                              style={{
+                                backgroundColor: langColor ?? undefined,
+                              }}
                             />
                             <span className="text-foreground/80 font-medium truncate">
                               {repo.language}

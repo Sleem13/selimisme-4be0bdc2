@@ -7,7 +7,8 @@ const CustomCursor = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.matchMedia("(pointer: coarse)").matches);
+    const checkMobile = () =>
+      setIsMobile(window.matchMedia("(pointer: coarse)").matches);
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
@@ -39,7 +40,10 @@ const CustomCursor = () => {
         animate={{ x: pos.x - 4, y: pos.y - 4, scale: isHovering ? 0.5 : 1 }}
         transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
       >
-        <div className="w-2 h-2 rounded-full bg-primary" style={{ boxShadow: "var(--shadow-glow)" }} />
+        <div
+          className="w-2 h-2 rounded-full bg-primary"
+          style={{ boxShadow: "var(--shadow-glow)" }}
+        />
       </motion.div>
 
       {/* Ring */}

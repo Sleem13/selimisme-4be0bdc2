@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BrainCircuit, LayoutDashboard, GraduationCap, BarChart3 } from "lucide-react";
+import {
+  ArrowRight,
+  BrainCircuit,
+  LayoutDashboard,
+  GraduationCap,
+  BarChart3,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import EtlPipelineFlow from "@/components/EtlPipelineFlow";
 
@@ -40,13 +46,20 @@ const ServicesSection = () => {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}
+            >
               {t("svc.label")}
             </p>
-            <h2 className={`text-3xl md:text-5xl font-bold text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}>
-              {t("svc.title.1")} <span className="gradient-text">{t("svc.title.2")}</span>
+            <h2
+              className={`text-3xl md:text-5xl font-bold text-foreground leading-tight ${isRTL ? "font-arabic" : "font-heading"}`}
+            >
+              {t("svc.title.1")}{" "}
+              <span className="gradient-text">{t("svc.title.2")}</span>
             </h2>
-            <p className={`text-muted-foreground text-lg mt-4 max-w-2xl ${isRTL ? "font-arabic" : ""}`}>
+            <p
+              className={`text-muted-foreground text-lg mt-4 max-w-2xl ${isRTL ? "font-arabic" : ""}`}
+            >
               {t("svc.subtitle")}
             </p>
           </motion.div>
@@ -77,18 +90,24 @@ const ServicesSection = () => {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <s.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className={`text-xl md:text-2xl font-bold text-foreground mb-6 ${isRTL ? "font-arabic" : "font-heading"}`}>
+                <h3
+                  className={`text-xl md:text-2xl font-bold text-foreground mb-6 ${isRTL ? "font-arabic" : "font-heading"}`}
+                >
                   {t(s.titleKey)}
                 </h3>
 
-                <div className={`flex items-center gap-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                <div
+                  className={`flex items-center gap-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}
+                >
                   {s.flow.map((step, idx) => (
                     <div key={step} className="flex items-center gap-2">
                       <span className="text-xs md:text-sm px-3 py-1.5 rounded-full bg-secondary text-foreground border border-border font-medium whitespace-nowrap">
                         {t(step)}
                       </span>
                       {idx < s.flow.length - 1 && (
-                        <ArrowRight className={`w-3.5 h-3.5 text-primary/60 ${isRTL ? "rotate-180" : ""}`} />
+                        <ArrowRight
+                          className={`w-3.5 h-3.5 text-primary/60 ${isRTL ? "rotate-180" : ""}`}
+                        />
                       )}
                     </div>
                   ))}

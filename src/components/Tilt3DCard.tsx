@@ -17,7 +17,13 @@ export default function Tilt3DCard({
   glare?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0, gx: 50, gy: 50, active: false });
+  const [tilt, setTilt] = useState({
+    rx: 0,
+    ry: 0,
+    gx: 50,
+    gy: 50,
+    active: false,
+  });
 
   const handleMove = (e: React.MouseEvent) => {
     const el = ref.current;
@@ -30,7 +36,8 @@ export default function Tilt3DCard({
     setTilt({ rx, ry, gx: x * 100, gy: y * 100, active: true });
   };
 
-  const handleLeave = () => setTilt({ rx: 0, ry: 0, gx: 50, gy: 50, active: false });
+  const handleLeave = () =>
+    setTilt({ rx: 0, ry: 0, gx: 50, gy: 50, active: false });
 
   return (
     <div

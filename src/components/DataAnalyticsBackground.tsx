@@ -13,14 +13,25 @@ import { useEffect, useRef, useState } from "react";
  *
  * Optimized: single rAF loop, capped DPR, pauses when tab hidden.
  */
-const TOOL_LABELS = ["Power BI", "SQL", "Python", "Tableau", "Excel", "ML", "ETL"];
+const TOOL_LABELS = [
+  "Power BI",
+  "SQL",
+  "Python",
+  "Tableau",
+  "Excel",
+  "ML",
+  "ETL",
+];
 
 type ThemeMode = "light" | "dark";
 
 const DataAnalyticsBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [theme, setTheme] = useState<ThemeMode>(() =>
-    typeof document !== "undefined" && document.documentElement.classList.contains("dark") ? "dark" : "light"
+    typeof document !== "undefined" &&
+    document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light",
   );
 
   // Watch for theme changes on <html>
@@ -31,7 +42,10 @@ const DataAnalyticsBackground = () => {
     };
     update();
     const observer = new MutationObserver(update);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
     return () => observer.disconnect();
   }, []);
 
@@ -41,7 +55,9 @@ const DataAnalyticsBackground = () => {
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
     let width = 0;
@@ -49,8 +65,23 @@ const DataAnalyticsBackground = () => {
     let rafId = 0;
     let running = true;
 
-    type Node = { x: number; y: number; vx: number; vy: number; r: number; pulse: number };
-    type Label = { text: string; x: number; y: number; vx: number; vy: number; alpha: number; alphaDir: number };
+    type Node = {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      r: number;
+      pulse: number;
+    };
+    type Label = {
+      text: string;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      alpha: number;
+      alphaDir: number;
+    };
 
     let nodes: Node[] = [];
     let labels: Label[] = [];
@@ -106,7 +137,9 @@ const DataAnalyticsBackground = () => {
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.15,
         vy: (Math.random() - 0.5) * 0.15,
-        alpha: palette.labelMinAlpha + Math.random() * (palette.labelMaxAlpha - palette.labelMinAlpha) * 0.6,
+        alpha:
+          palette.labelMinAlpha +
+          Math.random() * (palette.labelMaxAlpha - palette.labelMinAlpha) * 0.6,
         alphaDir: Math.random() > 0.5 ? 1 : -1,
       }));
     };
@@ -162,7 +195,10 @@ const DataAnalyticsBackground = () => {
 
         if (palette.glowMul > 0) {
           const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 6);
-          grad.addColorStop(0, palette.glowColor(0.5 * pulse * palette.glowMul));
+          grad.addColorStop(
+            0,
+            palette.glowColor(0.5 * pulse * palette.glowMul),
+          );
           grad.addColorStop(1, palette.glowColor(0));
           ctx.fillStyle = grad;
           ctx.beginPath();

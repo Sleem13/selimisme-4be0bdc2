@@ -15,7 +15,11 @@ const quickReplies = [
 ];
 
 async function streamChat({
-  messages, sessionId, onDelta, onDone, onError,
+  messages,
+  sessionId,
+  onDelta,
+  onDone,
+  onError,
 }: {
   messages: Message[];
   sessionId: string;
@@ -40,7 +44,10 @@ async function streamChat({
       return;
     }
 
-    if (!resp.body) { onError("No response stream."); return; }
+    if (!resp.body) {
+      onError("No response stream.");
+      return;
+    }
 
     const reader = resp.body.getReader();
     const decoder = new TextDecoder();
@@ -82,7 +89,9 @@ async function streamChat({
           const parsed = JSON.parse(jsonStr);
           const content = parsed.choices?.[0]?.delta?.content;
           if (content) onDelta(content);
-        } catch { /* ignore */ }
+        } catch {
+          /* ignore */
+        }
       }
     }
 
@@ -119,7 +128,9 @@ const AIChatbot = () => {
       setMessages((prev) => {
         const last = prev[prev.length - 1];
         if (last?.role === "assistant") {
-          return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantSoFar } : m));
+          return prev.map((m, i) =>
+            i === prev.length - 1 ? { ...m, content: assistantSoFar } : m,
+          );
         }
         return [...prev, { role: "assistant", content: assistantSoFar }];
       });
@@ -131,19 +142,28 @@ const AIChatbot = () => {
       onDelta: upsertAssistant,
       onDone: () => setIsTyping(false),
       onError: (err) => {
-        setMessages((prev) => [...prev, { role: "assistant", content: `⚠️ ${err}` }]);
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: `⚠️ ${err}` },
+        ]);
         setIsTyping(false);
       },
     });
   };
 
-  const handleQuickReply = (reply: typeof quickReplies[0]) => {
+  const handleQuickReply = (reply: (typeof quickReplies)[0]) => {
     sendMessage(lang === "ar" ? reply.ar : reply.en);
   };
 
   const renderContent = (content: string) => {
     return content.split("**").map((part, j) =>
-      j % 2 === 1 ? <strong key={j} className="text-primary font-semibold">{part}</strong> : part
+      j % 2 === 1 ? (
+        <strong key={j} className="text-primary font-semibold">
+          {part}
+        </strong>
+      ) : (
+        part
+      ),
     );
   };
 
@@ -159,11 +179,21 @@ const AIChatbot = () => {
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
-            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+            >
               <X className="w-6 h-6" />
             </motion.div>
           ) : (
-            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+            <motion.div
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+            >
               <Sparkles className="w-6 h-6" />
             </motion.div>
           )}
@@ -175,7 +205,9 @@ const AIChatbot = () => {
         {isOpen && (
           <motion.div
             className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] rounded-2xl bg-card border border-border overflow-hidden"
-            style={{ boxShadow: "0 25px 60px -15px hsl(var(--foreground) / 0.15)" }}
+            style={{
+              boxShadow: "0 25px 60px -15px hsl(var(--foreground) / 0.15)",
+            }}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -187,12 +219,20 @@ const AIChatbot = () => {
                 <Sparkles className="w-4 h-4 text-primary-foreground" />
               </div>
               <div>
-                <p className="text-foreground font-heading font-semibold text-sm">Seliem AI</p>
-                <p className="text-muted-foreground text-xs">{lang === "ar" ? "مساعد التوظيف الذكي" : "Virtual Recruiter Assistant"}</p>
+                <p className="text-foreground font-heading font-semibold text-sm">
+                  Seliem AI
+                </p>
+                <p className="text-muted-foreground text-xs">
+                  {lang === "ar"
+                    ? "مساعد التوظيف الذكي"
+                    : "Virtual Recruiter Assistant"}
+                </p>
               </div>
               <div className="ml-auto flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-soft-green animate-pulse" />
-                <span className="text-soft-green text-xs">{lang === "ar" ? "متصل" : "Online"}</span>
+                <span className="text-soft-green text-xs">
+                  {lang === "ar" ? "متصل" : "Online"}
+                </span>
               </div>
             </div>
 
@@ -201,41 +241,64 @@ const AIChatbot = () => {
               {messages.length === 0 && (
                 <div className="text-center py-6">
                   <Sparkles className="w-8 h-8 mx-auto mb-3 text-primary/40" />
-                  <p className={`text-foreground text-sm mb-1 ${isRTL ? 'font-arabic' : 'font-heading'}`}>
+                  <p
+                    className={`text-foreground text-sm mb-1 ${isRTL ? "font-arabic" : "font-heading"}`}
+                  >
                     {lang === "ar" ? "مرحباً! 👋" : "Hey there! 👋"}
                   </p>
                   <p className="text-muted-foreground text-xs">
-                    {lang === "ar" ? "اسألني أي شيء عن محمد" : "Ask me anything about Mohamed"}
+                    {lang === "ar"
+                      ? "اسألني أي شيء عن محمد"
+                      : "Ask me anything about Mohamed"}
                   </p>
                 </div>
               )}
 
               {messages.map((msg, i) => (
-                <motion.div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
-                  <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                    msg.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-md"
-                      : "bg-secondary text-foreground rounded-bl-md border border-border"
-                  }`}>
+                <motion.div
+                  key={i}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div
+                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                      msg.role === "user"
+                        ? "bg-primary text-primary-foreground rounded-br-md"
+                        : "bg-secondary text-foreground rounded-bl-md border border-border"
+                    }`}
+                  >
                     {renderContent(msg.content)}
                   </div>
                 </motion.div>
               ))}
 
-              {isTyping && messages[messages.length - 1]?.role !== "assistant" && (
-                <motion.div className="flex justify-start" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <div className="rounded-2xl px-4 py-3 bg-secondary border border-border">
-                    <div className="flex gap-1">
-                      {[0, 1, 2].map((i) => (
-                        <motion.div key={i} className="w-2 h-2 rounded-full bg-primary"
-                          animate={{ y: [0, -5, 0] }}
-                          transition={{ duration: 0.5, delay: i * 0.15, repeat: Infinity }} />
-                      ))}
+              {isTyping &&
+                messages[messages.length - 1]?.role !== "assistant" && (
+                  <motion.div
+                    className="flex justify-start"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <div className="rounded-2xl px-4 py-3 bg-secondary border border-border">
+                      <div className="flex gap-1">
+                        {[0, 1, 2].map((i) => (
+                          <motion.div
+                            key={i}
+                            className="w-2 h-2 rounded-full bg-primary"
+                            animate={{ y: [0, -5, 0] }}
+                            transition={{
+                              duration: 0.5,
+                              delay: i * 0.15,
+                              repeat: Infinity,
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              )}
+                  </motion.div>
+                )}
               <div ref={messagesEndRef} />
             </div>
 
@@ -243,8 +306,11 @@ const AIChatbot = () => {
             {messages.length === 0 && (
               <div className="px-4 pb-3 flex flex-wrap gap-2">
                 {quickReplies.map((reply, i) => (
-                  <button key={i} onClick={() => handleQuickReply(reply)}
-                    className="px-3 py-1.5 text-xs rounded-full border border-border text-primary font-medium hover:border-primary/40 hover:bg-primary/5 transition-all duration-200">
+                  <button
+                    key={i}
+                    onClick={() => handleQuickReply(reply)}
+                    className="px-3 py-1.5 text-xs rounded-full border border-border text-primary font-medium hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
+                  >
                     {lang === "ar" ? reply.ar : reply.en}
                   </button>
                 ))}
@@ -253,17 +319,29 @@ const AIChatbot = () => {
 
             {/* Input */}
             <div className="px-4 pb-4 pt-2 border-t border-border">
-              <form onSubmit={(e) => { e.preventDefault(); sendMessage(input); }} className="flex items-center gap-2">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  sendMessage(input);
+                }}
+                className="flex items-center gap-2"
+              >
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder={lang === "ar" ? "اكتب سؤالك..." : "Ask me anything..."}
-                  className={`flex-1 bg-secondary border border-border rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-colors ${isRTL ? 'font-arabic text-right' : ''}`}
+                  placeholder={
+                    lang === "ar" ? "اكتب سؤالك..." : "Ask me anything..."
+                  }
+                  className={`flex-1 bg-secondary border border-border rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-colors ${isRTL ? "font-arabic text-right" : ""}`}
                   disabled={isTyping}
                 />
-                <motion.button type="submit" disabled={!input.trim() || isTyping}
+                <motion.button
+                  type="submit"
+                  disabled={!input.trim() || isTyping}
                   className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary text-primary-foreground disabled:opacity-30 transition-all"
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Send className="w-4 h-4" />
                 </motion.button>
               </form>

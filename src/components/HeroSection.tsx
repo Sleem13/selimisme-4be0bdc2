@@ -6,29 +6,45 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 import LiquidEther from "@/components/LiquidEther.jsx";
 
-const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 50, pauseTime = 2000) => {
+const useTypingAnimation = (
+  words: string[],
+  typingSpeed = 80,
+  deletingSpeed = 50,
+  pauseTime = 2000,
+) => {
   const [displayText, setDisplayText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const currentWord = words[wordIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setDisplayText(currentWord.substring(0, displayText.length + 1));
-        if (displayText === currentWord) {
-          setTimeout(() => setIsDeleting(true), pauseTime);
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          setDisplayText(currentWord.substring(0, displayText.length + 1));
+          if (displayText === currentWord) {
+            setTimeout(() => setIsDeleting(true), pauseTime);
+          }
+        } else {
+          setDisplayText(currentWord.substring(0, displayText.length - 1));
+          if (displayText === "") {
+            setIsDeleting(false);
+            setWordIndex((prev) => (prev + 1) % words.length);
+          }
         }
-      } else {
-        setDisplayText(currentWord.substring(0, displayText.length - 1));
-        if (displayText === "") {
-          setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, isDeleting ? deletingSpeed : typingSpeed);
+      },
+      isDeleting ? deletingSpeed : typingSpeed,
+    );
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
+  }, [
+    displayText,
+    isDeleting,
+    wordIndex,
+    words,
+    typingSpeed,
+    deletingSpeed,
+    pauseTime,
+  ]);
 
   return displayText;
 };
@@ -55,9 +71,24 @@ const HeroBackground = memo(() => (
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
-  const typingWordsEn = ["Healthcare Data Analyst", "ML Engineer", "BI Architect", "Clinical Insight Builder"];
-  const typingWordsAr = ["محلل بيانات صحية", "مهندس تعلم آلي", "معماري ذكاء أعمال", "صانع رؤى سريرية"];
-  const typingText = useTypingAnimation(lang === "ar" ? typingWordsAr : typingWordsEn, 80, 50, 2000);
+  const typingWordsEn = [
+    "Healthcare Data Analyst",
+    "ML Engineer",
+    "BI Architect",
+    "Clinical Insight Builder",
+  ];
+  const typingWordsAr = [
+    "محلل بيانات صحية",
+    "مهندس تعلم آلي",
+    "معماري ذكاء أعمال",
+    "صانع رؤى سريرية",
+  ];
+  const typingText = useTypingAnimation(
+    lang === "ar" ? typingWordsAr : typingWordsEn,
+    80,
+    50,
+    2000,
+  );
 
   const triadEn = ["Analytics", "AI", "Healthcare"];
   const triadAr = ["تحليلات", "ذكاء اصطناعي", "رعاية صحية"];
@@ -69,34 +100,49 @@ const HeroSection = () => {
       <HeroBackground />
 
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 0.5px, transparent 0)`,
-        backgroundSize: '32px 32px',
-      }} />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 0.5px, transparent 0)`,
+          backgroundSize: "32px 32px",
+        }}
+      />
 
-      <div className="absolute inset-0 pointer-events-none z-[1]"
-        style={{ background: "linear-gradient(180deg, hsl(var(--background) / 0.18) 0%, hsl(var(--background) / 0.04) 36%, hsl(var(--background) / 0.28) 100%)" }} />
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(var(--background) / 0.18) 0%, hsl(var(--background) / 0.04) 36%, hsl(var(--background) / 0.28) 100%)",
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-24">
         {/* Left: Text content */}
         <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
           <motion.div
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="mb-5"
           >
-            <p className={`flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 font-heading text-sm md:text-base tracking-[0.25em] uppercase ${isRTL ? 'font-arabic' : ''}`}>
+            <p
+              className={`flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 font-heading text-sm md:text-base tracking-[0.25em] uppercase ${isRTL ? "font-arabic" : ""}`}
+            >
               {triad.map((word, i) => (
                 <span key={word} className="inline-flex items-center gap-3">
                   <span className="text-foreground/80">{word}</span>
-                  {i < triad.length - 1 && <span className="text-primary/60">·</span>}
+                  {i < triad.length - 1 && (
+                    <span className="text-primary/60">·</span>
+                  )}
                 </span>
               ))}
             </p>
           </motion.div>
 
           <motion.h1
-            className={`text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight text-foreground ${isRTL ? 'font-arabic' : 'font-heading'}`}
-            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
+            className={`text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
             {t("hero.name.first")}{" "}
@@ -106,34 +152,56 @@ const HeroSection = () => {
           {/* Typing animation */}
           <motion.div
             className="mb-6 h-10 md:h-12 flex items-center justify-center lg:justify-start"
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
           >
-            <span className={`text-xl md:text-2xl font-heading font-semibold text-primary ${isRTL ? 'font-arabic' : ''}`}>
+            <span
+              className={`text-xl md:text-2xl font-heading font-semibold text-primary ${isRTL ? "font-arabic" : ""}`}
+            >
               {typingText}
             </span>
             <motion.span
               className="inline-block w-0.5 h-6 md:h-7 bg-primary ml-1"
               animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
+              transition={{
+                duration: 0.6,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
             />
           </motion.div>
 
           <motion.p
-            className={`text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed ${isRTL ? 'font-arabic' : 'font-body'}`}
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+            className={`text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed ${isRTL ? "font-arabic" : "font-body"}`}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
           >
             {t("hero.description")}
           </motion.p>
 
           {/* Skills pills */}
-          <motion.div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 md:gap-3 mb-8"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45 }}>
-            {["Python", "SQL", "Power BI", "Machine Learning", "Tableau", "ETL Pipelines", "scikit-learn", "Data Analytics"].map((skill) => (
-              <span key={skill}
-                className="text-sm text-muted-foreground px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 hover:text-primary hover:shadow-sm transition-all duration-300">
+          <motion.div
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-2 md:gap-3 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+          >
+            {[
+              "Python",
+              "SQL",
+              "Power BI",
+              "Machine Learning",
+              "Tableau",
+              "ETL Pipelines",
+              "scikit-learn",
+              "Data Analytics",
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="text-sm text-muted-foreground px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 hover:text-primary hover:shadow-sm transition-all duration-300"
+              >
                 {skill}
               </span>
             ))}
@@ -141,17 +209,29 @@ const HeroSection = () => {
 
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <a href="/Mohamed_Mahmoud_Seliem_CV.pdf" download
+            <a
+              href="/Mohamed_Mahmoud_Seliem_CV.pdf"
+              download
               className="group w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold transition-all duration-300 bg-primary text-primary-foreground hover:shadow-lg"
-              style={{ boxShadow: "var(--shadow-glow)" }}>
+              style={{ boxShadow: "var(--shadow-glow)" }}
+            >
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               {t("hero.download")}
             </a>
-            <a href="#contact"
+            <a
+              href="#contact"
               className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
-              onClick={() => trackEvent({ action: "contact_click", category: "hero", label: "hero_cta" })}
+              onClick={() =>
+                trackEvent({
+                  action: "contact_click",
+                  category: "hero",
+                  label: "hero_cta",
+                })
+              }
             >
               {t("nav.contact")}
             </a>
@@ -172,8 +252,13 @@ const HeroSection = () => {
             {/* Main Container */}
             <div className="relative w-72 md:w-[420px] aspect-[4/5] rounded-[24px] overflow-hidden shadow-[0_32px_64px_-20px_hsl(var(--primary)/0.22)] border border-border bg-card">
               {/* Subtle top gradient for depth */}
-              <div className="absolute inset-0 rounded-[24px] pointer-events-none z-10"
-                style={{ background: "linear-gradient(180deg, hsl(var(--background) / 0.15) 0%, transparent 40%, transparent 60%, hsl(var(--background) / 0.35) 100%)" }} />
+              <div
+                className="absolute inset-0 rounded-[24px] pointer-events-none z-10"
+                style={{
+                  background:
+                    "linear-gradient(180deg, hsl(var(--background) / 0.15) 0%, transparent 40%, transparent 60%, hsl(var(--background) / 0.35) 100%)",
+                }}
+              />
 
               {/* Image */}
               <img
@@ -213,8 +298,11 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
         <ChevronDown className="w-5 h-5 text-muted-foreground/50" />
       </motion.div>
     </section>

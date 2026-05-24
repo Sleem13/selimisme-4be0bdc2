@@ -27,7 +27,10 @@ const Index = () => {
   const { t, isRTL } = useLanguage();
 
   return (
-    <div className="bg-background text-foreground min-h-screen relative" style={{ scrollBehavior: "smooth" }}>
+    <div
+      className="bg-background text-foreground min-h-screen relative"
+      style={{ scrollBehavior: "smooth" }}
+    >
       <DataAnalyticsBackground />
       <CustomCursor />
       <Navbar />
@@ -50,7 +53,10 @@ const Index = () => {
       {/* Footer */}
       <footer className="relative bg-card border-t border-border">
         {/* CTA band */}
-        <div id="contact" className="relative z-10 py-20 md:py-28 px-6 border-b border-border scroll-mt-20">
+        <div
+          id="contact"
+          className="relative z-10 py-20 md:py-28 px-6 border-b border-border scroll-mt-20"
+        >
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             {/* Left: headline + subcopy */}
             <motion.div
@@ -60,13 +66,19 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className={isRTL ? "text-right" : "text-left"}
             >
-              <p className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-4 ${isRTL ? "font-arabic" : ""}`}>
+              <p
+                className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-4 ${isRTL ? "font-arabic" : ""}`}
+              >
                 {t("nav.contact")}
               </p>
-              <h2 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-5 ${isRTL ? "font-arabic" : "font-heading"}`}>
+              <h2
+                className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-5 ${isRTL ? "font-arabic" : "font-heading"}`}
+              >
                 <span className="gradient-text">{t("footer.cta")}</span>
               </h2>
-              <p className={`text-muted-foreground text-base md:text-lg max-w-xl ${isRTL ? "font-arabic" : ""}`}>
+              <p
+                className={`text-muted-foreground text-base md:text-lg max-w-xl ${isRTL ? "font-arabic" : ""}`}
+              >
                 {t("footer.cta.sub")}
               </p>
             </motion.div>
@@ -112,7 +124,8 @@ const Index = () => {
               </div>
 
               <p className="text-xs text-muted-foreground mt-5 leading-relaxed">
-                Typically replies within 24 hours · Open to remote & hybrid roles
+                Typically replies within 24 hours · Open to remote & hybrid
+                roles
               </p>
             </motion.div>
           </div>
@@ -122,9 +135,12 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-5">
-            <p className="text-2xl font-heading font-bold gradient-text mb-3">Muhammad Seliem</p>
+            <p className="text-2xl font-heading font-bold gradient-text mb-3">
+              Muhammad Seliem
+            </p>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mb-5">
-              Analytics · AI · Healthcare — turning chaos into clarity through data.
+              Analytics · AI · Healthcare — turning chaos into clarity through
+              data.
             </p>
             <div className="flex items-center gap-2">
               <a
@@ -148,7 +164,9 @@ const Index = () => {
 
           {/* Quick links */}
           <div className="md:col-span-3">
-            <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">Navigate</p>
+            <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">
+              Navigate
+            </p>
             <ul className="space-y-2.5 text-sm">
               {[
                 { href: "#about", label: "About" },
@@ -158,7 +176,10 @@ const Index = () => {
                 { href: "#contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-foreground/80 hover:text-primary transition-colors">
+                  <a
+                    href={link.href}
+                    className="text-foreground/80 hover:text-primary transition-colors"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -168,10 +189,15 @@ const Index = () => {
 
           {/* Reach */}
           <div className="md:col-span-4">
-            <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">Reach</p>
+            <p className="text-xs font-heading uppercase tracking-[0.25em] text-muted-foreground mb-4">
+              Reach
+            </p>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="mailto:muhammadsleem03@gmail.com" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors break-all">
+                <a
+                  href="mailto:muhammadsleem03@gmail.com"
+                  className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors break-all"
+                >
                   <Mail className="w-4 h-4 text-primary shrink-0" />
                   muhammadsleem03@gmail.com
                 </a>
@@ -193,7 +219,10 @@ const Index = () => {
           <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
             {/* Copyright */}
             <p className="text-center md:text-left">
-              {t("footer.rights").replace("{year}", String(new Date().getFullYear()))}
+              {t("footer.rights").replace(
+                "{year}",
+                String(new Date().getFullYear()),
+              )}
             </p>
 
             {/* Location + contact links */}

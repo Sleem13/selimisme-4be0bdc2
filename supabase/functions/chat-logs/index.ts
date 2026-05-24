@@ -21,7 +21,7 @@ serve(async (req) => {
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
 
     let query = supabase
@@ -32,7 +32,7 @@ serve(async (req) => {
 
     if (search) {
       query = query.or(
-        `user_message.ilike.%${search}%,assistant_response.ilike.%${search}%,session_id.ilike.%${search}%`
+        `user_message.ilike.%${search}%,assistant_response.ilike.%${search}%,session_id.ilike.%${search}%`,
       );
     }
 
@@ -42,13 +42,18 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify({ logs: data, total: count, page, pageSize }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (e) {
     console.error("chat-logs error:", e);
     return new Response(
-      JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      JSON.stringify({
+        error: e instanceof Error ? e.message : "Unknown error",
+      }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      },
     );
   }
 });

@@ -27,11 +27,19 @@ const domains: SkillDomain[] = [
     color: "hsl(var(--coral))",
     skills: [
       { nameEn: "Assessment & Triage", nameAr: "التقييم والفرز", level: 95 },
-      { nameEn: "Musculoskeletal Rehab", nameAr: "تأهيل عضلي هيكلي", level: 92 },
+      {
+        nameEn: "Musculoskeletal Rehab",
+        nameAr: "تأهيل عضلي هيكلي",
+        level: 92,
+      },
       { nameEn: "Neuromuscular Therapy", nameAr: "علاج عصبي عضلي", level: 88 },
       { nameEn: "Sports Injury", nameAr: "إصابات رياضية", level: 85 },
       { nameEn: "Patient Satisfaction", nameAr: "رضا المرضى", level: 95 },
-      { nameEn: "Evidence‑Based Practice", nameAr: "ممارسة مبنية على الأدلة", level: 90 },
+      {
+        nameEn: "Evidence‑Based Practice",
+        nameAr: "ممارسة مبنية على الأدلة",
+        level: 90,
+      },
     ],
   },
   {
@@ -99,7 +107,9 @@ export default function SkillsRadarChart() {
       style={{ boxShadow: "var(--shadow-card)" }}
     >
       <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
-        <h3 className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}>
+        <h3
+          className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+        >
           {isRTL ? "خريطة الكفاءات" : "Competency Radar"}
         </h3>
         <div className="flex gap-2">
@@ -109,9 +119,10 @@ export default function SkillsRadarChart() {
               onClick={() => setActive(d.id)}
               className={`
                 px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300
-                ${active === d.id
-                  ? "border-primary bg-primary/10 text-primary shadow-sm"
-                  : "border-border bg-secondary text-muted-foreground hover:border-primary/30"
+                ${
+                  active === d.id
+                    ? "border-primary bg-primary/10 text-primary shadow-sm"
+                    : "border-border bg-secondary text-muted-foreground hover:border-primary/30"
                 }
                 ${isRTL ? "font-arabic" : "font-heading"}
               `}
@@ -125,10 +136,7 @@ export default function SkillsRadarChart() {
       <div className="w-full h-[300px] md:h-[340px]">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="75%" data={chartData}>
-            <PolarGrid
-              stroke="hsl(var(--border))"
-              strokeDasharray="3 3"
-            />
+            <PolarGrid stroke="hsl(var(--border))" strokeDasharray="3 3" />
             <PolarAngleAxis
               dataKey="name"
               tick={{
@@ -174,7 +182,9 @@ export default function SkillsRadarChart() {
             <span className="text-xs text-muted-foreground">
               {isRTL ? s.nameAr : s.nameEn}
             </span>
-            <span className="text-xs font-semibold text-foreground">{s.level}%</span>
+            <span className="text-xs font-semibold text-foreground">
+              {s.level}%
+            </span>
           </div>
         ))}
       </div>
