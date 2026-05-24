@@ -93,7 +93,10 @@ const Navbar = () => {
           <a
             href="#contact"
             className="text-xs font-heading font-semibold px-3 py-1.5 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              trackEvent({ action: "contact_click", category: "navbar", label: "navbar_mobile" });
+            }}
           >
             {t("nav.contact")}
           </a>
