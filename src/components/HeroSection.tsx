@@ -3,6 +3,7 @@ import { memo, useMemo, useState, useEffect } from "react";
 import { Download, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 import LiquidEther from "@/components/LiquidEther.jsx";
 
 const useTypingAnimation = (words: string[], typingSpeed = 80, deletingSpeed = 50, pauseTime = 2000) => {
@@ -149,7 +150,9 @@ const HeroSection = () => {
               {t("hero.download")}
             </a>
             <a href="#contact"
-              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300">
+              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
+              onClick={() => trackEvent({ action: "contact_click", category: "hero", label: "hero_cta" })}
+            >
               {t("nav.contact")}
             </a>
           </motion.div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, FileText } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 
 const linkKeys = [
   { key: "nav.story", href: "#story" },
@@ -81,6 +82,7 @@ const Navbar = () => {
           <a
             href="#contact"
             className="text-sm font-heading font-semibold px-4 py-2 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
+            onClick={() => trackEvent({ action: "contact_click", category: "navbar", label: "navbar_desktop" })}
           >
             {t("nav.contact")}
           </a>
@@ -91,7 +93,10 @@ const Navbar = () => {
           <a
             href="#contact"
             className="text-xs font-heading font-semibold px-3 py-1.5 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              trackEvent({ action: "contact_click", category: "navbar", label: "navbar_mobile" });
+            }}
           >
             {t("nav.contact")}
           </a>
