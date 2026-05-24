@@ -45,7 +45,7 @@ const HeroBackground = memo(() => (
       autoDemo
       autoSpeed={0.35}
       autoIntensity={1.4}
-      takeoverDuration={0.2}
+      takeoverDuration={1.2}
       autoResumeDelay={4000}
       autoRampDuration={0.8}
     />
@@ -158,7 +158,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Right: Profile image — aligned with the name, not above it */}
+        {/* Right: Profile image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, x: 30 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -166,21 +166,14 @@ const HeroSection = () => {
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
         >
           <div className="relative group">
-            {/* Tech frame decor */}
-            <div className="absolute -inset-6 border border-primary/10 rounded-2xl pointer-events-none" />
-            <div className="absolute -top-2 -right-2 w-20 h-20 border-t-2 border-r-2 border-primary/40 rounded-tr-2xl pointer-events-none" />
-            <div className="absolute -bottom-2 -left-2 w-20 h-20 border-b-2 border-l-2 border-primary/40 rounded-bl-2xl pointer-events-none" />
+            {/* Soft ambient glow */}
+            <div className="absolute -inset-4 bg-primary/5 rounded-[32px] blur-2xl pointer-events-none" />
 
             {/* Main Container */}
-            <div className="relative w-72 md:w-[420px] aspect-[4/5] bg-card rounded-xl overflow-hidden shadow-2xl shadow-primary/20 border border-border">
-              {/* Grid Overlay */}
-              <div
-                className="absolute inset-0 opacity-10 pointer-events-none"
-                style={{
-                  backgroundImage: 'radial-gradient(hsl(var(--primary)) 1px, transparent 1px)',
-                  backgroundSize: '20px 20px',
-                }}
-              />
+            <div className="relative w-72 md:w-[420px] aspect-[4/5] rounded-[24px] overflow-hidden shadow-[0_32px_64px_-20px_hsl(var(--primary)/0.22)] border border-border bg-card">
+              {/* Subtle top gradient for depth */}
+              <div className="absolute inset-0 rounded-[24px] pointer-events-none z-10"
+                style={{ background: "linear-gradient(180deg, hsl(var(--background) / 0.15) 0%, transparent 40%, transparent 60%, hsl(var(--background) / 0.35) 100%)" }} />
 
               {/* Image */}
               <img
@@ -190,73 +183,33 @@ const HeroSection = () => {
                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
 
-              {/* HUD Overlays */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none">
-                <div className="flex justify-between items-start">
-                  <div className="bg-background/80 backdrop-blur-md border border-primary/30 p-3 rounded-sm">
-                    <p className="text-[9px] uppercase tracking-widest text-primary font-mono mb-1 font-bold">
-                      System Latency
-                    </p>
-                    <p className="text-xs font-mono text-foreground flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                      12ms Active
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-end gap-1 font-mono">
-                    <div className="text-[10px] text-primary">DATA_STREAM_001</div>
-                    <div className="flex gap-0.5">
-                      <div className="w-1 h-3 bg-primary/20" />
-                      <div className="w-1 h-5 bg-primary" />
-                      <div className="w-1 h-2 bg-primary/20" />
-                      <div className="w-1 h-4 bg-primary" />
-                    </div>
-                  </div>
-                </div>
-
+              {/* Floating badges */}
+              <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-10">
                 <div className="space-y-3">
                   {/* Origin */}
-                  <div className="bg-background/90 backdrop-blur-xl border-l-2 border-primary p-4 max-w-[180px] transform transition-transform group-hover:translate-x-2">
-                    <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-mono mb-1">
+                  <div className="bg-background/90 backdrop-blur-md border border-border rounded-xl px-4 py-3 max-w-[180px] shadow-sm">
+                    <span className="block text-[10px] uppercase tracking-widest text-muted-foreground font-heading mb-0.5">
                       Origin
                     </span>
-                    <h4 className="text-xs font-bold text-foreground uppercase tracking-tight">
+                    <h4 className="text-sm font-semibold text-foreground">
                       Physical Therapist
                     </h4>
                   </div>
 
                   {/* Current */}
-                  <div className="bg-primary p-4 max-w-[220px] shadow-lg shadow-primary/20 transform transition-transform group-hover:translate-x-4">
-                    <span className="block text-[9px] uppercase tracking-widest text-primary-foreground/80 font-black mb-1">
+                  <div className="bg-primary rounded-xl px-4 py-3 max-w-[220px] shadow-md shadow-primary/15">
+                    <span className="block text-[10px] uppercase tracking-widest text-primary-foreground/80 font-heading mb-1">
                       Current Role
                     </span>
-                    <h4 className="text-xs font-black text-primary-foreground uppercase tracking-tight">
+                    <h4 className="text-sm font-bold text-primary-foreground">
                       Healthcare Data Analyst
                     </h4>
                   </div>
                 </div>
               </div>
-
-              {/* Scanline */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="w-full h-[1px] bg-primary/50 absolute top-[20%] animate-pulse" />
-              </div>
-            </div>
-
-            {/* Vertical side accent */}
-            <div className="absolute -right-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 pointer-events-none">
-              <div className="h-24 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
-              <div
-                className="font-mono text-[9px] text-primary/60 whitespace-nowrap tracking-[0.6em] uppercase"
-                style={{ writingMode: 'vertical-rl' }}
-              >
-                Core.Intelligence.System
-              </div>
-              <div className="h-24 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
             </div>
           </div>
-
         </motion.div>
-
       </div>
 
       {/* Scroll indicator */}
