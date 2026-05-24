@@ -104,6 +104,17 @@ const ProjectsSection = () => {
                         >
                           {project.tagline}
                         </p>
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl border border-primary/30 bg-primary/5 text-sm font-semibold text-primary hover:bg-primary/10 hover:border-primary/50 transition-all"
+                          >
+                            <Github className="w-4 h-4" />
+                            View on GitHub
+                          </a>
+                        )}
                       </div>
 
                       <div className="flex flex-wrap gap-x-8 gap-y-4">
