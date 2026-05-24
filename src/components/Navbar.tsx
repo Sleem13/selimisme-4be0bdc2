@@ -59,15 +59,25 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-4">
-          {linkKeys.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground px-2 py-2 transition-colors font-body"
-            >
-              {t(link.key)}
-            </a>
-          ))}
+          {linkKeys.map((link) => {
+            const isProjects = link.key === "nav.projects";
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`relative text-sm px-2 py-2 transition-colors font-body ${
+                  isProjects
+                    ? "text-[#00F2FF] hover:text-[#00d5ff]"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t(link.key)}
+                {isProjects && (
+                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[#00F2FF]" />
+                )}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden md:flex items-center gap-3">
