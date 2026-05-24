@@ -243,6 +243,7 @@ const translations: Record<string, string> = {
   "proj.outcomes": "Outcomes",
   "proj.tools": "Stack",
   "proj.learnings": "What I Learned",
+  "proj.upNext": "Up Next",
 
   // Project 0 — Recovery Trajectory Predictor
   "proj.0.title": "Recovery Trajectory Predictor",
