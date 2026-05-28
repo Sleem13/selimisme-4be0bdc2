@@ -23,7 +23,7 @@ type Milestone = {
 
 const milestones: Milestone[] = [
   {
-    year: "2018 — 2023",
+    year: "2015 — 2020",
     title: "B.Sc. Physical Therapy",
     company: "Cairo University · Faculty of Physical Therapy",
     icon: GraduationCap,
