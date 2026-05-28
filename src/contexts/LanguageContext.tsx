@@ -209,7 +209,7 @@ const translations: Record<string, string> = {
   "edu.title2": "Foundation",
   "edu.0.degree": "B.Sc. in Physical Therapy",
   "edu.0.institution": "Cairo University",
-  "edu.0.period": "2014 – 2019",
+  "edu.0.period": "2015 – 2020",
   "edu.0.details":
     "Comprehensive training in musculoskeletal, neurological, and pediatric rehabilitation. Graduated with clinical honors.",
   "edu.1.degree": "Data Analytics & AI Specialization",
