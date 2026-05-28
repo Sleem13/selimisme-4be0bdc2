@@ -78,7 +78,7 @@ const milestones: Milestone[] = [
     color: "hsl(var(--soft-green))",
   },
   {
-    year: "2024 — 2025",
+    year: "2025 — 2026",
     title: "ML Engineer · Clinical Predictive Models",
     company: "Independent Projects",
     icon: BrainCircuit,
