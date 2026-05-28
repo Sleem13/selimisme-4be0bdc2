@@ -208,7 +208,7 @@ const translations: Record<string, string> = {
   "edu.title1": "Academic",
   "edu.title2": "Foundation",
   "edu.0.degree": "B.Sc. in Physical Therapy",
-  "edu.0.institution": "Cairo University",
+  "edu.0.institution": "KSU",
   "edu.0.period": "2015 – 2020",
   "edu.0.details":
     "Comprehensive training in musculoskeletal, neurological, and pediatric rehabilitation. Graduated with clinical honors.",
