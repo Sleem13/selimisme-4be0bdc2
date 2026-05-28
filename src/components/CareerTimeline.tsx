@@ -25,7 +25,7 @@ const milestones: Milestone[] = [
   {
     year: "2015 — 2020",
     title: "B.Sc. Physical Therapy",
-    company: "Cairo University · Faculty of Physical Therapy",
+    company: "KSU · Faculty of Physical Therapy",
     icon: GraduationCap,
     detail:
       "Five years grounded in anatomy, neuroscience, and evidence-based practice — the foundation for reading the human system as data.",
