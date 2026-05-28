@@ -214,7 +214,7 @@ const translations: Record<string, string> = {
     "Comprehensive training in musculoskeletal, neurological, and pediatric rehabilitation. Graduated with clinical honors.",
   "edu.1.degree": "Data Analytics & AI Specialization",
   "edu.1.institution": "Google · Egyptian Military Academy",
-  "edu.1.period": "2023 – 2024",
+  "edu.1.period": "2025 – 2026",
   "edu.1.details":
     "Applied data analytics, statistical modeling, machine learning, and AI integration in healthcare contexts.",
 
