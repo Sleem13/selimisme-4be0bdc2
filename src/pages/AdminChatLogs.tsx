@@ -38,6 +38,19 @@ const AdminChatLogs = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const pageSize = 20;
 
+  useEffect(() => {
+    document.title = "Admin · Chat Logs — Mohamed Seliem";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "Internal admin view for reviewing Seliem AI chatbot conversation logs.");
+    const robots = document.querySelector('meta[name="robots"]');
+    if (!robots) {
+      const m = document.createElement("meta");
+      m.name = "robots";
+      m.content = "noindex, nofollow";
+      document.head.appendChild(m);
+    }
+  }, []);
+
   const fetchLogs = useCallback(async () => {
     setLoading(true);
     try {
