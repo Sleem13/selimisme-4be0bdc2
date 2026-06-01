@@ -5,6 +5,9 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Page Not Found (404) — Mohamed Mahmoud Seliem";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "The page you're looking for doesn't exist. Return to Mohamed Seliem's portfolio home.");
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname,

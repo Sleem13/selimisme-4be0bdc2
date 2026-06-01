@@ -141,6 +141,7 @@ const HeroSection = () => {
 
           <motion.h1
             className={`text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+            aria-label="Mohamed Mahmoud Seliem — Healthcare Data Analyst & ML Engineer"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}

@@ -172,6 +172,8 @@ const AIChatbot = () => {
       {/* FAB */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle AI Chatbot"
+        aria-expanded={isOpen}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center bg-primary text-primary-foreground shadow-lg"
         style={{ boxShadow: "var(--shadow-glow)" }}
         whileHover={{ scale: 1.1 }}

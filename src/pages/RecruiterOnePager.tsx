@@ -46,7 +46,10 @@ const RecruiterOnePager = () => {
         <div className="max-w-4xl mx-auto px-8 py-12 print:py-16">
           {/* Header */}
           <div className="mb-12 border-b-4 border-blue-600 pb-8">
-            <h1 className="text-5xl font-bold text-black mb-2">
+            <h1
+              className="text-5xl font-bold text-black mb-2"
+              aria-label="Mohamed Mahmoud Seliem — Healthcare Data Analyst & ML Engineer"
+            >
               Mohamed Mahmoud Seliem
             </h1>
             <p className="text-2xl text-gray-700 font-semibold">

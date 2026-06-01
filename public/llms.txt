@@ -1,0 +1,10 @@
+# Mohamed Mahmoud Seliem
+
+> Portfolio of Mohamed Mahmoud Seliem — Licensed Physical Therapist turned Healthcare Data Analyst & ML Engineer, bridging clinical care and AI.
+
+Bilingual (English / Arabic) portfolio showcasing healthcare data analytics, machine learning projects, clinical experience, and a recruiter-ready one-pager.
+
+## Pages
+
+- [Home](/): Hero, story, services, experience, skills, and projects.
+- [Recruiter One-Pager](/recruiter): Printable single-page resume summary for hiring managers.
