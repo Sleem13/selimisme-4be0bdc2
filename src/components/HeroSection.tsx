@@ -49,7 +49,7 @@ const useTypingAnimation = (
   return displayText;
 };
 
-const LIQUID_COLORS = ["#00D4FF", "#0077FF", "#1A4A6E"];
+const LIQUID_COLORS = ["#a57b5f", "#7a5a44", "#3a2a20"];
 
 const HeroBackground = memo(() => (
   <div className="absolute inset-0 z-0 pointer-events-none opacity-45">
