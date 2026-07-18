@@ -207,100 +207,130 @@ const ProjectsSection = () => {
                         })}
                       </div>
 
-                      {/* Challenge & Solution */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 bg-card/60 border border-border rounded-3xl p-6 md:p-10">
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-                              <Target className="w-4 h-4 text-coral" />
+                      {/* Read case study — collapsed deep narrative */}
+                      <details className="group rounded-2xl border border-border bg-card/40 open:bg-card/60 transition-colors">
+                        <summary className="cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4 rounded-2xl select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                          <span
+                            className={`uppercase tracking-[0.2em] text-[11px] font-bold text-primary ${isRTL ? "font-arabic" : "font-heading"}`}
+                          >
+                            Read case study
+                          </span>
+                          <span className="text-primary text-lg leading-none transition-transform group-open:rotate-45">
+                            +
+                          </span>
+                        </summary>
+
+                        <div className="px-5 pb-6 pt-2 space-y-8">
+                          {/* Challenge & Solution */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+                            <div className="space-y-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+                                  <Target className="w-4 h-4 text-coral" />
+                                </div>
+                                <h4
+                                  className={`uppercase tracking-[0.2em] text-[11px] font-bold text-muted-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+                                >
+                                  {t("proj.challenge")}
+                                </h4>
+                              </div>
+                              <p
+                                className={`text-sm md:text-base text-foreground/80 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+                              >
+                                {project.challenge}
+                              </p>
                             </div>
+                            <div className="space-y-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-9 h-9 rounded-xl bg-primary/15 flex items-center justify-center">
+                                  <Lightbulb className="w-4 h-4 text-primary" />
+                                </div>
+                                <h4
+                                  className={`uppercase tracking-[0.2em] text-[11px] font-bold text-muted-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+                                >
+                                  {t("proj.solution")}
+                                </h4>
+                              </div>
+                              <p
+                                className={`text-sm md:text-base text-foreground/80 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+                              >
+                                {project.solution}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Outcomes */}
+                          <div className="space-y-3">
                             <h4
                               className={`uppercase tracking-[0.2em] text-[11px] font-bold text-muted-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
                             >
-                              {t("proj.challenge")}
+                              {t("proj.outcomes") ?? "Outcomes"}
                             </h4>
+                            <ul className="grid sm:grid-cols-3 gap-3">
+                              {project.outcomes.map((outcome, idx) => (
+                                <li
+                                  key={idx}
+                                  className="rounded-2xl bg-secondary/40 border border-border p-4 text-sm text-foreground/85 leading-relaxed flex gap-3"
+                                >
+                                  <span className="text-primary font-bold text-xs mt-0.5 shrink-0">
+                                    ✦
+                                  </span>
+                                  <span className={isRTL ? "font-arabic" : ""}>
+                                    {outcome}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                          <p
-                            className={`text-sm md:text-base text-foreground/80 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-                          >
-                            {project.challenge}
-                          </p>
-                        </div>
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-xl bg-primary/15 flex items-center justify-center">
-                              <Lightbulb className="w-4 h-4 text-primary" />
-                            </div>
+
+                          {/* Methodology */}
+                          <div className="space-y-4">
                             <h4
                               className={`uppercase tracking-[0.2em] text-[11px] font-bold text-muted-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
                             >
-                              {t("proj.solution")}
+                              {t("proj.approach")}
                             </h4>
-                          </div>
-                          <p
-                            className={`text-sm md:text-base text-foreground/80 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-                          >
-                            {project.solution}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Outcomes (bullet outcomes from data) */}
-                      <div className="space-y-4">
-                        <h4
-                          className={`uppercase tracking-[0.2em] text-[11px] font-bold text-muted-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
-                        >
-                          {t("proj.outcomes") ?? "Outcomes"}
-                        </h4>
-                        <ul className="grid sm:grid-cols-3 gap-3">
-                          {project.outcomes.map((outcome, idx) => (
-                            <li
-                              key={idx}
-                              className="rounded-2xl bg-secondary/40 border border-border p-4 text-sm text-foreground/85 leading-relaxed flex gap-3"
-                            >
-                              <span className="text-primary font-bold text-xs mt-0.5 shrink-0">
-                                ✦
-                              </span>
-                              <span className={isRTL ? "font-arabic" : ""}>
-                                {outcome}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Methodology — 4-step timeline */}
-                      <div className="space-y-5 pt-2">
-                        <h4
-                          className={`uppercase tracking-[0.2em] text-[11px] font-bold text-muted-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
-                        >
-                          {t("proj.approach")}
-                        </h4>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                          {project.approach.map((step, idx) => (
-                            <div
-                              key={idx}
-                              className={`relative p-4 ${isRTL ? "border-r-2 pr-4" : "border-l-2 pl-4"} border-border`}
-                            >
-                              {idx === 0 && (
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                              {project.approach.map((step, idx) => (
                                 <div
-                                  className={`absolute ${isRTL ? "-right-[3px]" : "-left-[3px]"} top-0 h-5 w-1 bg-primary rounded-full`}
-                                />
-                              )}
-                              <span
-                                className={`block font-bold text-sm mb-1.5 ${idx === 0 ? "text-primary" : "text-muted-foreground"} ${isRTL ? "font-arabic" : "font-heading"}`}
-                              >
-                                {String(idx + 1).padStart(2, "0")}
-                              </span>
-                              <span
-                                className={`text-foreground/90 text-xs md:text-sm font-semibold leading-snug block ${isRTL ? "font-arabic" : ""}`}
-                              >
-                                {step}
-                              </span>
+                                  key={idx}
+                                  className={`relative p-4 ${isRTL ? "border-r-2 pr-4" : "border-l-2 pl-4"} border-border`}
+                                >
+                                  {idx === 0 && (
+                                    <div
+                                      className={`absolute ${isRTL ? "-right-[3px]" : "-left-[3px]"} top-0 h-5 w-1 bg-primary rounded-full`}
+                                    />
+                                  )}
+                                  <span
+                                    className={`block font-bold text-sm mb-1.5 ${idx === 0 ? "text-primary" : "text-muted-foreground"} ${isRTL ? "font-arabic" : "font-heading"}`}
+                                  >
+                                    {String(idx + 1).padStart(2, "0")}
+                                  </span>
+                                  <span
+                                    className={`text-foreground/90 text-xs md:text-sm font-semibold leading-snug block ${isRTL ? "font-arabic" : ""}`}
+                                  >
+                                    {step}
+                                  </span>
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          </div>
+
+                          {/* Learnings */}
+                          <div
+                            className="p-5 bg-card border border-border rounded-2xl"
+                            style={{ boxShadow: "var(--shadow-card)" }}
+                          >
+                            <Quote className="w-5 h-5 text-primary/60 mb-3" />
+                            <p
+                              className={`text-sm md:text-base text-foreground/80 italic leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+                            >
+                              {project.learnings}
+                            </p>
+                            <div className="mt-4 h-1 w-12 bg-primary rounded-full" />
+                          </div>
                         </div>
-                      </div>
+                      </details>
                     </div>
                   </div>
 
