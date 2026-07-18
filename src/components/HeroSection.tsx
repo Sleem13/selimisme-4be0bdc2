@@ -30,28 +30,17 @@ const HeroBackground = memo(() => (
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
-  const typingWordsEn = [
-    "Healthcare Data Analyst",
-    "ML Engineer",
-    "BI Architect",
-    "Clinical Insight Builder",
-  ];
-  const typingWordsAr = [
-    "محلل بيانات صحية",
-    "مهندس تعلم آلي",
-    "معماري ذكاء أعمال",
-    "صانع رؤى سريرية",
-  ];
-  const typingText = useTypingAnimation(
-    lang === "ar" ? typingWordsAr : typingWordsEn,
-    80,
-    50,
-    2000,
-  );
+  const roleLine = "Healthcare Data Analyst · ML Engineer · BI Architect";
 
   const triadEn = ["Analytics", "AI", "Healthcare"];
   const triadAr = ["تحليلات", "ذكاء اصطناعي", "رعاية صحية"];
   const triad = useMemo(() => (lang === "ar" ? triadAr : triadEn), [lang]);
+
+  const heroKpis = [
+    { value: "300+", label: "patients" },
+    { value: "15%", label: "efficiency gain" },
+    { value: "22%", label: "faster recovery ID" },
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
