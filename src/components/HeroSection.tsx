@@ -98,27 +98,22 @@ const HeroSection = () => {
             <span className="gradient-text">{t("hero.name.last")}</span>
           </motion.h1>
 
-          {/* Typing animation */}
+          {/* Role line + availability chip */}
           <motion.div
-            className="mb-6 h-10 md:h-12 flex items-center justify-center lg:justify-start"
+            className="mb-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
           >
             <span
-              className={`text-xl md:text-2xl font-heading font-semibold text-primary ${isRTL ? "font-arabic" : ""}`}
+              className={`text-lg md:text-xl font-heading font-semibold text-primary ${isRTL ? "font-arabic" : ""}`}
             >
-              {typingText}
+              {roleLine}
             </span>
-            <motion.span
-              className="inline-block w-0.5 h-6 md:h-7 bg-primary ml-1"
-              animate={{ opacity: [1, 0] }}
-              transition={{
-                duration: 0.6,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-xs font-medium text-emerald-500">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Open · Cairo / Remote
+            </span>
           </motion.div>
 
           <motion.p
