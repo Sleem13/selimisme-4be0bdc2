@@ -5,11 +5,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 
 const linkKeys = [
-  { key: "nav.story", href: "#story" },
+  { key: "nav.about", href: "#about" },
   { key: "nav.services", href: "#services" },
-  { key: "nav.how", href: "#how" },
-  { key: "nav.experience", href: "#experience" },
   { key: "nav.projects", href: "#projects" },
+  { key: "nav.experience", href: "#experience" },
   { key: "nav.contact", href: "#contact" },
 ];
 
