@@ -144,26 +144,12 @@ const ProjectsSection = () => {
                         ))}
                       </div>
 
-                      {/* Context paragraph */}
+                      {/* Context paragraph (short, always shown) */}
                       <p
                         className={`text-sm md:text-base text-foreground/75 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
                       >
                         {project.context}
                       </p>
-
-                      {/* Learnings pull-quote */}
-                      <div
-                        className="p-6 bg-card border border-border rounded-2xl"
-                        style={{ boxShadow: "var(--shadow-card)" }}
-                      >
-                        <Quote className="w-5 h-5 text-primary/60 mb-3" />
-                        <p
-                          className={`text-sm md:text-base text-foreground/80 italic leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-                        >
-                          {project.learnings}
-                        </p>
-                        <div className="mt-4 h-1 w-12 bg-primary rounded-full" />
-                      </div>
 
                       {/* Stack / Tools */}
                       <div>
