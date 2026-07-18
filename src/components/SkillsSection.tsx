@@ -1,232 +1,162 @@
 import { motion } from "framer-motion";
-import { Award, Globe, Code2, Stethoscope } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SkillsRadarChart from "@/components/SkillsRadarChart";
-const technicalSkills = [
-  "Python",
-  "SQL",
-  "Power BI",
-  "Tableau",
-  "scikit-learn",
-  "Pandas",
-  "Machine Learning",
-  "ETL Pipelines",
-  "Data Analytics",
-  "DAX",
-  "Automation",
-  "Statistical Modeling",
-];
-const clinicalSkills = [
-  "Clinical Assessment & Triage",
-  "Musculoskeletal Rehabilitation",
-  "Neuromuscular Therapy",
-  "Sports Injury Recovery",
-  "Dry Needling & Acupuncture",
-  "Pediatric Habilitation",
-];
 
-const certifications = [
-  'Google Data Analytics Professional Certificate — "Foundations: Data, Data, Everywhere"',
-  '"Delivering Quality Work with Agility" — Agile & Lean Methodologies',
-  "Applied AI & Healthcare Data Integration — Egyptian Military Academy",
-];
+type Skill = { name: string; level: 1 | 2 | 3 | 4 | 5 };
 
-const languages = [
+const matrix: { key: string; label: string; skills: Skill[] }[] = [
   {
-    name: "English",
-    nameAr: "الإنجليزية",
-    level: "Fluent",
-    levelAr: "طلاقة",
-    pct: "85%",
+    key: "data",
+    label: "Data",
+    skills: [
+      { name: "SQL", level: 5 },
+      { name: "Power BI / DAX", level: 5 },
+      { name: "Tableau", level: 4 },
+      { name: "ETL Pipelines", level: 4 },
+      { name: "Statistical Modeling", level: 4 },
+    ],
   },
   {
-    name: "Arabic",
-    nameAr: "العربية",
-    level: "Native",
-    levelAr: "اللغة الأم",
-    pct: "100%",
+    key: "ml",
+    label: "ML / AI",
+    skills: [
+      { name: "Python", level: 5 },
+      { name: "scikit-learn", level: 4 },
+      { name: "PyTorch", level: 3 },
+      { name: "Reinforcement Learning", level: 3 },
+      { name: "SHAP / Explainability", level: 4 },
+    ],
   },
   {
-    name: "French",
-    nameAr: "الفرنسية",
-    level: "Basic",
-    levelAr: "أساسي",
-    pct: "35%",
+    key: "clinical",
+    label: "Clinical",
+    skills: [
+      { name: "Assessment & Triage", level: 5 },
+      { name: "Musculoskeletal Rehab", level: 5 },
+      { name: "Neuromuscular Therapy", level: 4 },
+      { name: "Sports Recovery", level: 4 },
+      { name: "Pediatric Habilitation", level: 4 },
+    ],
+  },
+  {
+    key: "tools",
+    label: "Tools",
+    skills: [
+      { name: "Git / GitHub", level: 4 },
+      { name: "Streamlit", level: 4 },
+      { name: "Azure Data Factory", level: 3 },
+      { name: "Pandas / NumPy", level: 5 },
+      { name: "Excel (Advanced)", level: 5 },
+    ],
   },
 ];
 
-const SoftCard = ({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) => (
-  <motion.div
-    className={`group rounded-2xl bg-card border border-border p-6 transition-all duration-500 hover:border-primary/30 ${className}`}
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-    whileHover={{ y: -4 }}
-    style={{ boxShadow: "var(--shadow-card)" }}
-  >
-    {children}
-  </motion.div>
+const learning = ["LangGraph", "MLflow", "dbt", "Polars", "FastAPI"];
+
+const Dots = ({ level }: { level: number }) => (
+  <span className="inline-flex items-center gap-1" aria-label={`Level ${level} of 5`}>
+    {[1, 2, 3, 4, 5].map((i) => (
+      <span
+        key={i}
+        className={`h-1.5 w-1.5 rounded-full ${
+          i <= level ? "bg-primary" : "bg-border"
+        }`}
+      />
+    ))}
+  </span>
 );
 
-const skillTagStyle = (variant: "tech" | "clinical") => {
-  if (variant === "tech") return "text-primary bg-primary/8 border-primary/15";
-  return "text-soft-green bg-soft-green/10 border-soft-green/20";
-};
-
 const SkillsSection = () => {
-  const { t, isRTL, lang } = useLanguage();
+  const { t, isRTL } = useLanguage();
 
   return (
     <section id="skills" className="bg-background">
       <div className="section-padding">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
+          {/* Section marker */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-14"
+            className="mb-14 md:mb-20"
           >
-            <p
-              className={`text-primary font-heading text-sm tracking-[0.3em] uppercase mb-3 ${isRTL ? "font-arabic" : ""}`}
-            >
-              {t("skills.label")}
-            </p>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">
+                05 — Toolkit
+              </span>
+              <span className="h-px flex-1 bg-border/70" />
+            </div>
             <h2
-              className={`text-3xl md:text-4xl font-bold mb-3 text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+              className={`text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.02] ${isRTL ? "font-arabic" : "font-heading"}`}
             >
               {t("skills.title1")}{" "}
-              <span className="gradient-text">{t("skills.title2")}</span>
+              <span className="italic font-normal gradient-text">
+                {t("skills.title2")}
+              </span>
             </h2>
-            <div className="arabic-divider">
-              <span className="arabic-ornament">◆</span>
-            </div>
           </motion.div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-auto">
-            {/* Technical Skills - 2 cols */}
-            <SoftCard delay={0} className="md:col-span-2">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Code2 className="w-4 h-4 text-primary" />
-                </div>
-                <h3
-                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+          {/* Matrix + Radar */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-10 lg:gap-14 items-start">
+            {/* Proficiency matrix */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+              {matrix.map((col, ci) => (
+                <motion.div
+                  key={col.key}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: ci * 0.05 }}
+                  className="border-t border-border/70 pt-4"
                 >
-                  {t("skills.technical")}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {technicalSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className={`px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300 hover:shadow-sm ${skillTagStyle("tech")}`}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </SoftCard>
+                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-primary mb-4">
+                    {col.label}
+                  </p>
+                  <ul className="space-y-3">
+                    {col.skills.map((s) => (
+                      <li
+                        key={s.name}
+                        className="flex items-center justify-between gap-3"
+                      >
+                        <span className="text-sm text-foreground/90 truncate">
+                          {s.name}
+                        </span>
+                        <Dots level={s.level} />
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
 
-            {/* Languages - tall right */}
-            <SoftCard delay={0.05} className="md:row-span-2">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center">
-                  <Globe className="w-4 h-4 text-gold" />
+            {/* At-a-glance radar (hidden on mobile) */}
+            <div className="hidden lg:block">
+              <div className="border-t border-border/70 pt-4">
+                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-primary mb-4">
+                  At a glance
+                </p>
+                <div className="rounded-2xl bg-card/60 border border-border p-4">
+                  <SkillsRadarChart />
                 </div>
-                <h3
-                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
-                >
-                  {t("skills.languages")}
-                </h3>
               </div>
-              <div className="space-y-5">
-                {languages.map((l) => (
-                  <div key={l.name}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-foreground font-medium">
-                        {lang === "ar" ? l.nameAr : l.name}
-                      </span>
-                      <span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full bg-secondary border border-border">
-                        {lang === "ar" ? l.levelAr : l.level}
-                      </span>
-                    </div>
-                    <div className="w-full h-1.5 rounded-full bg-muted overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full bg-primary"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: l.pct }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SoftCard>
+            </div>
+          </div>
 
-            {/* Clinical Skills */}
-            <SoftCard delay={0.1}>
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-9 h-9 rounded-xl bg-coral/10 flex items-center justify-center">
-                  <Stethoscope className="w-4 h-4 text-coral" />
-                </div>
-                <h3
-                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
+          {/* Currently learning */}
+          <div className="mt-14 md:mt-20 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 border-t border-border/70 pt-6">
+            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-muted-foreground shrink-0">
+              Currently learning
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {learning.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1 text-[11px] rounded-full font-mono uppercase tracking-wider text-foreground/85 bg-secondary/60 border border-border"
                 >
-                  {t("skills.clinical")}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {clinicalSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className={`px-3 py-1.5 text-xs rounded-lg border font-medium transition-all duration-300 hover:shadow-sm ${skillTagStyle("clinical")}`}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </SoftCard>
-
-            {/* Certifications */}
-            <SoftCard delay={0.15}>
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center">
-                  <Award className="w-4 h-4 text-gold" />
-                </div>
-                <h3
-                  className={`text-base font-semibold text-foreground ${isRTL ? "font-arabic" : "font-heading"}`}
-                >
-                  {t("skills.certifications")}
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {certifications.map((cert, i) => (
-                  <li
-                    key={i}
-                    className="text-muted-foreground text-sm flex items-start gap-2"
-                  >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
-                    {cert}
-                  </li>
-                ))}
-              </ul>
-            </SoftCard>
-
-            {/* Radar Chart - full width */}
-            <div className="md:col-span-3">
-              <SkillsRadarChart />
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>
