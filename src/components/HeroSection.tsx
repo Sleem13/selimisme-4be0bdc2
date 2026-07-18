@@ -151,8 +151,31 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
+          {/* KPI proof strip */}
+          <motion.dl
+            aria-label="Impact highlights"
+            className="grid grid-cols-3 gap-3 md:gap-4 mb-8 max-w-xl mx-auto lg:mx-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            {heroKpis.map((k) => (
+              <div
+                key={k.label}
+                className="rounded-xl border border-border bg-card/70 px-3 py-3 text-center"
+              >
+                <dt className="text-2xl md:text-3xl font-heading font-extrabold text-primary leading-none">
+                  {k.value}
+                </dt>
+                <dd className="mt-1 text-[10px] md:text-xs uppercase tracking-wider text-muted-foreground">
+                  {k.label}
+                </dd>
+              </div>
+            ))}
+          </motion.dl>
+
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -160,7 +183,14 @@ const HeroSection = () => {
             <a
               href="/Mohamed_Mahmoud_Seliem_CV.pdf"
               download
-              className="group w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold transition-all duration-300 bg-primary text-primary-foreground hover:shadow-lg"
+              onClick={() =>
+                trackEvent({
+                  action: "cv_download",
+                  category: "hero",
+                  label: "hero_cv",
+                })
+              }
+              className="group w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold transition-all duration-300 bg-primary text-primary-foreground hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               style={{ boxShadow: "var(--shadow-glow)" }}
             >
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
@@ -168,7 +198,7 @@ const HeroSection = () => {
             </a>
             <a
               href="#contact"
-              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
+              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               onClick={() =>
                 trackEvent({
                   action: "contact_click",
@@ -178,6 +208,22 @@ const HeroSection = () => {
               }
             >
               {t("nav.contact")}
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sleemisme"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent({
+                  action: "linkedin_click",
+                  category: "hero",
+                  label: "hero_linkedin",
+                })
+              }
+              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-heading font-semibold text-muted-foreground hover:text-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <Linkedin className="w-4 h-4" />
+              LinkedIn
             </a>
           </motion.div>
         </div>
