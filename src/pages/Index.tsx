@@ -250,7 +250,9 @@ const Index = () => {
         </div>
       </footer>
 
-      <AIChatbot />
+      <Suspense fallback={null}>
+        <AIChatbot />
+      </Suspense>
     </div>
   );
 };
