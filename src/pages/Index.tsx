@@ -1,7 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
+import RecruiterSnapshot from "@/components/RecruiterSnapshot";
+import StickyRecruiterBar from "@/components/StickyRecruiterBar";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ImpactStripSection from "@/components/ImpactStripSection";
@@ -13,13 +15,36 @@ import CustomCursor from "@/components/CustomCursor";
 import DataAnalyticsBackground from "@/components/DataAnalyticsBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, MapPin } from "lucide-react";
+import {
+  ArrowUpRight,
+  Mail,
+  Linkedin,
+  MapPin,
+  Copy,
+  Check,
+  ExternalLink,
+} from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const GitHubReposSection = lazy(() => import("@/components/GitHubReposSection"));
 const AIChatbot = lazy(() => import("@/components/AIChatbot"));
 
+const EMAIL = "muhammadsleem03@gmail.com";
+
 const Index = () => {
   const { t, isRTL } = useLanguage();
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      trackEvent({ action: "email_copy", category: "contact", label: "cta_band" });
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // no-op
+    }
+  };
 
   return (
     <div
@@ -30,6 +55,7 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <HeroSection />
+      <RecruiterSnapshot />
       <MarqueeStrip />
       <AboutSection />
       <ServicesSection />
@@ -41,6 +67,8 @@ const Index = () => {
       <ExperienceSection />
       <EducationSection />
       <SkillsSection />
+      <StickyRecruiterBar />
+
 
 
       {/* Footer */}
