@@ -47,12 +47,12 @@ const Navbar = () => {
       transition={{ duration: 0.3 }}
     >
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
-        <a href="#" className="flex items-center gap-3">
-          <span className="grid h-14 w-14 place-items-center rounded-sm bg-[#00F2FF] text-[14px] font-black uppercase tracking-[0.2em] text-black">
+        <a href="#" className="flex items-center gap-3 group">
+          <span className="grid h-11 w-11 place-items-center rounded-sm border border-primary/40 bg-primary/10 text-[13px] font-heading italic text-primary">
             MS
           </span>
-          <span className="text-sm font-semibold uppercase tracking-[0.15em] text-[#00F2FF]">
-            M Seliem
+          <span className="text-sm font-heading italic tracking-wide text-foreground/90">
+            Mohamed Seliem
           </span>
         </a>
 
