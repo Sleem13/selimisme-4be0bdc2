@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Inter', 'Space Grotesk', 'sans-serif'],
+        heading: ['Playfair Display', 'Inter', 'serif'],
         body: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        arabic: ['Amiri', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

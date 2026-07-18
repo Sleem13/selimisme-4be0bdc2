@@ -1,27 +1,22 @@
-import { useState, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
-import StorySection from "@/components/StorySection";
-import ChallengeSolutionSection from "@/components/ChallengeSolutionSection";
-import ServicesSection from "@/components/ServicesSection";
-import HowIWorkSection from "@/components/HowIWorkSection";
-import ImpactStripSection from "@/components/ImpactStripSection";
 import AboutSection from "@/components/AboutSection";
+import ServicesSection from "@/components/ServicesSection";
+import ImpactStripSection from "@/components/ImpactStripSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import GitHubReposSection from "@/components/GitHubReposSection";
-import RepoHealthBadgeSection from "@/components/RepoHealthBadgeSection";
-
 import CustomCursor from "@/components/CustomCursor";
-import CareerTimeline from "@/components/CareerTimeline";
-import AIChatbot from "@/components/AIChatbot";
 import DataAnalyticsBackground from "@/components/DataAnalyticsBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, Phone, MapPin } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, MapPin } from "lucide-react";
+
+const GitHubReposSection = lazy(() => import("@/components/GitHubReposSection"));
+const AIChatbot = lazy(() => import("@/components/AIChatbot"));
 
 const Index = () => {
   const { t, isRTL } = useLanguage();
@@ -36,19 +31,17 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <MarqueeStrip />
-      <StorySection />
-      <ChallengeSolutionSection />
-      <ServicesSection />
-      <HowIWorkSection />
-      <ImpactStripSection />
       <AboutSection />
+      <ServicesSection />
+      <ImpactStripSection />
+      <ProjectsSection />
+      <Suspense fallback={null}>
+        <GitHubReposSection />
+      </Suspense>
       <ExperienceSection />
-      <CareerTimeline />
       <EducationSection />
       <SkillsSection />
-      <ProjectsSection />
-      <GitHubReposSection />
-      <RepoHealthBadgeSection />
+
 
       {/* Footer */}
       <footer className="relative bg-card border-t border-border">
@@ -257,7 +250,9 @@ const Index = () => {
         </div>
       </footer>
 
-      <AIChatbot />
+      <Suspense fallback={null}>
+        <AIChatbot />
+      </Suspense>
     </div>
   );
 };

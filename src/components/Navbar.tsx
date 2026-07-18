@@ -5,11 +5,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 
 const linkKeys = [
-  { key: "nav.story", href: "#story" },
+  { key: "nav.about", href: "#about" },
   { key: "nav.services", href: "#services" },
-  { key: "nav.how", href: "#how" },
-  { key: "nav.experience", href: "#experience" },
   { key: "nav.projects", href: "#projects" },
+  { key: "nav.experience", href: "#experience" },
   { key: "nav.contact", href: "#contact" },
 ];
 
@@ -48,12 +47,12 @@ const Navbar = () => {
       transition={{ duration: 0.3 }}
     >
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
-        <a href="#" className="flex items-center gap-3">
-          <span className="grid h-14 w-14 place-items-center rounded-sm bg-[#00F2FF] text-[14px] font-black uppercase tracking-[0.2em] text-black">
+        <a href="#" className="flex items-center gap-3 group">
+          <span className="grid h-11 w-11 place-items-center rounded-sm border border-primary/40 bg-primary/10 text-[13px] font-heading italic text-primary">
             MS
           </span>
-          <span className="text-sm font-semibold uppercase tracking-[0.15em] text-[#00F2FF]">
-            M Seliem
+          <span className="text-sm font-heading italic tracking-wide text-foreground/90">
+            Mohamed Seliem
           </span>
         </a>
 
@@ -67,13 +66,13 @@ const Navbar = () => {
                 href={link.href}
                 className={`relative text-sm px-2 py-2 transition-colors font-body ${
                   isProjects
-                    ? "text-[#00F2FF] hover:text-[#00d5ff]"
+                    ? "text-[hsl(var(--primary))] hover:text-[hsl(var(--primary))]"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {t(link.key)}
                 {isProjects && (
-                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[#00F2FF]" />
+                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[hsl(var(--primary))]" />
                 )}
               </a>
             );
@@ -83,15 +82,15 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="/recruiter"
-            className="flex items-center gap-2 rounded-2xl border border-[#00F2FF]/15 bg-[#0b1821]/80 px-4 py-2 text-sm font-semibold text-[#00F2FF] transition-all hover:border-[#00F2FF]/35 hover:bg-[#0b1821]/95"
+            className="flex items-center gap-2 rounded-2xl border border-[hsl(var(--primary))]/15 bg-[hsl(var(--card))]/80 px-4 py-2 text-sm font-semibold text-[hsl(var(--primary))] transition-all hover:border-[hsl(var(--primary))]/35 hover:bg-[hsl(var(--card))]/95"
             title="One-pager for recruiters"
           >
-            <FileText className="w-4 h-4 text-[#00F2FF]" />
+            <FileText className="w-4 h-4 text-[hsl(var(--primary))]" />
             1-Pager
           </a>
           <a
             href="#contact"
-            className="text-sm font-heading font-semibold px-4 py-2 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
+            className="text-sm font-heading font-semibold px-4 py-2 rounded-full bg-[hsl(var(--primary))] text-black transition-all hover:bg-[hsl(var(--primary))]"
             onClick={() =>
               trackEvent({
                 action: "contact_click",
@@ -108,7 +107,7 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-2">
           <a
             href="#contact"
-            className="text-xs font-heading font-semibold px-3 py-1.5 rounded-full bg-[#00F2FF] text-black transition-all hover:bg-[#00d5ff]"
+            className="text-xs font-heading font-semibold px-3 py-1.5 rounded-full bg-[hsl(var(--primary))] text-black transition-all hover:bg-[hsl(var(--primary))]"
             onClick={() => {
               setOpen(false);
               trackEvent({
@@ -145,25 +144,25 @@ const Navbar = () => {
                 href={link.href}
                 className={`block py-3 text-sm transition-colors ${
                   isProjects
-                    ? "text-[#00F2FF] font-semibold"
+                    ? "text-[hsl(var(--primary))] font-semibold"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
                 onClick={() => setOpen(false)}
               >
                 {t(link.key)}
                 {isProjects && (
-                  <span className="ml-2 inline-block w-4 h-0.5 rounded-full bg-[#00F2FF] align-middle" />
+                  <span className="ml-2 inline-block w-4 h-0.5 rounded-full bg-[hsl(var(--primary))] align-middle" />
                 )}
               </a>
             );
           })}
           <a
             href="/recruiter"
-            className="block rounded-2xl border border-[#00F2FF]/15 bg-[#0b1821]/80 px-4 py-3 text-sm font-semibold text-[#00F2FF] transition-all hover:border-[#00F2FF]/35 hover:bg-[#0b1821]/95"
+            className="block rounded-2xl border border-[hsl(var(--primary))]/15 bg-[hsl(var(--card))]/80 px-4 py-3 text-sm font-semibold text-[hsl(var(--primary))] transition-all hover:border-[hsl(var(--primary))]/35 hover:bg-[hsl(var(--card))]/95"
             onClick={() => setOpen(false)}
           >
             <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#00F2FF]" />
+              <FileText className="w-4 h-4 text-[hsl(var(--primary))]" />
               Recruiter 1-Pager
             </div>
           </a>
