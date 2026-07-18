@@ -1,53 +1,12 @@
 import { motion } from "framer-motion";
-import { memo, useMemo, useState, useEffect } from "react";
-import { Download, ChevronDown } from "lucide-react";
+import { memo, useMemo } from "react";
+import { Download, ChevronDown, Linkedin } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 import LiquidEther from "@/components/LiquidEther.jsx";
 
-const useTypingAnimation = (
-  words: string[],
-  typingSpeed = 80,
-  deletingSpeed = 50,
-  pauseTime = 2000,
-) => {
-  const [displayText, setDisplayText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentWord = words[wordIndex];
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setDisplayText(currentWord.substring(0, displayText.length + 1));
-          if (displayText === currentWord) {
-            setTimeout(() => setIsDeleting(true), pauseTime);
-          }
-        } else {
-          setDisplayText(currentWord.substring(0, displayText.length - 1));
-          if (displayText === "") {
-            setIsDeleting(false);
-            setWordIndex((prev) => (prev + 1) % words.length);
-          }
-        }
-      },
-      isDeleting ? deletingSpeed : typingSpeed,
-    );
-    return () => clearTimeout(timeout);
-  }, [
-    displayText,
-    isDeleting,
-    wordIndex,
-    words,
-    typingSpeed,
-    deletingSpeed,
-    pauseTime,
-  ]);
-
-  return displayText;
-};
+// (typing animation removed — static tagline is faster to scan for recruiters)
 
 const LIQUID_COLORS = ["#a57b5f", "#7a5a44", "#3a2a20"];
 
