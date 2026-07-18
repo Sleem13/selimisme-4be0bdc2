@@ -1,78 +1,70 @@
+# Recruiter-Friendly Refinement Plan
 
-# Portfolio Refinement Plan
+Recruiters spend ~30 seconds on a portfolio. Every scroll must answer: *who, what, proof, contact*. These changes make that path frictionless without touching the Clinical Noir aesthetic we just committed to.
 
-Scope: 3/5 — meaningful restructure + aesthetic evolution, without a full rebuild. Existing components, routes, MCP setup, chatbot, and bilingual support stay intact.
+## 1. Hero — answer "who + what" in one glance
+- Add a **one-line role headline** above the name: `Data Analyst · ML Engineer · Healthcare Domain`.
+- Replace the typed `Healthca…` fragment with a **static, complete tagline** (typing animation slows recruiters and reads as decorative).
+- Add an **availability chip** (`● Open to opportunities · Cairo / Remote`) directly under the name.
+- Add a **3-metric strip** inline in the hero: `300+ patients · 15% efficiency gain · 22% faster recovery ID` — proof visible before any scroll.
+- Reorder CTAs: **Download CV** (primary) → **Contact** → **LinkedIn** (new tertiary ghost button).
 
----
+## 2. Sticky recruiter action bar
+- Add a **slim sticky bar** that appears after scrolling past the hero:
+  `Mohamed Seliem — Data Analyst · [Download CV] [Email] [LinkedIn]`
+- Always-visible CTAs remove the "scroll back to top" friction.
 
-## 1. Section consolidation (homepage)
+## 3. Above-the-fold "Recruiter Snapshot" band
+- New compact section right after the hero (replaces the current decorative marquee for recruiters):
+  - **Role fit**: Data Analyst / ML Engineer / Healthcare Analytics
+  - **Stack**: Python · SQL · Power BI · scikit-learn · Pandas
+  - **Location**: Cairo, Egypt · Open to remote/hybrid
+  - **Notice period / Availability**: Immediate
+  - **Languages**: English (Professional) · Arabic (Native)
+- One-line each. No animation. Print-friendly.
 
-Current homepage stacks 15 sections. Trim to a tighter narrative of ~9:
+## 4. Projects — lead with outcome, not narrative
+- For each case study card, promote the **impact KPI to the top** (oversized number + one-line outcome) before the description.
+- Add a **"Tech" row** (chip list) and a **"Role" line** (`Lead Analyst · 3 months`) on every card.
+- Keep the deep narrative but collapse Context/Challenge/Approach/Learnings behind a **"Read case study"** disclosure so the grid stays scannable.
 
-```text
-Hero
-MarqueeStrip
-About  (merge StorySection + AboutSection + ChallengeSolutionSection)
-Services + HowIWork  (merge into one "Services & Process")
-ImpactStrip
-Projects  (case studies — hero of the page)
-GitHub Repos  (secondary, collapsed by default)
-Experience + Career Timeline  (merge into one unified timeline)
-Education + Skills  (side-by-side in one section)
-Footer/CTA
-```
+## 5. Experience — swap prose for scannable bullets
+- Convert each experience block's Challenge/Solution/Impact paragraphs to **3 bullet points max**, each starting with a verb + metric where possible.
+- Keep the timeline visual, but tighten each card's vertical height ~30%.
 
-Remove: `RepoHealthBadgeSection` (duplicates GitHub grid signal), `ChallengeSolutionSection` (folds into About), standalone `CareerTimeline` (merged with Experience).
+## 6. Contact band — reduce friction
+- Add a **"Copy email"** button next to the mailto link (recruiters often work from ATS tabs).
+- Add **response-time expectation** (`Replies within 24h`) as a small caption — already present, make it more prominent.
+- Add a **`/recruiter` deep link** that opens the existing `RecruiterOnePager` route in a new tab, surfaced from the sticky bar and contact card.
 
-Files touched: `src/pages/Index.tsx`, plus the merged section components. Old components stay on disk but are unimported (safe to delete after review).
+## 7. SEO / discoverability polish
+- Update `<title>` to lead with role: `Mohamed Seliem — Data Analyst & ML Engineer (Healthcare)`.
+- Add `JobTitle` and `knowsAbout` fields to the existing Person JSON-LD.
+- Ensure the hero H1 contains the role keywords (currently just the name).
 
-## 2. Aesthetic evolution
-
-Keep the midnight-navy base but evolve away from the generic "cyan-on-dark tech" look toward a more editorial, distinctive direction. I'll use `design--create_directions` to render 3 rendered previews of the new hero + case study card (screenshot-based), then let you pick one. Direction will only touch design tokens in `src/index.css` + typography in `tailwind.config.ts`; component structure stays the same so the pick applies globally.
-
-Locked constraints across all 3 directions: dark base, bilingual/RTL safe, WCAG AA contrast, keeps LiquidEther-friendly background.
-
-## 3. Content & copy sharpening
-
-- **Hero**: tighten headline to one line + one subline; remove redundant tagline duplication.
-- **About**: single 3-paragraph story (origin → pivot → present) instead of three overlapping sections.
-- **Case studies**: rewrite each to the same 5-beat structure — Context · Role · Approach · Impact (with a headline KPI) · Stack. RehabRL stays #1.
-- **Services**: 3 crisp offerings with a one-line outcome each (no feature soup).
-- Update `src/contexts/LanguageContext.tsx` EN + AR in lockstep.
-
-## 4. Case studies depth
-
-- Promote Projects visually: larger cards, one "headline KPI" per project rendered oversized, GitHub link + live demo link where available.
-- Add a compact "Selected Work" index at the top of the section (jump links).
-- Pull real repo metadata (stars, last updated) into RehabRL card from the existing GitHub fetch.
-
-## 5. Performance & SEO
-
-- Lazy-load below-the-fold sections (`GitHubReposSection`, `Projects` details, `AIChatbot`) via `React.lazy` + `Suspense`.
-- Memoize `LIQUID_COLORS` confirm; drop unused imports in `Index.tsx` (`Phone`, `useState`, `useEffect`).
-- Per-route head with `react-helmet-async` on `/`, `/recruiter`, `/admin/chat-logs`, `/login` — unique title + description + canonical + og:url.
-- Add `Person` + `WebSite` JSON-LD sitewide (Person already exists — verify), plus `BreadcrumbList` on `/recruiter`.
-- Update `public/sitemap.xml` with all public routes + lastmod.
-- Trigger an SEO rescan at the end.
-
-## 6. Order of execution
-
-1. Ask design directions (Section 2) — you pick before I code the aesthetic.
-2. Consolidate sections (Section 1).
-3. Rewrite copy in `LanguageContext.tsx` (Section 3).
-4. Rebuild Projects section (Section 4).
-5. Apply chosen design tokens (Section 2 pick).
-6. Perf + SEO pass (Section 5).
-7. Playwright smoke on desktop + mobile; SEO rescan.
+## 8. Small quality-of-life
+- Add **keyboard focus rings** on all CTAs (currently muted).
+- Ensure **all external links** open with `rel="noopener noreferrer"` (audit pass).
+- Add a **"Last updated: <month year>"** line in the footer — signals an active candidate.
 
 ## Out of scope
+- No new backend, no form submissions, no auth changes.
+- No aesthetic shift — Clinical Noir palette/typography stays.
+- No removal of existing sections beyond the disclosure collapse on project narratives.
 
-- MCP server, chatbot logic, auth, admin dashboard, Supabase schema — untouched.
-- No new backend tables or edge functions.
-- No custom domain / publishing changes.
+## Technical touchpoints
+- `src/components/HeroSection.tsx` — headline, availability chip, metric strip, CTA reorder
+- New `src/components/StickyRecruiterBar.tsx` — appears on scroll past hero
+- New `src/components/RecruiterSnapshot.tsx` — replaces `MarqueeStrip` position for recruiter mode (keep marquee lower)
+- `src/components/ProjectsSection.tsx` — KPI-first card layout + disclosure
+- `src/components/ExperienceSection.tsx` — bullet conversion
+- `src/pages/Index.tsx` — CTA band copy button + `/recruiter` link
+- `src/contexts/LanguageContext.tsx` — new copy keys (EN + AR)
+- `index.html` — title + JSON-LD update
 
-## Technical notes
-
-- Deleted-from-index components will be removed from disk in a follow-up cleanup pass once you confirm nothing is missing.
-- All color changes go through `src/index.css` HSL tokens — no hardcoded hex in components.
-- Bilingual parity: every new/edited key added to both `en` and `ar` maps in the same edit.
+## Ask before I build
+Which subset do you want first? Options:
+1. **All of it** (bigger change, ~30 min work)
+2. **Hero + Sticky bar + Snapshot** (highest impact for the 30-second scan)
+3. **Projects + Experience scannability** (better for recruiters who do read)
+4. **Just the SEO + JSON-LD + title** (fast, invisible-but-critical)

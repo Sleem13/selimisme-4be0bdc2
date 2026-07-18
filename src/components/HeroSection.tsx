@@ -1,53 +1,12 @@
 import { motion } from "framer-motion";
-import { memo, useMemo, useState, useEffect } from "react";
-import { Download, ChevronDown } from "lucide-react";
+import { memo, useMemo } from "react";
+import { Download, ChevronDown, Linkedin } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 import LiquidEther from "@/components/LiquidEther.jsx";
 
-const useTypingAnimation = (
-  words: string[],
-  typingSpeed = 80,
-  deletingSpeed = 50,
-  pauseTime = 2000,
-) => {
-  const [displayText, setDisplayText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentWord = words[wordIndex];
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setDisplayText(currentWord.substring(0, displayText.length + 1));
-          if (displayText === currentWord) {
-            setTimeout(() => setIsDeleting(true), pauseTime);
-          }
-        } else {
-          setDisplayText(currentWord.substring(0, displayText.length - 1));
-          if (displayText === "") {
-            setIsDeleting(false);
-            setWordIndex((prev) => (prev + 1) % words.length);
-          }
-        }
-      },
-      isDeleting ? deletingSpeed : typingSpeed,
-    );
-    return () => clearTimeout(timeout);
-  }, [
-    displayText,
-    isDeleting,
-    wordIndex,
-    words,
-    typingSpeed,
-    deletingSpeed,
-    pauseTime,
-  ]);
-
-  return displayText;
-};
+// (typing animation removed — static tagline is faster to scan for recruiters)
 
 const LIQUID_COLORS = ["#a57b5f", "#7a5a44", "#3a2a20"];
 
@@ -71,28 +30,17 @@ const HeroBackground = memo(() => (
 const HeroSection = () => {
   const { t, isRTL, lang } = useLanguage();
 
-  const typingWordsEn = [
-    "Healthcare Data Analyst",
-    "ML Engineer",
-    "BI Architect",
-    "Clinical Insight Builder",
-  ];
-  const typingWordsAr = [
-    "محلل بيانات صحية",
-    "مهندس تعلم آلي",
-    "معماري ذكاء أعمال",
-    "صانع رؤى سريرية",
-  ];
-  const typingText = useTypingAnimation(
-    lang === "ar" ? typingWordsAr : typingWordsEn,
-    80,
-    50,
-    2000,
-  );
+  const roleLine = "Healthcare Data Analyst · ML Engineer · BI Architect";
 
   const triadEn = ["Analytics", "AI", "Healthcare"];
   const triadAr = ["تحليلات", "ذكاء اصطناعي", "رعاية صحية"];
   const triad = useMemo(() => (lang === "ar" ? triadAr : triadEn), [lang]);
+
+  const heroKpis = [
+    { value: "300+", label: "patients" },
+    { value: "15%", label: "efficiency gain" },
+    { value: "22%", label: "faster recovery ID" },
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -150,27 +98,22 @@ const HeroSection = () => {
             <span className="gradient-text">{t("hero.name.last")}</span>
           </motion.h1>
 
-          {/* Typing animation */}
+          {/* Role line + availability chip */}
           <motion.div
-            className="mb-6 h-10 md:h-12 flex items-center justify-center lg:justify-start"
+            className="mb-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
           >
             <span
-              className={`text-xl md:text-2xl font-heading font-semibold text-primary ${isRTL ? "font-arabic" : ""}`}
+              className={`text-lg md:text-xl font-heading font-semibold text-primary ${isRTL ? "font-arabic" : ""}`}
             >
-              {typingText}
+              {roleLine}
             </span>
-            <motion.span
-              className="inline-block w-0.5 h-6 md:h-7 bg-primary ml-1"
-              animate={{ opacity: [1, 0] }}
-              transition={{
-                duration: 0.6,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-xs font-medium text-emerald-500">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Open · Cairo / Remote
+            </span>
           </motion.div>
 
           <motion.p
@@ -208,8 +151,31 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
+          {/* KPI proof strip */}
+          <motion.dl
+            aria-label="Impact highlights"
+            className="grid grid-cols-3 gap-3 md:gap-4 mb-8 max-w-xl mx-auto lg:mx-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            {heroKpis.map((k) => (
+              <div
+                key={k.label}
+                className="rounded-xl border border-border bg-card/70 px-3 py-3 text-center"
+              >
+                <dt className="text-2xl md:text-3xl font-heading font-extrabold text-primary leading-none">
+                  {k.value}
+                </dt>
+                <dd className="mt-1 text-[10px] md:text-xs uppercase tracking-wider text-muted-foreground">
+                  {k.label}
+                </dd>
+              </div>
+            ))}
+          </motion.dl>
+
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -217,7 +183,14 @@ const HeroSection = () => {
             <a
               href="/Mohamed_Mahmoud_Seliem_CV.pdf"
               download
-              className="group w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold transition-all duration-300 bg-primary text-primary-foreground hover:shadow-lg"
+              onClick={() =>
+                trackEvent({
+                  action: "cv_download",
+                  category: "hero",
+                  label: "hero_cv",
+                })
+              }
+              className="group w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold transition-all duration-300 bg-primary text-primary-foreground hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               style={{ boxShadow: "var(--shadow-glow)" }}
             >
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
@@ -225,7 +198,7 @@ const HeroSection = () => {
             </a>
             <a
               href="#contact"
-              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
+              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-heading font-semibold border border-border bg-card text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               onClick={() =>
                 trackEvent({
                   action: "contact_click",
@@ -235,6 +208,22 @@ const HeroSection = () => {
               }
             >
               {t("nav.contact")}
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sleemisme"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent({
+                  action: "linkedin_click",
+                  category: "hero",
+                  label: "hero_linkedin",
+                })
+              }
+              className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-heading font-semibold text-muted-foreground hover:text-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <Linkedin className="w-4 h-4" />
+              LinkedIn
             </a>
           </motion.div>
         </div>

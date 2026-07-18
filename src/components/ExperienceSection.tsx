@@ -97,25 +97,31 @@ const ExperienceSection = () => {
                       </span>
                     </div>
 
-                    <div className="space-y-2 mb-4">
-                      <p
-                        className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                    <ul className="space-y-2 mb-4">
+                      <li
+                        className={`text-sm text-muted-foreground flex items-start gap-2 ${isRTL ? "font-arabic" : ""}`}
                       >
-                        <span className="font-semibold text-foreground">
-                          {t("exp.challenge")}
-                        </span>{" "}
-                        {exp.challenge}
-                      </p>
-                      <p
-                        className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                        <span className="text-muted-foreground/50 mt-0.5">·</span>
+                        <span>
+                          <span className="font-semibold text-foreground">
+                            {t("exp.challenge")}
+                          </span>{" "}
+                          {exp.challenge}
+                        </span>
+                      </li>
+                      <li
+                        className={`text-sm text-muted-foreground flex items-start gap-2 ${isRTL ? "font-arabic" : ""}`}
                       >
-                        <span className="font-semibold text-primary">
-                          {t("exp.solution")}
-                        </span>{" "}
-                        {exp.solution}
-                      </p>
-                      <p
-                        className={`text-sm text-muted-foreground flex items-start gap-1.5 ${isRTL ? "font-arabic" : ""}`}
+                        <span className="text-primary mt-0.5">·</span>
+                        <span>
+                          <span className="font-semibold text-primary">
+                            {t("exp.solution")}
+                          </span>{" "}
+                          {exp.solution}
+                        </span>
+                      </li>
+                      <li
+                        className={`text-sm text-muted-foreground flex items-start gap-2 ${isRTL ? "font-arabic" : ""}`}
                       >
                         <TrendingUp className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                         <span>
@@ -124,8 +130,8 @@ const ExperienceSection = () => {
                           </span>{" "}
                           {exp.impact}
                         </span>
-                      </p>
-                    </div>
+                      </li>
+                    </ul>
 
                     <div className="flex flex-wrap gap-1.5">
                       {exp.tools.map((tool) => (

@@ -1,7 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
+import RecruiterSnapshot from "@/components/RecruiterSnapshot";
+import StickyRecruiterBar from "@/components/StickyRecruiterBar";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ImpactStripSection from "@/components/ImpactStripSection";
@@ -13,13 +15,36 @@ import CustomCursor from "@/components/CustomCursor";
 import DataAnalyticsBackground from "@/components/DataAnalyticsBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, MapPin } from "lucide-react";
+import {
+  ArrowUpRight,
+  Mail,
+  Linkedin,
+  MapPin,
+  Copy,
+  Check,
+  ExternalLink,
+} from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const GitHubReposSection = lazy(() => import("@/components/GitHubReposSection"));
 const AIChatbot = lazy(() => import("@/components/AIChatbot"));
 
+const EMAIL = "muhammadsleem03@gmail.com";
+
 const Index = () => {
   const { t, isRTL } = useLanguage();
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      trackEvent({ action: "email_copy", category: "contact", label: "cta_band" });
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // no-op
+    }
+  };
 
   return (
     <div
@@ -30,6 +55,7 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <HeroSection />
+      <RecruiterSnapshot />
       <MarqueeStrip />
       <AboutSection />
       <ServicesSection />
@@ -41,6 +67,8 @@ const Index = () => {
       <ExperienceSection />
       <EducationSection />
       <SkillsSection />
+      <StickyRecruiterBar />
+
 
 
       {/* Footer */}
@@ -85,17 +113,40 @@ const Index = () => {
               className="rounded-2xl bg-card border border-border p-7 md:p-8"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <a
-                href="mailto:muhammadsleem03@gmail.com"
-                className="group flex items-center justify-between gap-4 px-5 py-4 rounded-xl bg-primary text-primary-foreground transition-all duration-300 hover:shadow-lg"
-                style={{ boxShadow: "var(--shadow-glow)" }}
-              >
-                <span className="flex items-center gap-3 font-heading font-semibold">
-                  <Mail className="w-5 h-5" />
-                  muhammadsleem03@gmail.com
-                </span>
-                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="mailto:muhammadsleem03@gmail.com"
+                  onClick={() =>
+                    trackEvent({ action: "email_click", category: "contact", label: "cta_band" })
+                  }
+                  className="group flex-1 flex items-center justify-between gap-4 px-5 py-4 rounded-xl bg-primary text-primary-foreground transition-all duration-300 hover:shadow-lg"
+                  style={{ boxShadow: "var(--shadow-glow)" }}
+                >
+                  <span className="flex items-center gap-3 font-heading font-semibold truncate">
+                    <Mail className="w-5 h-5 shrink-0" />
+                    <span className="truncate">muhammadsleem03@gmail.com</span>
+                  </span>
+                  <ArrowUpRight className="w-5 h-5 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  aria-label="Copy email address"
+                  className="sm:w-auto flex items-center justify-center gap-2 px-4 py-4 rounded-xl bg-secondary border border-border hover:border-primary/40 transition-all text-sm font-semibold text-foreground/90"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4 text-primary" />
+                      Copied
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4 text-primary" />
+                      Copy
+                    </>
+                  )}
+                </button>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                 <a
